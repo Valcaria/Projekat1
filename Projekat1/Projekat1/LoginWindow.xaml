@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat1"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300">
+        Title="Studentski centar" Height="238.298" Width="467.021" MinWidth="518.085" MinHeight="274.468" MaxWidth="597.872" MaxHeight="358.511">
     <Grid>
-        
+        <TextBox x:Name="txtUsername" Margin="139,73,82,0" TextWrapping="Wrap" Text="TextBox" Height="23" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Height="23" Margin="139,129,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="289"/>
+        <Label x:Name="labelaUsername" Content="Username:" HorizontalAlignment="Left" Margin="70,73,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labePassword" Content="Password:" HorizontalAlignment="Left" Margin="70,126,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="204,190,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>
