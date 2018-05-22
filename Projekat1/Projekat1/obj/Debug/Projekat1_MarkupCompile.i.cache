@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Projekat1\trunk\Projekat1\Projekat1\obj\Debug\
+E:\Projekat_1_TMP\trunk\Projekat1\Projekat1\obj\Debug\
 Projekat1
 none
 false
 DEBUG;TRACE
-D:\Projekat1\trunk\Projekat1\Projekat1\App.xaml
-22037783069
+E:\Projekat_1_TMP\trunk\Projekat1\Projekat1\App.xaml
+5-2095375127
 
-10-247989800
+13-916440171
 13738642453
-LoginWindow.xaml;MainWindow.xaml;
+Dom.xaml;LoginWindow.xaml;MainWindow.xaml;Student.xaml;Usluge.xaml;
 
 True
 
