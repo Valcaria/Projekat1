@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="btnStudent" Content="Student" HorizontalAlignment="Left" Height="68" Margin="41,25,0,0" VerticalAlignment="Top" Width="72"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="68" Margin="170,25,0,0" VerticalAlignment="Top" Width="72"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="68" Margin="310,25,0,0" VerticalAlignment="Top" Width="72"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="68" Margin="41,170,0,0" VerticalAlignment="Top" Width="72"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="68" Margin="170,170,0,0" VerticalAlignment="Top" Width="72"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="68" Margin="310,170,0,0" VerticalAlignment="Top" Width="72"/>
+
     </Grid>
 </Window>
