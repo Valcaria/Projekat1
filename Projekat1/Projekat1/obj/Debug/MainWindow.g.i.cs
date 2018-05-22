@@ -77,6 +77,10 @@ namespace Projekat1
         }
 
         internal System.Windows.Controls.Button btnStudent;
+        internal System.Windows.Controls.Button btnDom1;
+        internal System.Windows.Controls.Button btnDom2;
+        internal System.Windows.Controls.Button btnLogOut;
+        internal System.Windows.Controls.Button btnUsluge;
     }
 }
 
