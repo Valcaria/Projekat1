@@ -8,10 +8,9 @@
         mc:Ignorable="d"
         Title="WorkingWindow" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
     <Grid x:Name="grdPozadina">
-        <DataGrid x:Name="datagrdTabela" Margin="10,10,9,85" ColumnWidth="Auto" >
-        </DataGrid>
+        <DataGrid x:Name="datagrdTabela" Margin="10,10,9,85" ColumnWidth="Auto" MinColumnWidth="200" IsHitTestVisible="True" IsReadOnly="True" />
         <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="10,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnDodaj_Click"/>
-        <Button x:Name="btnUkloni" Content="Ukloni" HorizontalAlignment="Left" Margin="135,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnUkloni" Content="Ukloni" HorizontalAlignment="Left" Margin="135,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnUkloni_Click"/>
         <Button x:Name="btnOdjaviSe" Content="Odjavi se" HorizontalAlignment="Right" Margin="0,0,10,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom"/>
         <Button x:Name="btnIzvjestaj" Content="Izvještaj" Margin="0,0,136,23" FontSize="18" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="98"/>
 

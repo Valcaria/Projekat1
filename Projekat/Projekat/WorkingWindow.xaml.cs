@@ -33,26 +33,39 @@ namespace projekatTMP
         private void FillDataGrid()
         {
             DataTable dG = new DataTable();
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
-           // MySqlCommand cmd = new MySqlCommand("select * from baza_pojekat", conn);
-          //  DataSet sDs = new DataSet();
 
+           // MySqlCommand command = new MySqlCommand("select * from studenti", conn);
+            
             MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from studenti",conn);
             sAdapter.Fill(dG);
-            //DataTable dTable = sDs.Tables["baze_projekat"];
+            
+            
 
             datagrdTabela.ItemsSource = dG.DefaultView;
-            
-            
+
+            conn.Close();
         }
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
+            
+
             Projekat.AddWindow add = new Projekat.AddWindow();
             add.ShowDialog();
             
+        }
+
+        private void btnUkloni_Click(object sender, RoutedEventArgs e)
+        {
+            if (datagrdTabela.SelectedItem != null)
+            {
+            
+                datagrdTabela.Items.RemoveAt(datagrdTabela.SelectedIndex);
+                
+            }
         }
     }
 }
