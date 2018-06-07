@@ -25,13 +25,17 @@ namespace projekatTMP
         public WorkingWindow()
         {
             InitializeComponent();
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            dispatcherTimer.Start();
 
-            
             FillDataGrid();
         }
 
         private void FillDataGrid()
         {
+           // datagrdTabela.Items.Clear();
             DataTable dG = new DataTable();
             string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
@@ -55,17 +59,59 @@ namespace projekatTMP
 
             Projekat.AddWindow add = new Projekat.AddWindow();
             add.ShowDialog();
+            FillDataGrid();
             
         }
 
         private void btnUkloni_Click(object sender, RoutedEventArgs e)
         {
-            if (datagrdTabela.SelectedItem != null)
+           if (datagrdTabela.SelectedItem != null)
             {
-            
-                datagrdTabela.Items.RemoveAt(datagrdTabela.SelectedIndex);
+                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
+                MySqlConnection conn = new MySqlConnection(connstr);
+                conn.Open();
+                DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
+                string cellValue = dataRow.Row.ItemArray[0].ToString();
+                MySqlCommand komanda = new MySqlCommand("DELETE FROM studenti WHERE ID = " + (cellValue), conn);
+                komanda.ExecuteNonQuery();
+                
+                conn.Close();
+                FillDataGrid();
                 
             }
+        }
+
+        private void btnOdjaviSe_Click(object sender, RoutedEventArgs e)
+        {
+            Projekat.MainWindow main = new Projekat.MainWindow();
+            main.Show();
+            this.Close();
+          
+        }
+
+
+        
+
+
+private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+           if(datagrdTabela.SelectedItem != null)
+            {
+                btnUkloni.IsEnabled = true;
+                btnIzmijeni.IsEnabled = true;
+            }
+           else
+            {
+                btnUkloni.IsEnabled = false;
+                btnIzmijeni.IsEnabled = false;
+            }
+        }
+
+        private void btnIzmijeni_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
+            string cellValue = dataRow.Row.ItemArray[0].ToString();
+            Projekat.ChangeWindow changeWindow = new Projekat.ChangeWindow()
         }
     }
 }
