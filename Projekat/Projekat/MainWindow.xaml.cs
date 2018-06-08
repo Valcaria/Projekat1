@@ -27,7 +27,6 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-            txtKorisnik.Clear();
             mySql();
             
         }
@@ -52,30 +51,70 @@ namespace Projekat
 
             
         }
-        
+
         private void mySql()
         {
-
-           
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
+            string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from admin", conn);
-            //DataSet sDs = new DataSet();
-
-            //MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
-            //sAdapter.Fill(sDs, "admin");
-            //DataTable dTable = sDs.Tables["admin"];
 
             MySqlDataReader rReader = cmd.ExecuteReader();
-            rReader.Read();
-            user= rReader.GetString("ID");
-            password = rReader.GetString("PASS");
+            while(rReader.Read())
+            {
+                if (txtKorisnik.Text == rReader[1].ToString() && txtLozinka.Password.ToString() == rReader[2].ToString())
+                {
+                    user = txtKorisnik.Text;
+                    password = txtLozinka.Password.ToString();                    
+                }             
+            }
+            conn.Close();
+        }
 
+        private void Connection()
+        {
+            string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+            MySqlConnection conn = new MySqlConnection(connstr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from history", conn);
 
+            MySqlDataReader rReader = cmd.ExecuteReader();
+            while (rReader.Read())
+            {
+                if(rReader[3].ToString()=="0")
+                {
+                    mySql();
+                }
+                else if(rReader[3].ToString() == "1")
+                {
+                    txtKorisnik.Text = rReader[1].ToString();
+                    txtLozinka.Password.ToString() = rReader[2].ToString();
+                }
+            }
+            conn.Close();
+        }
+        private void cbxSacuvaj_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbxSacuvaj.IsChecked == true)
+            {
+                string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+                MySqlConnection con = new MySqlConnection(connstr);
+                con.Open();
 
+                MySqlCommand cmd = new MySqlCommand("UPDATE history SET user = '"+txtKorisnik.Text+"', password = '"+txtLozinka.Password.ToString()+"',user_checked = 1 where id = 0", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            else
+            {
+                string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+                MySqlConnection con = new MySqlConnection(connstr);
+                con.Open();
 
-
+                MySqlCommand cmd = new MySqlCommand("UPDATE history SET user = '', password = '',user_checked = 0 where id = 0", con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
         }
     }
 }
