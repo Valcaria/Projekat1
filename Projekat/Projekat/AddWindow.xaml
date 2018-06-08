@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="AddWindow" Height="408.298" Width="313.83">
     <Grid>
-        <TextBox x:Name="txtIme" HorizontalAlignment="Left" Height="31" Margin="83,18,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="199" FontSize="14"/>
-        <TextBox x:Name="txtPrezime" HorizontalAlignment="Left" Height="31" Margin="83,54,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="199" FontSize="14"/>
-        <TextBox x:Name="txtKomentar" HorizontalAlignment="Left" Height="102" Margin="83,198,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="199" FontSize="14"/>
+        <TextBox x:Name="txtIme" HorizontalAlignment="Left" Height="31" Margin="83,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14"/>
+        <TextBox x:Name="txtPrezime" HorizontalAlignment="Left" Height="31" Margin="83,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14"/>
+        <TextBox x:Name="txtKomentar" HorizontalAlignment="Left" Height="102" Margin="83,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14"/>
         <ComboBox x:Name="cmbDom" HorizontalAlignment="Left" Margin="83,90,0,0" VerticalAlignment="Top" Width="199" Height="31" FontSize="14">
             <ComboBoxItem Content="1" FontSize="14"/>
             <ComboBoxItem Content="2" FontSize="14"/>

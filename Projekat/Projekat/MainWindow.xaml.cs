@@ -27,6 +27,7 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
+            txtKorisnik.Clear();
             mySql();
             
         }
@@ -51,23 +52,30 @@ namespace Projekat
 
             
         }
-
+        
         private void mySql()
         {
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+
+           
+            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from admin", conn);
+            //DataSet sDs = new DataSet();
+
+            //MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+            //sAdapter.Fill(sDs, "admin");
+            //DataTable dTable = sDs.Tables["admin"];
 
             MySqlDataReader rReader = cmd.ExecuteReader();
             rReader.Read();
             user= rReader.GetString("ID");
             password = rReader.GetString("PASS");
-        }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-           
+
+
+
+
         }
     }
 }
