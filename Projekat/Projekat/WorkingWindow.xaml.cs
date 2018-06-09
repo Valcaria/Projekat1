@@ -69,16 +69,21 @@ namespace projekatTMP
         {
            if (datagrdTabela.SelectedItem != null)
             {
-                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
-                MySqlConnection conn = new MySqlConnection(connstr);
-                conn.Open();
                 DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
-                string cellValue = dataRow.Row.ItemArray[0].ToString();
-                MySqlCommand komanda = new MySqlCommand("DELETE FROM studenti WHERE ID = " + (cellValue), conn);
-                komanda.ExecuteNonQuery();
-                
-                conn.Close();
-                FillDataGrid();
+              
+                MessageBoxResult message = MessageBox.Show("Da li ste sigurni da želite da uklonite studenta "+dataRow.Row.ItemArray[1].ToString() + " "+dataRow.Row.ItemArray[2].ToString()+"?", " ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                if (message == MessageBoxResult.OK)
+                {
+                    string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
+                    MySqlConnection conn = new MySqlConnection(connstr);
+                    conn.Open();
+                    string cellValue = dataRow.Row.ItemArray[0].ToString();
+                    MySqlCommand komanda = new MySqlCommand("DELETE FROM studenti WHERE ID = " + (cellValue), conn);
+                    komanda.ExecuteNonQuery();
+
+                    conn.Close();
+                    FillDataGrid();
+                }
                 
             }
         }
@@ -113,8 +118,8 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
           //  string cellValue = dataRow.Row.ItemArray[0].ToString();
-            Projekat.ChangeWindow changeWindow = new Projekat.ChangeWindow(dataRow.Row.ItemArray[0].ToString(), dataRow.Row.ItemArray[1].ToString(), dataRow.Row.ItemArray[2].ToString(), dataRow.Row.ItemArray[3].ToString(), dataRow.Row.ItemArray[4].ToString(), dataRow.Row.ItemArray[5].ToString(), dataRow.Row.ItemArray[6].ToString());
-            changeWindow.ShowDialog();
+            Projekat.AddWindow addWindow = new Projekat.AddWindow(dataRow.Row.ItemArray[0].ToString(), dataRow.Row.ItemArray[1].ToString(), dataRow.Row.ItemArray[2].ToString(), dataRow.Row.ItemArray[3].ToString(), dataRow.Row.ItemArray[4].ToString(), dataRow.Row.ItemArray[5].ToString(), dataRow.Row.ItemArray[6].ToString());
+            addWindow.ShowDialog();
             FillDataGrid();
 
             this.Show();

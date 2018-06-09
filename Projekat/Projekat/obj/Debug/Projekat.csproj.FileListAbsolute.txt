@@ -31,7 +31,6 @@ C:\Users\Pedja\source\repos\Projekat\bin\Debug\MySql.Data.EntityFramework.dll
 C:\Users\Pedja\source\repos\Projekat\bin\Debug\Google.Protobuf.dll
 C:\Users\Pedja\source\repos\Projekat\bin\Debug\MySql.Data.xml
 C:\Users\Pedja\source\repos\Projekat\bin\Debug\MySql.Data.EntityFramework.xml
-C:\Users\Pedja\source\repos\Projekat\obj\Debug\Projekat.csprojAssemblyReference.cache
 C:\Users\Pedja\source\repos\Projekat\obj\Debug\AboutBox1.g.cs
 C:\Users\Pedja\source\repos\Projekat\obj\Debug\AddWindow.g.cs
 C:\Users\Pedja\source\repos\Projekat\obj\Debug\MainWindow.g.cs
@@ -50,6 +49,4 @@ C:\Users\Pedja\source\repos\Projekat\obj\Debug\Projekat.csproj.CoreCompileInputs
 C:\Users\Pedja\source\repos\Projekat\obj\Debug\Projekat.csproj.CopyComplete
 C:\Users\Pedja\source\repos\Projekat\obj\Debug\Projekat.exe
 C:\Users\Pedja\source\repos\Projekat\obj\Debug\Projekat.pdb
-C:\Users\Pedja\source\repos\Projekat\obj\Debug\ChangeWindow.g.cs
-C:\Users\Pedja\source\repos\Projekat\obj\Debug\ChangeWindow.baml
 C:\Users\Pedja\source\repos\Projekat\obj\Debug\Projekat.csproj.ResolveComReference.cache
