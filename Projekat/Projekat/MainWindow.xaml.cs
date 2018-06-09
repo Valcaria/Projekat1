@@ -54,7 +54,7 @@ namespace Projekat
         private void mySql()
         {
 
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from admin", conn);
@@ -73,7 +73,7 @@ namespace Projekat
 
         private void Connection()
         {
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from history", conn);
@@ -98,7 +98,7 @@ namespace Projekat
         {
             if (cbxSacuvaj.IsChecked == true)
             {
-                string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                 MySqlConnection con = new MySqlConnection(connstr);
                 con.Open();
 
@@ -108,7 +108,7 @@ namespace Projekat
             }
             else
             {
-                string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
+                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                 MySqlConnection con = new MySqlConnection(connstr);
                 con.Open();
 
