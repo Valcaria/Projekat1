@@ -78,7 +78,7 @@ namespace Projekat
         {
             if (txtIme.Text != "" && txtPrezime.Text != "" && cmbDom.Text !=""&&cmbFakultet.Text!=""&& cmbGodina.Text!="")
             {
-                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
+                string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
                 MySqlConnection conn = new MySqlConnection(connstr);
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET ime = '"+txtIme.Text+"', prezime ='"+txtPrezime.Text+"',dom ="+cmbDom.Text+",fakultet = '"+cmbFakultet.Text+"', godina = "+cmbGodina.Text+",komentar = '"+txtKomentar.Text+"' where id = " + id +";", conn);

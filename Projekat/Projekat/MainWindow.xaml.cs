@@ -27,7 +27,6 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-            mySql();
             
         }
 
@@ -39,7 +38,7 @@ namespace Projekat
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            Connection();
             if (txtKorisnik.Text == user && txtLozinka.Password.ToString() == password)
             {
                 projekatTMP.WorkingWindow test = new projekatTMP.WorkingWindow();
@@ -54,6 +53,7 @@ namespace Projekat
 
         private void mySql()
         {
+
             string connstr = "Server=localhost;Uid=root;pwd= ;database=baza_projekat;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
@@ -64,8 +64,8 @@ namespace Projekat
             {
                 if (txtKorisnik.Text == rReader[1].ToString() && txtLozinka.Password.ToString() == rReader[2].ToString())
                 {
-                    user = txtKorisnik.Text;
-                    password = txtLozinka.Password.ToString();                    
+                    user = rReader[1].ToString();
+                    password = rReader[2].ToString();                    
                 }             
             }
             conn.Close();
@@ -88,7 +88,8 @@ namespace Projekat
                 else if(rReader[3].ToString() == "1")
                 {
                     txtKorisnik.Text = rReader[1].ToString();
-                    txtLozinka.Password.ToString() = rReader[2].ToString();
+                    txtLozinka.Password = rReader[2].ToString();
+                    cbxSacuvaj.IsChecked = true;
                 }
             }
             conn.Close();
