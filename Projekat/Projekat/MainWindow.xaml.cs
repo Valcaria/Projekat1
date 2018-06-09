@@ -39,7 +39,7 @@ namespace Projekat
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             Connection();
-            if (txtKorisnik.Text == user && txtLozinka.Password.ToString() == password)
+            if (txtKorisnik.Text == user && txtLozinka.Password.ToString() == password && txtKorisnik.Text!= "" && txtLozinka.Password.ToString() != "" )
             {
                 projekatTMP.WorkingWindow test = new projekatTMP.WorkingWindow();
                 this.Close();
