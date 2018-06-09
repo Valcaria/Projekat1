@@ -27,7 +27,7 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-            
+            Connection();
         }
 
         private void imgStudentCard_MouseDown(object sender, MouseButtonEventArgs e)
@@ -38,7 +38,8 @@ namespace Projekat
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Connection();
+            mySql();
+            cbxSacuvaj_Click(sender, e);
             if (txtKorisnik.Text == user && txtLozinka.Password.ToString() == password && txtKorisnik.Text!= "" && txtLozinka.Password.ToString() != "" )
             {
                 projekatTMP.WorkingWindow test = new projekatTMP.WorkingWindow();
@@ -79,19 +80,13 @@ namespace Projekat
             MySqlCommand cmd = new MySqlCommand("select * from history", conn);
 
             MySqlDataReader rReader = cmd.ExecuteReader();
-            while (rReader.Read())
-            {
-                if(rReader[3].ToString()=="0")
-                {
-                    mySql();
-                }
-                else if(rReader[3].ToString() == "1")
+            rReader.Read();
+            if(rReader[3].ToString() == "1")
                 {
                     txtKorisnik.Text = rReader[1].ToString();
                     txtLozinka.Password = rReader[2].ToString();
                     cbxSacuvaj.IsChecked = true;
                 }
-            }
             conn.Close();
         }
         private void cbxSacuvaj_Click(object sender, RoutedEventArgs e)

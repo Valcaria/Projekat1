@@ -5,19 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AboutBox1" Height="247.872" Width="410" WindowStartupLocation="CenterScreen" Icon="/Icon/student_card_5jB_icon.ico" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
-    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="238" VerticalAlignment="Top" Width="410" CornerRadius="40">
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF142C9B" Offset="0"/>
-                <GradientStop Color="#FF1BBAD3" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
-            <Image HorizontalAlignment="Left" Height="131" Margin="215,0,0,0" VerticalAlignment="Top" Width="156" Source="Icon/student-card.png" Stretch="UniformToFill"/>
-            <Label Content="Aplikacija:&#xD;&#xA;Studentski Centar" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="186" Height="62"/>
-            <Label Content="Autori: Dragana Pavlović Malešić &#xD;&#xA;            Predrag Damjanović" HorizontalAlignment="Left" Margin="31,151,0,0" VerticalAlignment="Top"/>
-            <Button Content="Izlaz" HorizontalAlignment="Left" Margin="254,201,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click" Height="25"/>
-        </Grid>
-    </Border>
+        Title="AboutBox1" Height="280.851" Width="410" WindowStartupLocation="CenterScreen" Icon="/Icon/student_card_5jB_icon.ico" ResizeMode="NoResize" WindowStyle="None">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF142C9B" Offset="0"/>
+            <GradientStop Color="#FF1BBAD3" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Height="300" VerticalAlignment="Top">
+        <Image HorizontalAlignment="Left" Height="152" Margin="208,-24,0,0" VerticalAlignment="Top" Width="183" Source="Icon/student-card.png" Stretch="UniformToFill"/>
+        <Label Content="Aplikacija:&#xD;&#xA;Studentski Centar" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="SemiBold"/>
+        <Label Content="Verzija: Beta" HorizontalAlignment="Left" Margin="10,147,0,0" VerticalAlignment="Top" FontWeight="SemiBold"/>
+        <Label Content="Autori:  Dragana Pavlović Malešić&#xD;&#xA;             Predrag Damjanović" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" FontWeight="SemiBold"/>
+        <Button Content="Izađi" HorizontalAlignment="Left" Margin="287,220,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" FontSize="14" Height="37"/>
+    </Grid>
 </Window>
