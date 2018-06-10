@@ -5,33 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AddWindow" Height="408.298" Width="313.83">
+        Title="AddWindow" Height="317.298" Width="198.83" MinHeight="408.298" MinWidth="313.83" MaxWidth="530.83" MaxHeight="557.298" WindowStartupLocation="CenterOwner">
     <Grid>
-        <TextBox x:Name="txtIme" HorizontalAlignment="Left" Height="31" Margin="83,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14"/>
-        <TextBox x:Name="txtPrezime" HorizontalAlignment="Left" Height="31" Margin="83,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14"/>
-        <TextBox x:Name="txtKomentar" HorizontalAlignment="Left" Height="102" Margin="83,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14"/>
-        <ComboBox x:Name="cmbDom" HorizontalAlignment="Left" Margin="83,90,0,0" VerticalAlignment="Top" Width="199" Height="31" FontSize="14">
+        <TextBox x:Name="txtIme" Height="31" Margin="83,18,24,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0"/>
+        <TextBox x:Name="txtPrezime" Height="31" Margin="83,54,24,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1"/>
+        <TextBox x:Name="txtKomentar" Margin="83,198,24,77" TextWrapping="Wrap" FontSize="14" TabIndex="5"/>
+        <ComboBox x:Name="cmbDom" Margin="83,90,24,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2">
             <ComboBoxItem Content="1" FontSize="14"/>
             <ComboBoxItem Content="2" FontSize="14"/>
         </ComboBox>
-        <ComboBox x:Name="cmbFakultet" HorizontalAlignment="Left" Margin="83,126,0,0" VerticalAlignment="Top" Width="199" Height="31" FontSize="14">
+        <ComboBox x:Name="cmbFakultet" Margin="83,126,24,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="3">
             <ComboBoxItem Content="ETF"  FontSize="14"/>
             <ComboBoxItem Content="MAF"  FontSize="14"/>
             <ComboBoxItem Content="MAK"  FontSize="14"/>
             <ComboBoxItem Content="POF"  FontSize="14"/>
         </ComboBox>
-        <ComboBox x:Name="cmbGodina" HorizontalAlignment="Left" Margin="83,162,0,0" VerticalAlignment="Top" Width="199" Height="31" RenderTransformOrigin="1.097,0.393">
+        <ComboBox x:Name="cmbGodina" Margin="83,162,24,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="1.097,0.393" TabIndex="4">
             <ComboBoxItem Content="1"  FontSize="14"/>
             <ComboBoxItem Content="2"  FontSize="14"/>
             <ComboBoxItem Content="3"  FontSize="14"/>
             <ComboBoxItem Content="4"  FontSize="14"/>
         </ComboBox>
-        <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Height="38" Margin="83,315,0,0" VerticalAlignment="Top" Width="146" Click="btnDodaj_Click"/>
-        <Label Content="Ime:" HorizontalAlignment="Right" Margin="0,18,233,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Prezime:" HorizontalAlignment="Right" Margin="0,54,233,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Dom:" HorizontalAlignment="Right" Margin="0,90,233,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Fakultet:" HorizontalAlignment="Right" Margin="0,126,233,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Godina:" HorizontalAlignment="Right" Margin="0,162,233,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Komentar:" HorizontalAlignment="Right" Margin="0,198,233,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="btnDodaj" Content="Dodaj" Height="38" Margin="0,0,24,21" VerticalAlignment="Bottom" Click="btnDodaj_Click" HorizontalAlignment="Right" Width="146" TabIndex="6"/>
+        <Label Content="Ime:" Margin="37,18,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="36"/>
+        <Label Content="Prezime:" Margin="11,54,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="62"/>
+        <Label Content="Dom:" HorizontalAlignment="Left" Margin="30,90,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Fakultet:" HorizontalAlignment="Left" Margin="11,126,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Godina:" HorizontalAlignment="Left" Margin="15,162,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Komentar:" HorizontalAlignment="Left" Margin="0,198,0,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>

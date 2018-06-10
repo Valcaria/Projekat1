@@ -58,7 +58,6 @@ E:\Projekat_1_TMP\trunk\Projekat\Projekat\bin\Debug\MySql.Data.EntityFramework.d
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\bin\Debug\Google.Protobuf.dll
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\bin\Debug\MySql.Data.xml
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\bin\Debug\MySql.Data.EntityFramework.xml
-E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\Projekat.csprojAssemblyReference.cache
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\Projekat.csproj.ResolveComReference.cache
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\AboutBox1.g.cs
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\AddWindow.g.cs

@@ -9,11 +9,11 @@
         Title="WorkingWindow" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
     <Grid x:Name="grdPozadina">
         <DataGrid x:Name="datagrdTabela" Margin="10,10,9,85" ColumnWidth="Auto" MinColumnWidth="150" IsHitTestVisible="True" IsReadOnly="True" />
-        <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="10,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnDodaj_Click"/>
-        <Button x:Name="btnUkloni" Content="Ukloni" HorizontalAlignment="Left" Margin="135,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnUkloni_Click" IsEnabled="False"/>
-        <Button x:Name="btnOdjaviSe" Content="Odjavi se" HorizontalAlignment="Right" Margin="0,0,10,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnOdjaviSe_Click"/>
-        <Button x:Name="btnIzvjestaj" Content="Izvještaj" Margin="0,0,136,23" FontSize="18" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="98" Click="btnIzvjestaj_Click"/>
-        <Button x:Name="btnIzmijeni" Content="Izmijeni" HorizontalAlignment="Left" Margin="261,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnIzmijeni_Click" IsEnabled="False"/>
+        <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="10,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnDodaj_Click" TabIndex="1"/>
+        <Button x:Name="btnUkloni" Content="Ukloni" HorizontalAlignment="Left" Margin="135,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnUkloni_Click" IsEnabled="False" TabIndex="2"/>
+        <Button x:Name="btnOdjaviSe" Content="Odjavi se" HorizontalAlignment="Right" Margin="0,0,10,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnOdjaviSe_Click" TabIndex="5"/>
+        <Button x:Name="btnIzvjestaj" Content="Izvještaj" Margin="0,0,136,23" FontSize="18" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="98" Click="btnIzvjestaj_Click" TabIndex="4"/>
+        <Button x:Name="btnIzmijeni" Content="Izmijeni" HorizontalAlignment="Left" Margin="261,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnIzmijeni_Click" IsEnabled="False" TabIndex="3"/>
 
     </Grid>
 </Window>
