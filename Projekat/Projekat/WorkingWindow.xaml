@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:projekatTMP"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="projekatTMP.WorkingWindow"
         mc:Ignorable="d"
-        Title="WorkingWindow" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
+        Title="Studentska Služba" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
     <Grid x:Name="grdPozadina">
         <DataGrid x:Name="datagrdTabela" Margin="10,10,9,85" ColumnWidth="Auto" MinColumnWidth="150" IsHitTestVisible="True" IsReadOnly="True" />
         <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="10,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnDodaj_Click" TabIndex="1"/>

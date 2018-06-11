@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="AddWindow" Height="317.298" Width="198.83" MinHeight="408.298" MinWidth="313.83" MaxWidth="530.83" MaxHeight="557.298" WindowStartupLocation="CenterScreen">
+        Title="Studentska Služba" Height="317.298" Width="198.83" MinHeight="408.298" MinWidth="313.83" MaxWidth="530.83" MaxHeight="557.298" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBox x:Name="txtIme" Height="31" Margin="83,18,24,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0"/>
         <TextBox x:Name="txtPrezime" Height="31" Margin="83,54,24,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1"/>

@@ -77,4 +77,3 @@ E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\Projekat.csproj.CoreCompileI
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\Projekat.csproj.CopyComplete
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\Projekat.exe
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\Projekat.pdb
-E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Debug\Projekat.csprojAssemblyReference.cache

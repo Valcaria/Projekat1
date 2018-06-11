@@ -37,22 +37,28 @@ namespace projekatTMP
 
         private void FillDataGrid()
         {
-            // datagrdTabela.Items.Clear();
-            System.Data.DataTable dG = new System.Data.DataTable();
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
-            MySqlConnection conn = new MySqlConnection(connstr);
-            conn.Open();
+            try
+            {
+                // datagrdTabela.Items.Clear();
+                System.Data.DataTable dG = new System.Data.DataTable();
+                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
+                MySqlConnection conn = new MySqlConnection(connstr);
+                conn.Open();
 
-           // MySqlCommand command = new MySqlCommand("select * from studenti", conn);
-            
-            MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from studenti",conn);
-            sAdapter.Fill(dG);
-            
-            
+                // MySqlCommand command = new MySqlCommand("select * from studenti", conn);
 
-            datagrdTabela.ItemsSource = dG.DefaultView;
+                MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from studenti", conn);
+                sAdapter.Fill(dG);
 
-            conn.Close();
+
+
+                datagrdTabela.ItemsSource = dG.DefaultView;
+
+                conn.Close();
+            }catch (Exception e)
+            {
+                MessageBox.Show("Greska: "  + e.Message.ToString());
+            }
         }
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
@@ -74,6 +80,8 @@ namespace projekatTMP
                 MessageBoxResult message = MessageBox.Show("Da li ste sigurni da želite da uklonite studenta "+dataRow.Row.ItemArray[1].ToString() + " "+dataRow.Row.ItemArray[2].ToString()+"?", " ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                 if (message == MessageBoxResult.OK)
                 {
+                    try
+                    { 
                     string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                     MySqlConnection conn = new MySqlConnection(connstr);
                     conn.Open();
@@ -82,6 +90,11 @@ namespace projekatTMP
                     komanda.ExecuteNonQuery();
 
                     conn.Close();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Greska: " + error.Message.ToString());
+                    }
                     FillDataGrid();
                 }
                 
@@ -136,7 +149,8 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
               System.IO.StreamWriter file1 = new System.IO.StreamWriter(@"C:\Intel\test.xls");
               file1.WriteLine(result.Replace(',', ' '));
               file1.Close();*/
-
+              try
+            { 
             Excel.Application excel = new Excel.Application();
             excel.Visible = true; 
             Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
@@ -157,6 +171,11 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
                     Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
                     myRange.Value2 = b.Text;
                 }
+            }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Greska: " + e.Message.ToString());
             }
 
         }

@@ -92,6 +92,8 @@ namespace Projekat
             {
                 if (txtIme.Text != "" && txtPrezime.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
                 {
+                    try
+                    {
                     string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                     MySqlConnection conn = new MySqlConnection(connstr);
                     conn.Open();
@@ -99,12 +101,19 @@ namespace Projekat
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     this.Close();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Greska: " + error.Message.ToString());
+                    }
                 }
             }
             else
             {
                 if (txtIme.Text != "" && txtPrezime.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
                 {
+                    try
+                    { 
                     string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                     MySqlConnection conn = new MySqlConnection(connstr);
                     conn.Open();
@@ -112,6 +121,11 @@ namespace Projekat
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     this.Close();
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Greska: " + error.Message.ToString());
+                    }
                 }
 
             }
