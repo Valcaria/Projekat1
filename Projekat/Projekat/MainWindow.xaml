@@ -20,7 +20,7 @@
         <PasswordBox x:Name="txtLozinka" HorizontalAlignment="Left" Margin="133,139,0,0" VerticalAlignment="Top" Width="243" Height="31" FontSize="16" Opacity="0.6"/>
         <Label Content="Korisnik:" HorizontalAlignment="Left" Margin="42,83,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
         <Image x:Name="imgStudentCard" HorizontalAlignment="Left" Height="73" Margin="10,0,0,0" VerticalAlignment="Top" Width="91" Source="Icon/student-card.png" Stretch="UniformToFill" MouseDown="imgStudentCard_MouseDown"/>
-        <CheckBox x:Name="cbxSacuvaj" Content="Sacuvaj korisnika" HorizontalAlignment="Left" Margin="301,199,0,0" VerticalAlignment="Top" FontSize="14" Click="cbxSacuvaj_Click"/>
+        <CheckBox x:Name="cbxSacuvaj" Content="Sačuvaj korisnika" HorizontalAlignment="Left" Margin="301,199,0,0" VerticalAlignment="Top" FontSize="14" Click="cbxSacuvaj_Click"/>
 
     </Grid>
 </Window>
