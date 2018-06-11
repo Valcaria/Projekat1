@@ -16,6 +16,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace ProjekatTMP
 {
@@ -24,6 +25,7 @@ namespace ProjekatTMP
     /// </summary>
     public partial class WorkingWindow : System.Windows.Window
     {
+
         public WorkingWindow()
         {
             InitializeComponent();
@@ -49,11 +51,7 @@ namespace ProjekatTMP
 
                 MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from studenti", conn);
                 sAdapter.Fill(dG);
-
-
-
                 datagrdTabela.ItemsSource = dG.DefaultView;
-
                 conn.Close();
             }catch (Exception e)
             {
@@ -189,5 +187,6 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             ExportToExcel();
         }
+
     }
 }
