@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace Projekat
+namespace ProjekatTMP
 {
     /// <summary>
     /// Interaction logic for AddWindow.xaml

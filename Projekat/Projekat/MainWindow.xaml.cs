@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
 
-namespace Projekat
+namespace ProjekatTMP
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -42,7 +42,7 @@ namespace Projekat
             cbxSacuvaj_Click(sender, e);
             if (txtKorisnik.Text == user && txtLozinka.Password.ToString() == password && txtKorisnik.Text!= "" && txtLozinka.Password.ToString() != "" )
             {
-                projekatTMP.WorkingWindow test = new projekatTMP.WorkingWindow();
+                WorkingWindow test = new WorkingWindow();
                 this.Close();
                 test.ShowDialog();          
             }

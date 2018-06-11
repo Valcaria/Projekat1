@@ -1,9 +1,9 @@
-﻿<Window x:Class="Projekat.AddWindow"
+﻿<Window x:Class="ProjekatTMP.AddWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projekat"
+        xmlns:local="clr-namespace:ProjekatTMP"
         mc:Ignorable="d"
         Title="Studentska Služba" Height="317.298" Width="198.83" MinHeight="408.298" MinWidth="313.83" MaxWidth="530.83" MaxHeight="557.298" WindowStartupLocation="CenterScreen">
     <Grid>

@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:projekatTMP"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="projekatTMP.WorkingWindow"
+        xmlns:local="clr-namespace:ProjekatTMP"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ProjekatTMP.WorkingWindow"
         mc:Ignorable="d"
         Title="Studentska Služba" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
     <Grid x:Name="grdPozadina">

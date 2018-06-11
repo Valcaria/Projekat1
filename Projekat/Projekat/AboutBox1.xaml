@@ -1,9 +1,9 @@
-﻿<Window x:Class="Projekat.AboutBox1"
+﻿<Window x:Class="ProjekatTMP.AboutBox1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Projekat"
+        xmlns:local="clr-namespace:ProjekatTMP"
         mc:Ignorable="d"
         Title="AboutBox1" Height="273.851" Width="401" WindowStartupLocation="CenterScreen" Icon="/Icon/student_card_5jB_icon.ico" ResizeMode="NoResize" WindowStyle="None" MaxHeight="273.851" MinHeight="273.851" MaxWidth="401" MinWidth="401">
     <Window.Background>

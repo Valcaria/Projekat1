@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Projekat
+namespace ProjekatTMP
 {
     /// <summary>
     /// Interaction logic for AboutBox1.xaml

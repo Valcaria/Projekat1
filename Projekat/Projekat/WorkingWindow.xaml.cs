@@ -17,7 +17,7 @@ using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 
-namespace projekatTMP
+namespace ProjekatTMP
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -65,7 +65,7 @@ namespace projekatTMP
         {
             
 
-            Projekat.AddWindow add = new Projekat.AddWindow();
+            AddWindow add = new AddWindow();
             add.ShowDialog();
             FillDataGrid();
             
@@ -103,7 +103,7 @@ namespace projekatTMP
 
         private void btnOdjaviSe_Click(object sender, RoutedEventArgs e)
         {
-            Projekat.MainWindow main = new Projekat.MainWindow();
+            MainWindow main = new MainWindow();
             main.Show();
             this.Close();
           
@@ -131,7 +131,7 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
           //  string cellValue = dataRow.Row.ItemArray[0].ToString();
-            Projekat.AddWindow addWindow = new Projekat.AddWindow(dataRow.Row.ItemArray[0].ToString(), dataRow.Row.ItemArray[1].ToString(), dataRow.Row.ItemArray[2].ToString(), dataRow.Row.ItemArray[3].ToString(), dataRow.Row.ItemArray[4].ToString(), dataRow.Row.ItemArray[5].ToString(), dataRow.Row.ItemArray[6].ToString());
+            AddWindow addWindow = new AddWindow(dataRow.Row.ItemArray[0].ToString(), dataRow.Row.ItemArray[1].ToString(), dataRow.Row.ItemArray[2].ToString(), dataRow.Row.ItemArray[3].ToString(), dataRow.Row.ItemArray[4].ToString(), dataRow.Row.ItemArray[5].ToString(), dataRow.Row.ItemArray[6].ToString());
             addWindow.ShowDialog();
             FillDataGrid();
 
@@ -149,33 +149,38 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
               System.IO.StreamWriter file1 = new System.IO.StreamWriter(@"C:\Intel\test.xls");
               file1.WriteLine(result.Replace(',', ' '));
               file1.Close();*/
-              try
-            { 
-            Excel.Application excel = new Excel.Application();
-            excel.Visible = true; 
-            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
 
-            for (int j = 0; j < datagrdTabela.Columns.Count; j++) 
+
+            using (new WaitCursor())
             {
-                Range myRange = (Range)sheet1.Cells[1, j + 1];
-                sheet1.Cells[1, j + 1].Font.Bold = true; 
-                sheet1.Columns[j + 1].ColumnWidth = 15; 
-                myRange.Value2 = datagrdTabela.Columns[j].Header;
-            }
-            for (int i = 0; i < datagrdTabela.Columns.Count; i++)
-            { 
-                for (int j = 0; j < datagrdTabela.Items.Count; j++)
+                try
                 {
-                    TextBlock b = datagrdTabela.Columns[i].GetCellContent(datagrdTabela.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text;
+                    Excel.Application excel = new Excel.Application();
+                    excel.Visible = true;
+                    Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                    Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+                    for (int j = 0; j < datagrdTabela.Columns.Count; j++)
+                    {
+                        Range myRange = (Range)sheet1.Cells[1, j + 1];
+                        sheet1.Cells[1, j + 1].Font.Bold = true;
+                        sheet1.Columns[j + 1].ColumnWidth = 15;
+                        myRange.Value2 = datagrdTabela.Columns[j].Header;
+                    }
+                    for (int i = 0; i < datagrdTabela.Columns.Count; i++)
+                    {
+                        for (int j = 0; j < datagrdTabela.Items.Count; j++)
+                        {
+                            TextBlock b = datagrdTabela.Columns[i].GetCellContent(datagrdTabela.Items[j]) as TextBlock;
+                            Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                            myRange.Value2 = b.Text;
+                        }
+                    }
                 }
-            }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Greska: " + e.Message.ToString());
+                catch (Exception e)
+                {
+                    MessageBox.Show("Greska: " + e.Message.ToString());
+                }
             }
 
         }
