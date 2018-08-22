@@ -70,6 +70,18 @@
     <Compile Include="AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Kreveti.xaml.cs">
+      <DependentUpon>Kreveti.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Meni.xaml.cs">
+      <DependentUpon>Meni.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sobe.xaml.cs">
+      <DependentUpon>Sobe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentskeSobe.xaml.cs">
+      <DependentUpon>StudentskeSobe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WaitCursor.cs" />
     <Compile Include="WorkingWindow.xaml.cs">
       <DependentUpon>WorkingWindow.xaml</DependentUpon>
@@ -79,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Kreveti.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,6 +113,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Meni.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sobe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentskeSobe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WorkingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,7 +155,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />

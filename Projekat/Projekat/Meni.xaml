@@ -1,0 +1,16 @@
+﻿<Window x:Class="ProjekatTMP.Meni"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="Meni" Height="450" Width="458" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="btnEvidencija" Content="Evidencija" HorizontalAlignment="Left" Margin="58,58,0,0" VerticalAlignment="Top" Width="116" Height="116" Click="btnEvidencija_Click"/>
+        <Button x:Name="btnUnesi" Content="Unesi" HorizontalAlignment="Left" Margin="251,58,0,0" VerticalAlignment="Top" Width="116" Height="116"/>
+        <Button x:Name="btnIzvjestaj" Content="Izvjestaj" HorizontalAlignment="Left" Margin="58,227,0,0" VerticalAlignment="Top" Width="116" Height="116"/>
+        <Button x:Name="btnSobe" Content="Sobe" HorizontalAlignment="Left" Margin="251,227,0,0" VerticalAlignment="Top" Width="116" Height="116" Click="btnSobe_Click"/>
+
+    </Grid>
+</Window>

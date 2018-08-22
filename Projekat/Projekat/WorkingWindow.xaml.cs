@@ -25,7 +25,10 @@ namespace ProjekatTMP
     /// </summary>
     public partial class WorkingWindow : System.Windows.Window
     {
-
+        string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
+        string brSobe = "";
+        string dom = "";
+        string paviljon = "";
         public WorkingWindow()
         {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace ProjekatTMP
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 300);
             dispatcherTimer.Start();
-
+            
             FillDataGrid();
         }
 
@@ -43,7 +46,6 @@ namespace ProjekatTMP
             {
                 // datagrdTabela.Items.Clear();
                 System.Data.DataTable dG = new System.Data.DataTable();
-                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                 MySqlConnection conn = new MySqlConnection(connstr);
                 conn.Open();
 
@@ -80,14 +82,17 @@ namespace ProjekatTMP
                 {
                     try
                     { 
-                    string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
-                    MySqlConnection conn = new MySqlConnection(connstr);
-                    conn.Open();
-                    string cellValue = dataRow.Row.ItemArray[0].ToString();
-                    MySqlCommand komanda = new MySqlCommand("DELETE FROM studenti WHERE ID = " + (cellValue), conn);
-                    komanda.ExecuteNonQuery();
+                        MySqlConnection conn = new MySqlConnection(connstr);
+                        conn.Open();
+                        string cellValue = dataRow.Row.ItemArray[0].ToString();
+                        brSobe = dataRow.Row.ItemArray[8].ToString();
+                        dom = dataRow.Row.ItemArray[6].ToString();
+                        paviljon = dataRow.Row.ItemArray[7].ToString();
+                        MySqlCommand komanda = new MySqlCommand("DELETE FROM studenti WHERE ID = " + (cellValue), conn);
+                        komanda.ExecuteNonQuery();
 
-                    conn.Close();
+                        conn.Close();
+                        oslobodiSobu();
                     }
                     catch (Exception error)
                     {
@@ -107,10 +112,6 @@ namespace ProjekatTMP
           
         }
 
-
-        
-
-
 private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
            if(datagrdTabela.SelectedItem != null)
@@ -129,7 +130,7 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
           //  string cellValue = dataRow.Row.ItemArray[0].ToString();
-            AddWindow addWindow = new AddWindow(dataRow.Row.ItemArray[0].ToString(), dataRow.Row.ItemArray[1].ToString(), dataRow.Row.ItemArray[2].ToString(), dataRow.Row.ItemArray[3].ToString(), dataRow.Row.ItemArray[4].ToString(), dataRow.Row.ItemArray[5].ToString(), dataRow.Row.ItemArray[6].ToString());
+            AddWindow addWindow = new AddWindow(dataRow.Row.ItemArray[0].ToString(), dataRow.Row.ItemArray[1].ToString(), dataRow.Row.ItemArray[2].ToString(), dataRow.Row.ItemArray[3].ToString(), dataRow.Row.ItemArray[4].ToString(), dataRow.Row.ItemArray[5].ToString(), dataRow.Row.ItemArray[6].ToString(), dataRow.Row.ItemArray[7].ToString(),dataRow.Row.ItemArray[8].ToString(), dataRow.Row.ItemArray[9].ToString(),dataRow.Row.ItemArray[11].ToString(),dataRow.Row.ItemArray[12].ToString(),dataRow.Row.ItemArray[13].ToString());
             addWindow.ShowDialog();
             FillDataGrid();
 
@@ -182,7 +183,34 @@ private void dispatcherTimer_Tick(object sender, EventArgs e)
             }
 
         }
-
+        void oslobodiSobu()
+        {
+            int brSlobonihSoba = 0;
+            MySqlConnection conn = new MySqlConnection(connstr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
+            MySqlDataReader rReader = cmd.ExecuteReader();
+            while (rReader.Read())
+            {
+                if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
+                {
+                    try
+                    {
+                        brSlobonihSoba = Convert.ToInt32(rReader[5].ToString());
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Greska: " + error.Message.ToString());
+                    }
+                }
+            }
+            conn.Close();
+            conn = new MySqlConnection(connstr);
+            conn.Open();
+            MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobonihSoba + "', '" + (brSlobonihSoba + 1) + "') WHERE SOBA ='" + brSobe+ "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
+            cmd2.ExecuteNonQuery();
+            conn.Close();
+        }
         private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)
         {
             ExportToExcel();

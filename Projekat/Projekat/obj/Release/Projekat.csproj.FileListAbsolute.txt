@@ -25,3 +25,63 @@ E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.CoreCompil
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.CopyComplete
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Release\Projekat.exe
 E:\Projekat_1_TMP\trunk\Projekat\Projekat\obj\Release\Projekat.pdb
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csprojAssemblyReference.cache
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.ResolveComReference.cache
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.exe
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.pdb
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.exe.config
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.exe
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.pdb
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Google.Protobuf.dll
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\MySql.Data.xml
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\MySql.Data.EntityFramework.xml
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AboutBox1.g.cs
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AddWindow.g.cs
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\MainWindow.g.cs
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Meni.g.cs
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\WorkingWindow.g.cs
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\App.g.cs
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat_MarkupCompile.cache
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat_MarkupCompile.lref
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AboutBox1.baml
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AddWindow.baml
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\MainWindow.baml
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Meni.baml
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\WorkingWindow.baml
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.g.resources
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.Properties.Resources.resources
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.GenerateResource.cache
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.CoreCompileInputs.cache
+C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.CopyComplete
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.exe.config
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.exe
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.pdb
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csprojAssemblyReference.cache
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.ResolveComReference.cache
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AboutBox1.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AddWindow.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Kreveti.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\MainWindow.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Meni.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\StudentskeSobe.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\WorkingWindow.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\App.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat_MarkupCompile.cache
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat_MarkupCompile.lref
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AboutBox1.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AddWindow.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Kreveti.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\MainWindow.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Meni.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\StudentskeSobe.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\WorkingWindow.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.g.resources
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.Properties.Resources.resources
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.GenerateResource.cache
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.CoreCompileInputs.cache
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.CopyComplete
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.exe
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.pdb
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\GeneratedInternalTypeHelper.g.cs

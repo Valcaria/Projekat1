@@ -24,6 +24,7 @@ namespace ProjekatTMP
     {
         string user = "";
         string password = "";
+        string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace ProjekatTMP
             cbxSacuvaj_Click(sender, e);
             if (txtKorisnik.Text == user && txtLozinka.Password.ToString() == password && txtKorisnik.Text!= "" && txtLozinka.Password.ToString() != "" )
             {
-                WorkingWindow test = new WorkingWindow();
+                Meni test = new Meni();
                 this.Close();
                 test.ShowDialog();          
             }
@@ -54,8 +55,6 @@ namespace ProjekatTMP
 
         private void mySql()
         {
-
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from admin", conn);
@@ -74,7 +73,6 @@ namespace ProjekatTMP
 
         private void Connection()
         {
-            string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from history", conn);
@@ -93,7 +91,6 @@ namespace ProjekatTMP
         {
             if (cbxSacuvaj.IsChecked == true)
             {
-                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                 MySqlConnection con = new MySqlConnection(connstr);
                 con.Open();
 
@@ -103,7 +100,6 @@ namespace ProjekatTMP
             }
             else
             {
-                string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
                 MySqlConnection con = new MySqlConnection(connstr);
                 con.Open();
 
