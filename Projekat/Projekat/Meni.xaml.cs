@@ -36,5 +36,10 @@ namespace ProjekatTMP
             Sobe sobe = new Sobe();
             sobe.ShowDialog();
         }
+
+        private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

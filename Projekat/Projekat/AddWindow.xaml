@@ -10,7 +10,7 @@
         <TextBox x:Name="txtIme" Height="31" Margin="116,57,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0"/>
         <TextBox x:Name="txtPrezime" Height="31" Margin="116,93,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1"/>
         <TextBox x:Name="txtKomentar" Margin="116,489,16,85" TextWrapping="Wrap" FontSize="14" TabIndex="5"/>
-        <ComboBox x:Name="cmbDom" Margin="116,237,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbDom_DropDownClosed">
+        <ComboBox x:Name="cmbDom" Margin="116,273,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbDom_DropDownClosed">
             <ComboBoxItem Content="1" FontSize="14"/>
             <ComboBoxItem Content="2" FontSize="14"/>
         </ComboBox>
@@ -29,20 +29,17 @@
         <Button x:Name="btnDodaj" Content="Dodaj" Height="38" Margin="169,0,16,24" VerticalAlignment="Bottom" Click="btnDodaj_Click" TabIndex="6"/>
         <Label Content="Ime:" Margin="58,57,0,0" VerticalAlignment="Top" FontSize="14" Width="41" HorizontalAlignment="Left"/>
         <Label Content="Prezime:" Margin="32,93,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="67"/>
-        <Label Content="Dom:" HorizontalAlignment="Left" Margin="52,237,0,0" VerticalAlignment="Top" FontSize="14" Width="47"/>
+        <Label Content="Dom:" HorizontalAlignment="Left" Margin="52,273,0,0" VerticalAlignment="Top" FontSize="14" Width="47"/>
         <Label Content="Fakultet:" HorizontalAlignment="Left" Margin="37,417,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Godina:" HorizontalAlignment="Left" Margin="41,453,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Komentar:" HorizontalAlignment="Left" Margin="26,489,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.562,0.379"/>
         <TextBox x:Name="txtGodina" Height="31" Margin="116,381,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" IsEnabled="False"/>
-        <ComboBox x:Name="cmbUsluga" Margin="116,345,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2">
+        <ComboBox x:Name="cmbUsluga" Margin="116,237,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbUsluga_DropDownClosed">
             <ComboBoxItem Content="Hrana i soba" FontSize="14"/>
             <ComboBoxItem Content="Hrana" FontSize="14"/>
         </ComboBox>
-        <ComboBox x:Name="cmbSoba" Margin="116,309,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2">
-            <ComboBoxItem Content="1" FontSize="14"/>
-            <ComboBoxItem Content="2" FontSize="14"/>
-        </ComboBox>
-        <ComboBox x:Name="cmbPaviljon" Margin="116,273,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbPaviljon_DropDownClosed">
+        <ComboBox x:Name="cmbSoba" Margin="116,345,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2"/>
+        <ComboBox x:Name="cmbPaviljon" Margin="116,309,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbPaviljon_DropDownClosed">
             <ComboBoxItem Content="M" FontSize="14"/>
             <ComboBoxItem Content="Z" FontSize="14"/>
         </ComboBox>
@@ -52,10 +49,10 @@
         <Label Content="Matični broj:" Margin="8,129,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="91"/>
         <Label Content="Mjesto stan:" Margin="10,165,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="89"/>
         <Label Content="Broj telefona:" Margin="3,201,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="96"/>
-        <Label Content="Soba:" Margin="52,309,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="47"/>
+        <Label Content="Soba:" Margin="52,345,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="47"/>
         <Label Content="Godina:" Margin="41,381,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58"/>
-        <Label Content="Usluga:" Margin="41,345,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58"/>
-        <Label Content="Paviljon:" Margin="36,273,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="63"/>
+        <Label Content="Usluga:" Margin="41,237,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58" RenderTransformOrigin="1.724,-1.483"/>
+        <Label Content="Paviljon:" Margin="36,309,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="63"/>
         <DockPanel Height="29" LastChildFill="False" VerticalAlignment="Top" Margin="-5,2,-2,0">
             <Menu DockPanel.Dock="Top" Height="30">
                 <MenuItem Header="_Arhiva" Click="MenuItem_Click" Height="30">

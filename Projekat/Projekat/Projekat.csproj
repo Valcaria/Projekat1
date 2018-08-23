@@ -70,21 +70,27 @@
     <Compile Include="AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Kreveti.xaml.cs">
+    <Compile Include="SearchWindow.xaml.cs">
+      <DependentUpon>SearchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sobe\Kreveti.xaml.cs">
       <DependentUpon>Kreveti.xaml</DependentUpon>
     </Compile>
     <Compile Include="Meni.xaml.cs">
       <DependentUpon>Meni.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sobe.xaml.cs">
+    <Compile Include="Sobe\Sobe.xaml.cs">
       <DependentUpon>Sobe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentskeSobe.xaml.cs">
+    <Compile Include="Sobe\StudentskeSobe.xaml.cs">
       <DependentUpon>StudentskeSobe.xaml</DependentUpon>
     </Compile>
     <Compile Include="WaitCursor.cs" />
     <Compile Include="WorkingWindow.xaml.cs">
       <DependentUpon>WorkingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Zamjena.xaml.cs">
+      <DependentUpon>Zamjena.xaml</DependentUpon>
     </Compile>
     <Page Include="AboutBox1.xaml">
       <SubType>Designer</SubType>
@@ -94,7 +100,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Kreveti.xaml">
+    <Page Include="SearchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sobe\Kreveti.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,17 +127,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sobe.xaml">
+    <Page Include="Sobe\Sobe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentskeSobe.xaml">
+    <Page Include="Sobe\StudentskeSobe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WorkingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Zamjena.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon\exchange-arrows.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

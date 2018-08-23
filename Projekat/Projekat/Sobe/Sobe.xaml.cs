@@ -23,10 +23,24 @@ namespace ProjekatTMP
         string brSobe = "";
         string ukupnoMjesta = "";
         string slobondaMjesta = "";
+
         string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
         public Sobe()
         {
             InitializeComponent();
+            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 300);
+            dispatcherTimer.Start();
+
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (cmbDom.Text !="" && cmbPaviljon.Text != "")
+            {
+                combBoxChange();
+            }
         }
 
         void combBoxChange()
@@ -37,37 +51,16 @@ namespace ProjekatTMP
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
                 MySqlDataReader rReader = cmd.ExecuteReader();
-                int i = 1;
+
                 stcPanel.Children.Clear();
                 while (rReader.Read())
                 {
-                    if (cmbDom.Text == "2")
+                    if (cmbDom.Text == rReader[1].ToString() && cmbPaviljon.Text == rReader[2].ToString())
                     {
-                        if (cmbDom.Text == rReader[1].ToString() && cmbPaviljon.Text == rReader[2].ToString())
-                        {
-                            brSobe = Convert.ToString(i++);
-                            ukupnoMjesta = rReader[4].ToString();
-                            slobondaMjesta = rReader[5].ToString();
-                            stcPanel.Children.Add(new StudentskeSobe(brSobe,ukupnoMjesta,slobondaMjesta));
-                        }
-                    }
-                    else if (cmbDom.Text == "1")
-                    {
-                        if (cmbDom.Text == rReader[1].ToString() && cmbPaviljon.Text == "M" && cmbPaviljon.Text == rReader[2].ToString())
-                        {
-                            brSobe = Convert.ToString(i);
-                            ukupnoMjesta = rReader[4].ToString();
-                            slobondaMjesta = rReader[5].ToString();
-                            stcPanel.Children.Add(new StudentskeSobe(brSobe, ukupnoMjesta, slobondaMjesta));
-                        }
-                        else if (cmbDom.Text == rReader[1].ToString() && cmbPaviljon.Text == "Z" && cmbPaviljon.Text == rReader[2].ToString())
-                        {
-                            brSobe = Convert.ToString(i);
-                            ukupnoMjesta = rReader[4].ToString();
-                            slobondaMjesta = rReader[5].ToString();
-                            stcPanel.Children.Add(new StudentskeSobe(brSobe, ukupnoMjesta, slobondaMjesta));
-                        }
-                        i++;
+                        brSobe = rReader[3].ToString();
+                        ukupnoMjesta = rReader[4].ToString();
+                        slobondaMjesta = rReader[5].ToString();
+                        stcPanel.Children.Add(new StudentskeSobe(cmbDom.Text, cmbPaviljon.Text, brSobe, ukupnoMjesta, slobondaMjesta));
                     }
                 }
                 rReader.Close();

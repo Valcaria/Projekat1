@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projekat"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Width="150" Height="20">
+             mc:Ignorable="d" d:DesignWidth="800" Width="150" Height="25">
     <Grid Width="150">
-        <Border x:Name="border1" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="150">
-            <Grid x:Name="grbColor" Background="White" MouseDown="grbColor_MouseDown"/>
+        <Border x:Name="border1" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Width="150">
+            <Grid x:Name="grbColor" Background="White" MouseDown="grbColor_MouseDown">
+                <Label x:Name="lblIme" Content="Label" HorizontalAlignment="Left" Margin="0,-2,0,0" VerticalAlignment="Top" Height="25" Width="148"/>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

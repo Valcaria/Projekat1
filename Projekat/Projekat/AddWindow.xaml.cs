@@ -129,6 +129,7 @@ namespace ProjekatTMP
                         }
                     }
                     conn.Close();
+
                     conn = new MySqlConnection(connstr);
                     conn.Open();
                     MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + slobSobe + "', '" + (slobSobe - 1) + "') WHERE SOBA ='" + cmbSoba.Text + "' AND DOM = '"+cmbDom.Text+"' AND PAVILJON = '"+cmbPaviljon.Text+"'", conn);
@@ -163,46 +164,47 @@ namespace ProjekatTMP
             txtBroj_Telefona.Text = br_telefona;
             
             this.id = id;
-
-            if (dom == "1")
+            switch(dom)
             {
-                cmbDom.SelectedIndex = 0;
+                case "1":
+                    cmbDom.SelectedIndex = 0;
+                    break;
+                case "2":
+                    cmbDom.SelectedIndex = 1;
+                    break;
+                case "":
+                    cmbDom.IsEnabled = false;
+                    break;
+            }            
+            switch(fakultet)
+            {
+                case "ETF":
+                    cmbFakultet.SelectedIndex = 0;
+                    break;
+                case "MAK":
+                    cmbFakultet.SelectedIndex = 1;
+                    break;
+                case "MAF":
+                    cmbFakultet.SelectedIndex = 2;
+                    break;
+                case "POF":
+                    cmbFakultet.SelectedIndex = 2;
+                    break;
             }
-            else if (dom == "2")
+            switch(godina)
             {
-                cmbDom.SelectedIndex = 1;
-            }
-            if (fakultet == "ETF")
-            {
-                cmbFakultet.SelectedIndex = 0;
-            }
-            else if (fakultet == "MAK")
-            {
-                cmbFakultet.SelectedIndex = 1;
-            }
-            else if (fakultet == "MAF")
-            {
-                cmbFakultet.SelectedIndex = 2;
-            }
-            else if (fakultet == "POF")
-            {
-                cmbFakultet.SelectedIndex = 3;
-            }
-            if (godina == "1")
-            {
-                cmbGodina.SelectedIndex = 0;
-            }
-            else if (godina == "2")
-            {
-                cmbGodina.SelectedIndex = 1;
-            }
-            else if (godina == "3")
-            {
-                cmbGodina.SelectedIndex = 2;
-            }
-            else if (godina == "4")
-            {
-                cmbGodina.SelectedIndex = 3;
+                case "1":
+                    cmbGodina.SelectedIndex = 0;
+                    break;
+                case "2":
+                    cmbGodina.SelectedIndex = 1;
+                    break;
+                case "3":
+                    cmbGodina.SelectedIndex = 2;
+                    break;
+                case "4":
+                    cmbGodina.SelectedIndex = 3;
+                    break;
             }
             switch(paviljon)
             {
@@ -212,21 +214,25 @@ namespace ProjekatTMP
                 case "Z":
                     cmbPaviljon.SelectedIndex = 1;
                     break;
+                case "":
+                    cmbPaviljon.IsEnabled = false;
+                    break;
             }
             if (usluga == "Hrana i soba")
+            {
                 cmbUsluga.SelectedIndex = 0;
+                if (cmbDom.Text != "" && cmbPaviljon.Text != "")
+                    connectionSobe();
+                pom = Convert.ToInt32(soba);
+                cmbSoba.SelectedIndex = pom - 1;
+                if (cmbPaviljon.Text == "Z" && cmbDom.Text == "1")
+                    cmbSoba.SelectedIndex = pom - 10;
+            }
             else if (usluga == "Hrana")
+            {
                 cmbUsluga.SelectedIndex = 1;
-
-            if (cmbDom.Text != "" && cmbPaviljon.Text != "")
-                connectionSobe();
-            pom = Convert.ToInt32(soba);
-            cmbSoba.SelectedIndex = pom - 1;
-            if (cmbPaviljon.Text == "Z" && cmbDom.Text == "1")
-            cmbSoba.SelectedIndex = pom - 10;
-
-
-            
+                cmbSoba.IsEnabled = false;
+            }
 
         }
 
@@ -235,27 +241,58 @@ namespace ProjekatTMP
             buttonChecker = "on";
             if (id == "")
             {
-                if (txtIme.Text != ""  && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text!= "" && txtBroj_Telefona.Text!="" && cmbSoba.Text!= "" && cmbPaviljon.Text!= "" && cmbUsluga.Text!= "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                if(cmbUsluga.Text == "Hrana i soba")
                 {
-                    try
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
                     {
-                        MySqlConnection conn = new MySqlConnection(connstr);
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand("INSERT into studenti(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, dom, paviljon, soba, usluga, godina_upotrebe, fakultet, godina, komentar) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbDom.Text + "', '" + cmbPaviljon.Text + "', '" + cmbSoba.Text + "', '"  + cmbUsluga.Text + "', '" + txtGodina.Text + "', '"  + cmbFakultet.Text + "', '" + cmbGodina.Text + "', '" + txtKomentar.Text + "')", conn);
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
+                        try
+                        {
+                            MySqlConnection conn = new MySqlConnection(connstr);
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand("INSERT into studenti(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, dom, paviljon, soba, usluga, godina_upotrebe, fakultet, godina, komentar) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbDom.Text + "', '" + cmbPaviljon.Text + "', '" + cmbSoba.Text + "', '" + cmbUsluga.Text + "', '" + txtGodina.Text + "', '" + cmbFakultet.Text + "', '" + cmbGodina.Text + "', '" + txtKomentar.Text + "')", conn);
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
 
 
-                        conn = new MySqlConnection(connstr);
-                        conn.Open();
-                        MySqlCommand cmd2 = new MySqlCommand("INSERT into evidencija(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, usluga) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbUsluga.Text + "')", conn);
-                        cmd2.ExecuteNonQuery();
-                        conn.Close();
-                        this.Close();
+                            conn = new MySqlConnection(connstr);
+                            conn.Open();
+                            MySqlCommand cmd2 = new MySqlCommand("INSERT into evidencija(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, usluga) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbUsluga.Text + "')", conn);
+                            cmd2.ExecuteNonQuery();
+                            conn.Close();
+                            this.Close();
+                            connectionSobe();
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greska: " + error.Message.ToString());
+                        }
                     }
-                    catch (Exception error)
+                }
+                else if(cmbUsluga.Text == "Hrana")
+                {
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != ""  && cmbUsluga.Text != ""  && cmbFakultet.Text != "" && cmbGodina.Text != "")
                     {
-                        MessageBox.Show("Greska: " + error.Message.ToString());
+                        try
+                        {
+                            MySqlConnection conn = new MySqlConnection(connstr);
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand("INSERT into studenti(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, usluga, godina_upotrebe, fakultet, godina, komentar) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbUsluga.Text + "', '" + txtGodina.Text + "', '" + cmbFakultet.Text + "', '" + cmbGodina.Text + "', '" + txtKomentar.Text + "')", conn);
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+
+
+                            conn = new MySqlConnection(connstr);
+                            conn.Open();
+                            MySqlCommand cmd2 = new MySqlCommand("INSERT into evidencija(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, usluga) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbUsluga.Text + "')", conn);
+                            cmd2.ExecuteNonQuery();
+                            conn.Close();
+                            this.Close();
+                            connectionSobe();
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greska: " + error.Message.ToString());
+                        }
                     }
                 }
             }
@@ -343,6 +380,22 @@ namespace ProjekatTMP
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("U izgradnji");
+        }
+
+        private void cmbUsluga_DropDownClosed(object sender, EventArgs e)
+        {
+            if(cmbUsluga.Text == "Hrana")
+            {
+                cmbDom.IsEnabled = false;
+                cmbPaviljon.IsEnabled = false;
+                cmbSoba.IsEnabled = false;
+            }
+            else if(cmbUsluga.Text == "Hrana i soba")
+            {
+                cmbDom.IsEnabled = true;
+                cmbPaviljon.IsEnabled = true;
+                cmbSoba.IsEnabled = true;
+            }
         }
     }
 }
