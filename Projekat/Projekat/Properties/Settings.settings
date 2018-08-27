@@ -17,5 +17,32 @@
     <Setting Name="maticni" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ime" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="prezime" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="datum" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="dan" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="mjesec" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="godina" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="close" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="pom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">off</Value>
+    </Setting>
+    <Setting Name="connstr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

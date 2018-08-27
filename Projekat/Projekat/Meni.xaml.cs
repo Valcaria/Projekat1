@@ -27,19 +27,28 @@ namespace ProjekatTMP
         private void btnEvidencija_Click(object sender, RoutedEventArgs e)
         {
             WorkingWindow workingWindow = new WorkingWindow();
-            //this.Hide();
-            workingWindow.ShowDialog();
+           // this.Close();
+            workingWindow.ShowDialog();    
         }
 
         private void btnSobe_Click(object sender, RoutedEventArgs e)
         {
             Sobe sobe = new Sobe();
+           // this.Close();
             sobe.ShowDialog();
+            
         }
 
         private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)
         {
-            
+            //sthis.Close();
+        }
+
+        private void btnUnesi_Click(object sender, RoutedEventArgs e)
+        {
+            AddWindow addWindow = new AddWindow();
+           // this.Close();
+            addWindow.ShowDialog();
         }
     }
 }

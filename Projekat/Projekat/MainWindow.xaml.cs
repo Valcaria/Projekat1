@@ -48,9 +48,7 @@ namespace ProjekatTMP
                 test.ShowDialog();          
             }
             else
-                MessageBox.Show("Nije moguc pristup");
-
-            
+                MessageBox.Show("Nije moguc pristup");       
         }
 
         private void mySql()

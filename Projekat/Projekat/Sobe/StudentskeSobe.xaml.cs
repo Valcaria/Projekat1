@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using Projekat.Properties;
 
 namespace ProjekatTMP
 {
@@ -37,11 +38,17 @@ namespace ProjekatTMP
             MySqlDataReader rReader = cmd.ExecuteReader();
             while (rReader.Read())
             {
-                if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString())
+                if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString()&& Settings.Default.maticni != rReader[3].ToString())
                 {
                     student = rReader[1].ToString();
                     student += " " + rReader[2].ToString();
                     stcPanel.Children.Add(new Kreveti("R", student, dom, paviljon, brSobe, rReader[3].ToString()));
+                }
+                else if(dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString() && Settings.Default.maticni == rReader[3].ToString())
+                {
+                    student = rReader[1].ToString();
+                    student += " " + rReader[2].ToString();
+                    stcPanel.Children.Add(new Kreveti("Gr", student, dom, paviljon, brSobe, rReader[3].ToString()));
                 }
             }
             conn.Close();
@@ -56,7 +63,7 @@ namespace ProjekatTMP
             catch (Exception error)
             {
                 MessageBox.Show("Greska: " + error.Message.ToString());
-            }            
+            } 
         }
     }
 }

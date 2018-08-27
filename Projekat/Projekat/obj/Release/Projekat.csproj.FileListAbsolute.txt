@@ -88,3 +88,5 @@ C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\SearchW
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\SearchWindow.baml
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Zamjena.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Zamjena.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe\StudentInfo.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe\StudentInfo.baml

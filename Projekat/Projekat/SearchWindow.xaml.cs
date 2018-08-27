@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Projekat.Properties;
 
 namespace ProjekatTMP
 {
@@ -22,7 +23,7 @@ namespace ProjekatTMP
     public partial class SearchWindow : Window
     {
         string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
-        string imePrezime = "";
+        //string imePrezime = "";
         string maticniBroj = "";
         string maticni = "";
         string brSobeStaro = "";
@@ -40,6 +41,9 @@ namespace ProjekatTMP
             this.paviljon= paviljon;
             this.brSobe = brSobe;
             this.maticni = maticni;
+
+            searchPom("T");
+            FillDataGrid();
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
@@ -71,17 +75,16 @@ namespace ProjekatTMP
                 MySqlDataReader rReader = cmd.ExecuteReader();
                 while (rReader.Read())
                 {
-                    imePrezime = rReader[1].ToString();
-                    imePrezime += " " + rReader[2].ToString();
-                    if (imePrezime == txtPretraga.Text)
+                    Settings.Default.ime = rReader[1].ToString();
+                    Settings.Default.prezime = rReader[2].ToString();
+
+                    if ((Settings.Default.ime == txtPretraga.Text || Settings.Default.prezime == txtPretraga.Text || (Settings.Default.ime + " " + Settings.Default.prezime) == txtPretraga.Text))
                     {
                         maticniBroj = rReader[3].ToString();
                         searchPom("U");
                     }
                 }
-                conn.Close();
-                if (imePrezime != "")
-                    FillDataGrid();
+                conn.Close();              
             }
             else if(maticni != "")
             {
@@ -91,10 +94,10 @@ namespace ProjekatTMP
                 MySqlDataReader rReader = cmd.ExecuteReader();
                 while (rReader.Read())
                 {
-                    imePrezime = rReader[1].ToString();
-                    imePrezime += " " + rReader[2].ToString();
-                    
-                    if (imePrezime == txtPretraga.Text && maticniBroj != rReader[3].ToString() && rReader[9].ToString() == "Hrana i soba")
+                    Settings.Default.ime = rReader[1].ToString();
+                    Settings.Default.prezime = rReader[2].ToString();
+                
+                    if ((Settings.Default.ime == txtPretraga.Text || Settings.Default.prezime == txtPretraga.Text || (Settings.Default.ime + " " + Settings.Default.prezime) == txtPretraga.Text) && maticniBroj != rReader[3].ToString() && rReader[9].ToString() == "Hrana i soba")
                     {
                         if(dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString())
                         {
@@ -109,9 +112,9 @@ namespace ProjekatTMP
                     }
                 }
                 conn.Close();
-                if (imePrezime != "")
-                    FillDataGrid();
             }
+            FillDataGrid();
+            searchPom("T");
         }
         private void FillDataGrid()
         {
@@ -139,7 +142,7 @@ namespace ProjekatTMP
             conn.Open();
             if (character == "U")
             {
-                MySqlCommand cmd = new MySqlCommand("INSERT into search(ime_i_prezime,maticni_broj) VALUES('" + imePrezime + "', '" + maticniBroj + "')", conn);
+                MySqlCommand cmd = new MySqlCommand("INSERT into search(ime, prezime,maticni_broj) VALUES('" + Settings.Default.ime + "', '" + Settings.Default.prezime +"', '" + maticniBroj + "')", conn);
                 cmd.ExecuteNonQuery();
             }
             else if(character == "T")

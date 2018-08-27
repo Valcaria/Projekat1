@@ -9,7 +9,14 @@
     <Grid>
         <TextBox x:Name="txtPretraga" Height="31" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0" HorizontalAlignment="Left" Width="199"/>
         <Button x:Name="btnPretraga" Content="Pretraga" HorizontalAlignment="Left" Margin="243,10,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnPretraga_Click"/>
-        <DataGrid x:Name="dtgPretraga" HorizontalAlignment="Left" Height="351" Margin="10,58,0,0" VerticalAlignment="Top" Width="342" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="True" IsHitTestVisible="True" IsReadOnly="True"/>
+        <DataGrid x:Name="dtgPretraga" HorizontalAlignment="Left" Height="351" Margin="10,58,0,0" VerticalAlignment="Top" Width="342" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" IsHitTestVisible="True" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="30" Binding="{Binding ID}" FontSize="14"/>
+                <DataGridTextColumn Header="Ime" Width="100" Binding="{Binding IME}" FontSize="14"/>
+                <DataGridTextColumn Header="Prezime" Width="100" Binding="{Binding PREZIME}" FontSize="14"/>
+                <DataGridTextColumn Header="Maticni Broj" Width="112" Binding="{Binding MATICNI_BROJ}" FontSize="14"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="277,429,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnDodaj_Click"/>
     </Grid>
 </Window>

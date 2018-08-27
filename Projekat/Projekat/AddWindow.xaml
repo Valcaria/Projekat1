@@ -5,59 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatTMP"
         mc:Ignorable="d"
-        Title="Studentska Služba" Height="698.298" Width="345.83" MinHeight="720" MinWidth="345.83" MaxWidth="530.83" MaxHeight="698.298" WindowStartupLocation="CenterScreen">
+        Title="Studentska Služba" Height="733.333" Width="373.593" MinHeight="733" MinWidth="345.83" MaxWidth="530.83" MaxHeight="698.298" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid Margin="5,-2,2,2">
-        <TextBox x:Name="txtIme" Height="31" Margin="116,57,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0"/>
-        <TextBox x:Name="txtPrezime" Height="31" Margin="116,93,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1"/>
-        <TextBox x:Name="txtKomentar" Margin="116,489,16,85" TextWrapping="Wrap" FontSize="14" TabIndex="5"/>
-        <ComboBox x:Name="cmbDom" Margin="116,273,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbDom_DropDownClosed">
+        <TextBox x:Name="txtIme" Height="31" Margin="0,33,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0" HorizontalAlignment="Right" Width="199"/>
+        <TextBox x:Name="txtPrezime" Height="31" Margin="0,69,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" HorizontalAlignment="Right" Width="199"/>
+        <TextBox x:Name="txtKomentar" Margin="0,501,21,0" TextWrapping="Wrap" FontSize="14" TabIndex="5" HorizontalAlignment="Right" Width="199" Height="119" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbDom" Margin="0,249,21,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbDom_DropDownClosed" HorizontalAlignment="Right" Width="199">
             <ComboBoxItem Content="1" FontSize="14"/>
             <ComboBoxItem Content="2" FontSize="14"/>
         </ComboBox>
-        <ComboBox x:Name="cmbFakultet" Margin="116,417,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="3">
+        <ComboBox x:Name="cmbFakultet" Margin="0,429,21,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="3" HorizontalAlignment="Right" Width="199">
             <ComboBoxItem Content="ETF"  FontSize="14"/>
             <ComboBoxItem Content="MAF"  FontSize="14"/>
             <ComboBoxItem Content="MAK"  FontSize="14"/>
             <ComboBoxItem Content="POF"  FontSize="14"/>
         </ComboBox>
-        <ComboBox x:Name="cmbGodina" Margin="116,453,16,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="1.097,0.393" TabIndex="4">
+        <ComboBox x:Name="cmbGodina" Margin="0,465,21,0" VerticalAlignment="Top" Height="31" RenderTransformOrigin="1.097,0.393" TabIndex="4" HorizontalAlignment="Right" Width="199">
             <ComboBoxItem Content="1"  FontSize="14"/>
             <ComboBoxItem Content="2"  FontSize="14"/>
             <ComboBoxItem Content="3"  FontSize="14"/>
             <ComboBoxItem Content="4"  FontSize="14"/>
         </ComboBox>
-        <Button x:Name="btnDodaj" Content="Dodaj" Height="38" Margin="169,0,16,24" VerticalAlignment="Bottom" Click="btnDodaj_Click" TabIndex="6"/>
-        <Label Content="Ime:" Margin="58,57,0,0" VerticalAlignment="Top" FontSize="14" Width="41" HorizontalAlignment="Left"/>
-        <Label Content="Prezime:" Margin="32,93,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="67"/>
-        <Label Content="Dom:" HorizontalAlignment="Left" Margin="52,273,0,0" VerticalAlignment="Top" FontSize="14" Width="47"/>
-        <Label Content="Fakultet:" HorizontalAlignment="Left" Margin="37,417,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Godina:" HorizontalAlignment="Left" Margin="41,453,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Label Content="Komentar:" HorizontalAlignment="Left" Margin="26,489,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.562,0.379"/>
-        <TextBox x:Name="txtGodina" Height="31" Margin="116,381,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" IsEnabled="False"/>
-        <ComboBox x:Name="cmbUsluga" Margin="116,237,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbUsluga_DropDownClosed">
+        <Button x:Name="btnDodaj" Content="Dodaj" Height="38" Margin="0,643,21,0" VerticalAlignment="Top" Click="btnDodaj_Click" TabIndex="6" HorizontalAlignment="Right" Width="146"/>
+        <Label Content="Ime:" Margin="76,33,0,0" VerticalAlignment="Top" FontSize="14" Width="41" HorizontalAlignment="Left"/>
+        <Label Content="Prezime:" Margin="50,69,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="67"/>
+        <Label Content="Dom:" HorizontalAlignment="Left" Margin="70,249,0,0" VerticalAlignment="Top" FontSize="14" Width="47"/>
+        <Label Content="Fakultet:" HorizontalAlignment="Left" Margin="55,429,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Godina:" HorizontalAlignment="Left" Margin="59,465,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Komentar:" HorizontalAlignment="Left" Margin="44,501,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.562,0.379"/>
+        <TextBox x:Name="txtGodina" Height="31" Margin="0,393,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" IsEnabled="False" HorizontalAlignment="Right" Width="199"/>
+        <ComboBox x:Name="cmbUsluga" Margin="0,213,21,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbUsluga_DropDownClosed" HorizontalAlignment="Right" Width="199">
             <ComboBoxItem Content="Hrana i soba" FontSize="14"/>
             <ComboBoxItem Content="Hrana" FontSize="14"/>
         </ComboBox>
-        <ComboBox x:Name="cmbSoba" Margin="116,345,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2"/>
-        <ComboBox x:Name="cmbPaviljon" Margin="116,309,16,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbPaviljon_DropDownClosed">
+        <ComboBox x:Name="cmbSoba" Margin="0,321,21,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" HorizontalAlignment="Right" Width="199"/>
+        <ComboBox x:Name="cmbPaviljon" Margin="0,285,21,0" VerticalAlignment="Top" Height="31" FontSize="14" TabIndex="2" DropDownClosed="cmbPaviljon_DropDownClosed" HorizontalAlignment="Right" Width="199">
             <ComboBoxItem Content="M" FontSize="14"/>
             <ComboBoxItem Content="Z" FontSize="14"/>
         </ComboBox>
-        <TextBox x:Name="txtMaticni_Broj" Height="31" Margin="116,129,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1"/>
-        <TextBox x:Name="txtMjesto_Stanovanja" Height="31" Margin="116,165,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1"/>
-        <TextBox x:Name="txtBroj_Telefona" Height="31" Margin="116,201,16,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1"/>
-        <Label Content="Matični broj:" Margin="8,129,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="91"/>
-        <Label Content="Mjesto stan:" Margin="10,165,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="89"/>
-        <Label Content="Broj telefona:" Margin="3,201,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="96"/>
-        <Label Content="Soba:" Margin="52,345,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="47"/>
-        <Label Content="Godina:" Margin="41,381,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58"/>
-        <Label Content="Usluga:" Margin="41,237,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58" RenderTransformOrigin="1.724,-1.483"/>
-        <Label Content="Paviljon:" Margin="36,309,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="63"/>
+        <TextBox x:Name="txtMaticni_Broj" Height="31" Margin="0,105,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" HorizontalAlignment="Right" Width="199"/>
+        <TextBox x:Name="txtMjesto_Stanovanja" Height="31" Margin="0,141,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" HorizontalAlignment="Right" Width="199"/>
+        <TextBox x:Name="txtBroj_Telefona" Height="31" Margin="0,177,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" HorizontalAlignment="Right" Width="199"/>
+        <Label Content="Matični broj:" Margin="26,105,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="91"/>
+        <Label Content="Mjesto stan:" Margin="28,141,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="89"/>
+        <Label Content="Broj telefona:" Margin="21,177,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="96"/>
+        <Label Content="Soba:" Margin="70,321,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="47"/>
+        <Label Content="Godina:" Margin="59,393,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58"/>
+        <Label Content="Usluga:" Margin="59,213,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58" RenderTransformOrigin="1.724,-1.483"/>
+        <Label Content="Paviljon:" Margin="54,285,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="63"/>
         <DockPanel Height="29" LastChildFill="False" VerticalAlignment="Top" Margin="-5,2,-2,0">
             <Menu DockPanel.Dock="Top" Height="30">
                 <MenuItem Header="_Arhiva" Click="MenuItem_Click" Height="30">
                 </MenuItem>
             </Menu>
         </DockPanel>
+        <DatePicker x:Name="dpDatumZaduzivanja" HorizontalAlignment="Right" Margin="0,357,21,0" VerticalAlignment="Top" Width="199" Height="31" FirstDayOfWeek="Monday" SelectedDateFormat="Short" SelectedDate="{Binding Path=DateOfBirth,StringFormat='dd/MM/yyyy'}" CalendarClosed="dpDatumZaduzivanja_CalendarClosed"/>
+        <Label Content="Datum zaduženja:" Margin="-5,357,242,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>

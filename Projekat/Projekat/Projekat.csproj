@@ -46,6 +46,7 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 8.0.11\Assemblies\v4.5.2\MySql.Data.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -84,6 +85,9 @@
     </Compile>
     <Compile Include="Sobe\StudentskeSobe.xaml.cs">
       <DependentUpon>StudentskeSobe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sobe\StudentInfo.xaml.cs">
+      <DependentUpon>StudentInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="WaitCursor.cs" />
     <Compile Include="WorkingWindow.xaml.cs">
@@ -132,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sobe\StudentskeSobe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sobe\StudentInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

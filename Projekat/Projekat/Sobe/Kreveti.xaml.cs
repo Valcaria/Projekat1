@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Projekat.Properties;
+using MySql.Data.MySqlClient;
 namespace ProjekatTMP
 {
     /// <summary>
@@ -27,36 +28,113 @@ namespace ProjekatTMP
         public Kreveti(string color, string stanje, string dom, string paviljon, string brSobe, string maticni)
         {
             InitializeComponent();
-
-                if (color == "R")
-                {
-                    grbColor.Background = Brushes.Red;
-                    lblIme.Content = stanje;
-                }
-                else if (color == "G")
-                {
-                    grbColor.Background = Brushes.Green;
-                    lblIme.Content = stanje;
-                }
+            if (color == "R")
+            {
+                grbColor.Background = Brushes.Red;
+                lblIme.Content = stanje;
+            }
+            else if (color == "G")
+            {
+                grbColor.Background = Brushes.Green;
+                lblIme.Content = stanje;
+            }
+            else if (color == "Gr")
+            {
+                grbColor.Background = Brushes.Gray;
+                lblIme.Content = stanje;
+            }
 
             soba = brSobe;
             this.paviljon = paviljon;
             this.dom = dom;
             this.maticni = maticni;
         }
-
         private void grbColor_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(grbColor.Background == Brushes.Green)
+            if(grbColor.Background == Brushes.Green && Settings.Default.pom == "off")
             {
                 SearchWindow searchWindow = new SearchWindow("", dom, paviljon, soba);
                 searchWindow.ShowDialog();
             }
-            else if(grbColor.Background == Brushes.Red)
+            else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "off")
             {
-                Zamjena zamjena = new Zamjena(Convert.ToString(lblIme.Content), maticni, soba, dom, paviljon);
+                StudentInfo studentInfo = new StudentInfo(lblIme.Content.ToString(), maticni, soba, dom, paviljon);
+                studentInfo.ShowDialog();
+            }
+            else if(grbColor.Background == Brushes.Green && Settings.Default.pom == "on")
+            {
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + Settings.Default.dom + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + Settings.Default.paviljon + "','" + paviljon + "'), soba = REPLACE(soba, '" + Settings.Default.soba + "','" + soba + "') where maticni_broj = '" + Settings.Default.maticni + "'", conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                Settings.Default.maticni = "";
+                Settings.Default.pom = "off";
+                promjenaNoveSobe(dom, paviljon, soba);
+                promjenaStareSobe(Settings.Default.dom, Settings.Default.paviljon, Settings.Default.soba);
+            }
+            else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "on")
+            {
+                Zamjena zamjena = new Zamjena(Settings.Default.imePrezime, lblIme.Content.ToString(), Settings.Default.maticni, maticni, Settings.Default.soba, soba, Settings.Default.dom, dom, Settings.Default.paviljon, paviljon);
                 zamjena.ShowDialog();
             }
+        }
+
+        void promjenaNoveSobe(string dom, string paviljon, string brSobe)
+        {
+            int brSlobodnihSoba = 0;
+            MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
+            MySqlDataReader rReader = cmd.ExecuteReader();
+            while (rReader.Read())
+            {
+                if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
+                {
+                    try
+                    {
+                        brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Greska: " + error.Message.ToString());
+                    }
+                }
+            }
+            conn.Close();
+            conn = new MySqlConnection(Settings.Default.connstr);
+            conn.Open();
+            MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba - 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
+            cmd2.ExecuteNonQuery();
+            conn.Close();
+        }
+        void promjenaStareSobe(string dom, string paviljon, string brSobe)
+        {
+            int brSlobodnihSoba = 0;
+            MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
+            MySqlDataReader rReader = cmd.ExecuteReader();
+            while (rReader.Read())
+            {
+                if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
+                {
+                    try
+                    {
+                        brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Greska: " + error.Message.ToString());
+                    }
+                }
+            }
+            conn.Close();
+            conn = new MySqlConnection(Settings.Default.connstr);
+            conn.Open();
+            MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba + 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
+            cmd2.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

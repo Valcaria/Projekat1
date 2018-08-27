@@ -8,7 +8,7 @@
         Title="Meni" Height="450" Width="458" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="btnEvidencija" Content="Evidencija" HorizontalAlignment="Left" Margin="58,58,0,0" VerticalAlignment="Top" Width="116" Height="116" Click="btnEvidencija_Click"/>
-        <Button x:Name="btnUnesi" Content="Unesi" HorizontalAlignment="Left" Margin="251,58,0,0" VerticalAlignment="Top" Width="116" Height="116"/>
+        <Button x:Name="btnUnesi" Content="Unesi" HorizontalAlignment="Left" Margin="251,58,0,0" VerticalAlignment="Top" Width="116" Height="116" Click="btnUnesi_Click"/>
         <Button x:Name="btnIzvjestaj" Content="Izvjestaj" HorizontalAlignment="Left" Margin="58,227,0,0" VerticalAlignment="Top" Width="116" Height="116" Click="btnIzvjestaj_Click"/>
         <Button x:Name="btnSobe" Content="Sobe" HorizontalAlignment="Left" Margin="251,227,0,0" VerticalAlignment="Top" Width="116" Height="116" Click="btnSobe_Click"/>
 

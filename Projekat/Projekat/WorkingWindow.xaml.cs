@@ -17,6 +17,7 @@ using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
+using Projekat.Properties;
 
 namespace ProjekatTMP
 {
@@ -52,11 +53,13 @@ namespace ProjekatTMP
 
                 // MySqlCommand command = new MySqlCommand("select * from studenti", conn);
 
-                MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from evidencija", conn);
+                MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti", conn);
                 sAdapter.Fill(dG);
                 datagrdTabela.ItemsSource = dG.DefaultView;
                 conn.Close();
-            }catch (Exception e)
+
+            }
+            catch (Exception e)
             {
                 MessageBox.Show("Greska: "  + e.Message.ToString());
             }
@@ -80,17 +83,12 @@ namespace ProjekatTMP
                 {
                     try
                     { 
-                        MySqlConnection conn = new MySqlConnection(connstr);
-                        conn.Open();
                         string cellValue = dataRow.Row.ItemArray[0].ToString();
                         maticniBr = dataRow.Row.ItemArray[3].ToString();
-                        MySqlCommand komanda = new MySqlCommand("DELETE FROM evidencija WHERE ID = " + (cellValue), conn);
-                        komanda.ExecuteNonQuery();
-                        conn.Close();
 
                         pronadjiStudenta();
 
-                        conn = new MySqlConnection(connstr);
+                        MySqlConnection conn = new MySqlConnection(connstr);
                         conn.Open();
                         MySqlCommand cmd = new MySqlCommand("DELETE FROM studenti WHERE maticni_broj = " + (maticniBr), conn);
                         cmd.ExecuteNonQuery();
@@ -142,7 +140,32 @@ namespace ProjekatTMP
             {
                 if(rReader[3].ToString() == dataRow.Row.ItemArray[3].ToString())
                 {
-                    AddWindow addWindow = new AddWindow(rReader[0].ToString(), rReader[1].ToString(), rReader[2].ToString(), rReader[3].ToString(), rReader[4].ToString(), rReader[5].ToString(), rReader[6].ToString(), rReader[7].ToString(), rReader[8].ToString(), rReader[9].ToString(), rReader[11].ToString(), rReader[12].ToString(), rReader[13].ToString());
+                    Settings.Default.datum = rReader[10].ToString();
+                    for (int i = 0, j = 0; i < dataRow.Row.ItemArray[7].ToString().Length; i++)
+                    {
+                        if (dataRow.Row.ItemArray[7].ToString()[i] != '/')
+                        {
+                            switch (j)
+                            {
+                                case 0:
+                                    Settings.Default.dan += dataRow.Row.ItemArray[7].ToString()[i];
+                                    break;
+                                case 1:
+                                    Settings.Default.mjesec += dataRow.Row.ItemArray[7].ToString()[i];
+                                    break;
+                                case 2:
+                                    Settings.Default.godina += dataRow.Row.ItemArray[7].ToString()[i];
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            j++;
+                        }
+                    }
+
+                    //MessageBox.Show(Settings.Default.dan + "." + Settings.Default.mjesec + "." + Settings.Default.godina);
+                    AddWindow addWindow = new AddWindow(rReader[0].ToString(), rReader[1].ToString(), rReader[2].ToString(), rReader[3].ToString(), rReader[4].ToString(), rReader[5].ToString(), rReader[6].ToString(), rReader[7].ToString(), rReader[8].ToString(), rReader[9].ToString(), rReader[12].ToString(), rReader[13].ToString(), rReader[14].ToString());
                     addWindow.ShowDialog();
                     FillDataGrid();
                     this.Show();

@@ -38,14 +38,31 @@ namespace ProjekatTMP
             dom1 = dom;
             soba1 = soba;
             paviljon1 = paviljon;
-            cleanIT();
+            CleanIT();
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 3);
             dispatcherTimer.Start();
-
         }
+        public Zamjena(string imePrezime1,  string imePrezime2, string maticni1, string maticni2, string soba1, string soba2, string dom1, string dom2, string paviljon1, string paviljon2)
+        {
+            InitializeComponent();
+            txtImePrezime1.Text = imePrezime1;
+            this.maticni1 = maticni1;
+            this.dom1 = dom1;
+            this.soba1 = soba1;
+            this.paviljon1 = paviljon1;
+
+            txtImePrezime2.Text = imePrezime2;
+            this.maticni2 = maticni2;
+            this.dom2 = dom2;
+            this.paviljon2 = paviljon2;
+            this.soba2 = soba2;
+            CleanIT();
+            btnZamjeni.IsEnabled = true;
+        }
+
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -69,7 +86,7 @@ namespace ProjekatTMP
             searchWindow.ShowDialog();
             //txtImePrezime2.Text = searchWindow.
         }
-        void cleanIT()
+        void CleanIT()
         {
             Projekat.Properties.Settings.Default.imePrezime = "";
             Projekat.Properties.Settings.Default.dom = "";
