@@ -56,7 +56,6 @@ C:\Users\Dragana\Desktop\New folder (2)\ProjekatTMP\trunk\Projekat\Projekat\obj\
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.exe.config
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.exe
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Release\Projekat.pdb
-C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csprojAssemblyReference.cache
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.ResolveComReference.cache
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AboutBox1.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\AddWindow.g.cs
@@ -86,7 +85,7 @@ C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projeka
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Projekat.pdb
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\SearchWindow.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\SearchWindow.baml
-C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Zamjena.g.cs
-C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Zamjena.baml
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe\StudentInfo.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe\StudentInfo.baml
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe\Zamjena.g.cs
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Release\Sobe\Zamjena.baml

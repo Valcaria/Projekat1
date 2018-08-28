@@ -93,7 +93,7 @@
     <Compile Include="WorkingWindow.xaml.cs">
       <DependentUpon>WorkingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Zamjena.xaml.cs">
+    <Compile Include="Sobe\Zamjena.xaml.cs">
       <DependentUpon>Zamjena.xaml</DependentUpon>
     </Compile>
     <Page Include="AboutBox1.xaml">
@@ -147,7 +147,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Zamjena.xaml">
+    <Page Include="Sobe\Zamjena.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

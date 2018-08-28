@@ -34,34 +34,6 @@ namespace ProjekatTMP
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 300);
             dispatcherTimer.Start();
         }
-        public Sobe(string dom, string paviljon)
-        {
-            InitializeComponent();
-
-            switch (dom)
-            {
-                case "1":
-                    cmbDom.SelectedIndex = 0;
-                    break;
-                case "2":
-                    cmbDom.SelectedIndex = 1;
-                    break;
-            }
-            switch (paviljon)
-            {
-                case "M":
-                    cmbPaviljon.SelectedIndex = 0;
-                    break;
-                case "Z":
-                    cmbPaviljon.SelectedIndex = 1;
-                    break;
-            }
-            Settings.Default.pom = "on";
-            System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 300);
-            dispatcherTimer.Start();
-        }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -71,8 +43,7 @@ namespace ProjekatTMP
             }
             if (Settings.Default.close == 0)
             {
-                Settings.Default.close = 1;
-                Application.Current.Shutdown();
+                combBoxChange();
             }
         }
 

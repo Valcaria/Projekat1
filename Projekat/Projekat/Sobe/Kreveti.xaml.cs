@@ -77,6 +77,7 @@ namespace ProjekatTMP
             {
                 Zamjena zamjena = new Zamjena(Settings.Default.imePrezime, lblIme.Content.ToString(), Settings.Default.maticni, maticni, Settings.Default.soba, soba, Settings.Default.dom, dom, Settings.Default.paviljon, paviljon);
                 zamjena.ShowDialog();
+                Settings.Default.pom = "off";
             }
         }
 

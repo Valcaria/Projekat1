@@ -34,14 +34,15 @@ namespace ProjekatTMP
         private void btnZamjena_Click(object sender, RoutedEventArgs e)
         {
             Settings.Default.close = 0;
+            Settings.Default.pom = "on";
             Settings.Default.imePrezime = lblImePrezime.Content.ToString();
             Settings.Default.dom = lblDom.Content.ToString();
             Settings.Default.paviljon = lblPaviljon.Content.ToString();
             Settings.Default.soba = lblBrSobe.Content.ToString();
 
-            Sobe sobe = new Sobe(lblDom.Content.ToString(), lblPaviljon.Content.ToString());
+           // Sobe sobe = new Sobe(lblDom.Content.ToString(), lblPaviljon.Content.ToString());
             this.Close();
-            sobe.ShowDialog();
+           // sobe.ShowDialog();
         }
     }
 }

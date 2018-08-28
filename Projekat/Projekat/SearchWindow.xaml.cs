@@ -78,10 +78,18 @@ namespace ProjekatTMP
                     Settings.Default.ime = rReader[1].ToString();
                     Settings.Default.prezime = rReader[2].ToString();
 
-                    if ((Settings.Default.ime == txtPretraga.Text || Settings.Default.prezime == txtPretraga.Text || (Settings.Default.ime + " " + Settings.Default.prezime) == txtPretraga.Text))
+                    if (((Settings.Default.ime == txtPretraga.Text || Settings.Default.prezime == txtPretraga.Text || (Settings.Default.ime + " " + Settings.Default.prezime) == txtPretraga.Text)) && rReader[9].ToString() == "Hrana i soba")
                     {
-                        maticniBroj = rReader[3].ToString();
-                        searchPom("U");
+                        if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString())
+                        {
+                            pom = 0;
+                        }
+                        if (pom != 0)
+                        {
+                            maticniBroj = rReader[3].ToString();
+                            searchPom("U");
+                        }
+                        pom++;
                     }
                 }
                 conn.Close();              
@@ -164,7 +172,7 @@ namespace ProjekatTMP
                 MySqlDataReader rReader = cmd.ExecuteReader();
                 while (rReader.Read())
                 {
-                    if (rReader[3].ToString() == dataRow.Row.ItemArray[2].ToString())
+                    if (rReader[3].ToString() == dataRow.Row.ItemArray[3].ToString())
                     {
                         domStaro = rReader[6].ToString();
                         paviljonStaro = rReader[7].ToString();
@@ -181,12 +189,11 @@ namespace ProjekatTMP
                 }
                 conn.Close();
 
-                
-                if(maticni == "")
+                if (maticni == "")
                 {
                     conn = new MySqlConnection(connstr);
                     conn.Open();
-                    MySqlCommand cmd2 = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + domStaro + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + paviljonStaro + "','" + paviljon + "'), soba = REPLACE(soba, '" + brSobeStaro + "','" + brSobe + "') where maticni_broj = '" + dataRow.Row.ItemArray[2].ToString() + "'", conn);
+                    MySqlCommand cmd2 = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + domStaro + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + paviljonStaro + "','" + paviljon + "'), soba = REPLACE(soba, '" + brSobeStaro + "','" + brSobe + "') where maticni_broj = '" + dataRow.Row.ItemArray[3].ToString() + "'", conn);
                     cmd2.ExecuteNonQuery();
                     conn.Close();
 
