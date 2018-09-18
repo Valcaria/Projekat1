@@ -86,7 +86,10 @@
     <Compile Include="Sobe\StudentskeSobe.xaml.cs">
       <DependentUpon>StudentskeSobe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sobe\StudentInfo.xaml.cs">
+    <Compile Include="Sobe\StudentInfo2.xaml.cs">
+      <DependentUpon>StudentInfo2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StudentInfo.xaml.cs">
       <DependentUpon>StudentInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="WaitCursor.cs" />
@@ -139,7 +142,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Sobe\StudentInfo.xaml">
+    <Page Include="Sobe\StudentInfo2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,7 +232,14 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Icon\exchange-arrows.png" />
+    <Content Include="Icon\exchange-arrows.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon\if_x_293657.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

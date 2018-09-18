@@ -39,29 +39,69 @@ namespace ProjekatTMP
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 300);
             dispatcherTimer.Start();
             
-            FillDataGrid();
+            FillDataGrid("student");
         }
 
-        private void FillDataGrid()
+        public WorkingWindow(string pom)
         {
-            try
+            InitializeComponent();
+            FillDataGrid("arhiva");
+            btnArhiviraj.IsEnabled = true;
+            btnArhiviraj.Content = "Pretraga";
+
+        }
+        private void FillDataGrid(string baza)
+        {
+            if(baza == "student")
             {
-                // datagrdTabela.Items.Clear();
-                System.Data.DataTable dG = new System.Data.DataTable();
-                MySqlConnection conn = new MySqlConnection(connstr);
-                conn.Open();
+                try
+                {
+                    // datagrdTabela.Items.Clear();
+                    System.Data.DataTable dG = new System.Data.DataTable();
+                    MySqlConnection conn = new MySqlConnection(connstr);
+                    conn.Open();
 
-                // MySqlCommand command = new MySqlCommand("select * from studenti", conn);
+                    // MySqlCommand command = new MySqlCommand("select * from studenti", conn);
 
-                MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti", conn);
-                sAdapter.Fill(dG);
-                datagrdTabela.ItemsSource = dG.DefaultView;
-                conn.Close();
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti", conn);
+                    sAdapter.Fill(dG);
+                    datagrdTabela.ItemsSource = dG.DefaultView;
+                    conn.Close();
 
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Greska: " + e.Message.ToString());
+                }
             }
-            catch (Exception e)
+            else if(baza == "arhiva")
             {
-                MessageBox.Show("Greska: "  + e.Message.ToString());
+                try
+                {
+                    DataGridTextColumn data = new DataGridTextColumn();
+                    data.Header = "Datum razduzenja";
+                    data.FontSize = 14;
+                    Binding binding = new Binding("DATUM_RAZDUZENJA");
+                    data.Binding = binding;
+
+
+
+                    datagrdTabela.Columns.Add(data);
+                    System.Data.DataTable dG = new System.Data.DataTable();
+                    MySqlConnection conn = new MySqlConnection(connstr);
+                    conn.Open();
+
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva", conn);
+                    sAdapter.Fill(dG);
+                    datagrdTabela.ItemsSource = dG.DefaultView;
+                    conn.Close();
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Greska: " + e.Message.ToString());
+                }
             }
         }
 
@@ -69,29 +109,62 @@ namespace ProjekatTMP
         {
             AddWindow add = new AddWindow();
             add.ShowDialog();
-            FillDataGrid();          
+            FillDataGrid("student");          
         }
 
-        private void btnUkloni_Click(object sender, RoutedEventArgs e)
+        private void btnArhiviraj_Click(object sender, RoutedEventArgs e)
         {
-           if (datagrdTabela.SelectedItem != null)
+            if (datagrdTabela.SelectedItem != null && btnArhiviraj.Content.ToString() == "Arhiviraj")
             {
                 DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
               
-                MessageBoxResult message = MessageBox.Show("Da li ste sigurni da želite da uklonite studenta "+dataRow.Row.ItemArray[1].ToString() + " "+dataRow.Row.ItemArray[2].ToString()+"?", " ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                MessageBoxResult message = MessageBox.Show("Da li ste sigurni da želite da arhivirate studenta "+dataRow.Row.ItemArray[1].ToString() + " "+dataRow.Row.ItemArray[2].ToString()+"?", " ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                 if (message == MessageBoxResult.OK)
                 {
                     try
-                    { 
+                    {
+                        string datum = "";
                         string cellValue = dataRow.Row.ItemArray[0].ToString();
                         maticniBr = dataRow.Row.ItemArray[3].ToString();
 
+                        for (int i = 0, j = 0; i <10; i++)
+                        {
+                            if (dataRow.Row.ItemArray[7].ToString()[i] != '/')
+                            {
+                                switch (j)
+                                {
+                                    case 0:
+                                        Settings.Default.dan += dataRow.Row.ItemArray[7].ToString()[i]; ;
+                                        break;
+                                    case 1:
+                                        Settings.Default.mjesec += dataRow.Row.ItemArray[7].ToString()[i];
+                                        break;
+                                    case 2:
+                                        Settings.Default.godina += dataRow.Row.ItemArray[7].ToString()[i];
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                j++;
+                                
+                            }
+                        }
+                        datum = Settings.Default.godina + "-" + Settings.Default.mjesec + "-" + Settings.Default.dan;
+                        Settings.Default.godina = Settings.Default.mjesec = Settings.Default.dan = "";
+                        MessageBox.Show(datum);
                         pronadjiStudenta();
 
                         MySqlConnection conn = new MySqlConnection(connstr);
                         conn.Open();
-                        MySqlCommand cmd = new MySqlCommand("DELETE FROM studenti WHERE maticni_broj = " + (maticniBr), conn);
+                        MySqlCommand cmd = new MySqlCommand("INSERT into arhiva(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, dom, paviljon, soba, usluga,DATUM_ZADUZIVANJA,datum_razduzenja, godina_upotrebe, fakultet, godina, komentar) VALUES('" + dataRow.Row.ItemArray[1].ToString() + "', '" + dataRow.Row.ItemArray[2].ToString() + "', '" + dataRow.Row.ItemArray[3].ToString() + "', '" + dataRow.Row.ItemArray[4].ToString() + "', '" + dataRow.Row.ItemArray[5].ToString() + "', '" + dom + "', '" + paviljon + "', '" + brSobe + "', '" + dataRow.Row.ItemArray[6].ToString() + "', '" + datum + "','" +DateTime.Now.ToString("yyyy-MM-dd") +"','"+ Settings.Default.godina_upotrebe+ "', '" + Settings.Default.fakultet + "', '" + Settings.Default.godina + "', '" + Settings.Default.komentar + "')", conn);
                         cmd.ExecuteNonQuery();
+                        conn.Close();
+
+                        conn = new MySqlConnection(Settings.Default.connstr);
+                        conn.Open();
+                        MySqlCommand cmd2 = new MySqlCommand("DELETE FROM studenti WHERE maticni_broj = '" + (maticniBr)+"'", conn);
+                        cmd2.ExecuteNonQuery();
                         conn.Close();
   
                         oslobodiSobu();
@@ -100,9 +173,13 @@ namespace ProjekatTMP
                     {
                         MessageBox.Show("Greska: " + error.Message.ToString());
                     }
-                    FillDataGrid();
-                }
-                
+                    FillDataGrid("studen");
+                }   
+            }
+            else if(btnArhiviraj.Content.ToString() == "Pretraga")
+            {
+                SearchWindow search = new SearchWindow();
+                search.ShowDialog();
             }
         }
 
@@ -118,12 +195,12 @@ namespace ProjekatTMP
         {
            if(datagrdTabela.SelectedItem != null)
             {
-                btnUkloni.IsEnabled = true;
+                btnArhiviraj.IsEnabled = true;
                 btnIzmijeni.IsEnabled = true;
             }
            else
             {
-                btnUkloni.IsEnabled = false;
+                btnArhiviraj.IsEnabled = false;
                 btnIzmijeni.IsEnabled = false;
             }
         }
@@ -145,6 +222,7 @@ namespace ProjekatTMP
                     {
                         if (dataRow.Row.ItemArray[7].ToString()[i] != '/')
                         {
+
                             switch (j)
                             {
                                 case 0:
@@ -163,11 +241,12 @@ namespace ProjekatTMP
                             j++;
                         }
                     }
-
-                    //MessageBox.Show(Settings.Default.dan + "." + Settings.Default.mjesec + "." + Settings.Default.godina);
+                    Settings.Default.datum = Settings.Default.dan + "/" + Settings.Default.mjesec + "/" + Settings.Default.godina;
+                    Settings.Default.godina = Settings.Default.dan = Settings.Default.mjesec = "";
+                    //MessageBox.Show(Settings.Default.datum);
                     AddWindow addWindow = new AddWindow(rReader[0].ToString(), rReader[1].ToString(), rReader[2].ToString(), rReader[3].ToString(), rReader[4].ToString(), rReader[5].ToString(), rReader[6].ToString(), rReader[7].ToString(), rReader[8].ToString(), rReader[9].ToString(), rReader[12].ToString(), rReader[13].ToString(), rReader[14].ToString());
                     addWindow.ShowDialog();
-                    FillDataGrid();
+                    FillDataGrid("student");
                     this.Show();
                 }
             }
@@ -262,6 +341,10 @@ namespace ProjekatTMP
                     dom = rReader[6].ToString();
                     paviljon = rReader[7].ToString();
                     brSobe = rReader[8].ToString();
+                    Settings.Default.godina_upotrebe = rReader[11].ToString();
+                    Settings.Default.fakultet = rReader[12].ToString();
+                    Settings.Default.godina = rReader[13].ToString();
+                    Settings.Default.komentar = rReader[14].ToString();
                 }
             }
 
@@ -271,6 +354,5 @@ namespace ProjekatTMP
         {
             ExportToExcel();
         }
-
     }
 }

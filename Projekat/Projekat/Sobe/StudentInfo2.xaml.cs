@@ -19,9 +19,9 @@ namespace ProjekatTMP
     /// <summary>
     /// Interaction logic for StudentInfo.xaml
     /// </summary>
-    public partial class StudentInfo : Window
+    public partial class StudentInfo2 : Window
     {
-        public StudentInfo(string imePrezime, string maticni, string brSobe, string dom, string paviljon)
+        public StudentInfo2(string imePrezime, string maticni, string brSobe, string dom, string paviljon)
         {
             InitializeComponent();
             lblImePrezime.Content = imePrezime;
@@ -40,9 +40,14 @@ namespace ProjekatTMP
             Settings.Default.paviljon = lblPaviljon.Content.ToString();
             Settings.Default.soba = lblBrSobe.Content.ToString();
 
-           // Sobe sobe = new Sobe(lblDom.Content.ToString(), lblPaviljon.Content.ToString());
             this.Close();
-           // sobe.ShowDialog();
+        }
+        public bool IsClosed { get; private set; }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            IsClosed = true;
         }
     }
 }

@@ -154,7 +154,7 @@ namespace ProjekatTMP
         {
             
             InitializeComponent();
-            datePicker();
+            //datePicker();
             brSobe = soba;
             this.dom = dom;
             this.paviljon = paviljon;
@@ -238,8 +238,9 @@ namespace ProjekatTMP
                 cmbUsluga.SelectedIndex = 1;
                 cmbSoba.IsEnabled = false;
             }
-            //dpDatumZaduzivanja.Text = DateTime.
-
+            dpDatumZaduzivanja.SelectedDate = Convert.ToDateTime(Settings.Default.datum);
+            dpDatumZaduzivanja.Text = Convert.ToString(Convert.ToDateTime(Settings.Default.datum));
+            //MessageBox.Show(Convert.ToString(dpDatumZaduzivanja.SelectedDate));
         }
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
@@ -369,7 +370,8 @@ namespace ProjekatTMP
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("U izgradnji");
+            WorkingWindow working = new WorkingWindow("s");
+            working.ShowDialog();
         }
 
         private void cmbUsluga_DropDownClosed(object sender, EventArgs e)

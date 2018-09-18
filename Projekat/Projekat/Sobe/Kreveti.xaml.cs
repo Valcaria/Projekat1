@@ -53,13 +53,22 @@ namespace ProjekatTMP
         {
             if(grbColor.Background == Brushes.Green && Settings.Default.pom == "off")
             {
-                SearchWindow searchWindow = new SearchWindow("", dom, paviljon, soba);
-                searchWindow.ShowDialog();
+                Settings.Default.soba = soba;
+                Settings.Default.close = 4;
             }
             else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "off")
             {
-                StudentInfo studentInfo = new StudentInfo(lblIme.Content.ToString(), maticni, soba, dom, paviljon);
-                studentInfo.ShowDialog();
+                //StudentInfo studentInfo = new StudentInfo(lblIme.Content.ToString(), maticni, soba, dom, paviljon);
+                //studentInfo.ShowDialog();
+                //if(studentInfo.IsClosed && Settings.Default.close != 0)
+                //{
+                //    Settings.Default.maticni = "";
+                Settings.Default.maticni = maticni;
+                Settings.Default.imePrezime = lblIme.Content.ToString();
+                Settings.Default.dom = dom;
+                Settings.Default.paviljon = paviljon;
+                Settings.Default.soba = soba;
+                Settings.Default.close = 2;
             }
             else if(grbColor.Background == Brushes.Green && Settings.Default.pom == "on")
             {
@@ -68,19 +77,29 @@ namespace ProjekatTMP
                 MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + Settings.Default.dom + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + Settings.Default.paviljon + "','" + paviljon + "'), soba = REPLACE(soba, '" + Settings.Default.soba + "','" + soba + "') where maticni_broj = '" + Settings.Default.maticni + "'", conn);
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                Settings.Default.maticni = "";
+                
                 Settings.Default.pom = "off";
                 promjenaNoveSobe(dom, paviljon, soba);
                 promjenaStareSobe(Settings.Default.dom, Settings.Default.paviljon, Settings.Default.soba);
+                CleanIT();
+                Settings.Default.close = 3;
             }
             else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "on")
             {
                 Zamjena zamjena = new Zamjena(Settings.Default.imePrezime, lblIme.Content.ToString(), Settings.Default.maticni, maticni, Settings.Default.soba, soba, Settings.Default.dom, dom, Settings.Default.paviljon, paviljon);
                 zamjena.ShowDialog();
                 Settings.Default.pom = "off";
+                Settings.Default.close = 3;
             }
         }
-
+        void CleanIT()
+        {
+            Projekat.Properties.Settings.Default.imePrezime = "";
+            Projekat.Properties.Settings.Default.dom = "";
+            Projekat.Properties.Settings.Default.paviljon = "";
+            Projekat.Properties.Settings.Default.soba = "";
+            Projekat.Properties.Settings.Default.maticni = "";
+        }
         void promjenaNoveSobe(string dom, string paviljon, string brSobe)
         {
             int brSlobodnihSoba = 0;

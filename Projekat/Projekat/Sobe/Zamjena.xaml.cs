@@ -84,7 +84,6 @@ namespace ProjekatTMP
         {
             SearchWindow searchWindow = new SearchWindow(maticni1, dom1, paviljon1, soba1 );
             searchWindow.ShowDialog();
-            //txtImePrezime2.Text = searchWindow.
         }
         void CleanIT()
         {

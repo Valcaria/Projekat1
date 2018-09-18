@@ -190,5 +190,41 @@ namespace Projekat.Properties {
                 this["connstr"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string fakultet {
+            get {
+                return ((string)(this["fakultet"]));
+            }
+            set {
+                this["fakultet"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string godina_upotrebe {
+            get {
+                return ((string)(this["godina_upotrebe"]));
+            }
+            set {
+                this["godina_upotrebe"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string komentar {
+            get {
+                return ((string)(this["komentar"]));
+            }
+            set {
+                this["komentar"] = value;
+            }
+        }
     }
 }

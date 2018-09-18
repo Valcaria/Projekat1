@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="Sobe" Height="450" Width="678.5" WindowStartupLocation="CenterScreen">
+        Title="Sobe" Height="481.5" Width="678.5" WindowStartupLocation="CenterScreen">
     <Grid>
         <ComboBox x:Name="cmbDom" HorizontalAlignment="Left" Margin="73,23,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="cmbDom_DropDownClosed" Height="26">
             <ComboBoxItem Content="1" FontSize="14"/>
@@ -15,11 +15,14 @@
             <ComboBoxItem Content="M" FontSize="14"/>
             <ComboBoxItem Content="Z" FontSize="14"/>
         </ComboBox>
-        <ScrollViewer Margin="219,27,0,27" VerticalScrollBarVisibility="Auto" CanContentScroll="True" IsHitTestVisible="True">
-            <StackPanel x:Name="stcPanel" Height="365" Width="450"/>
+        <ScrollViewer Margin="219,27,0,27" VerticalScrollBarVisibility="Auto" CanContentScroll="True" IsHitTestVisible="True" MouseLeftButtonDown="ScrollViewer_MouseLeftButtonDown">
+            <UniformGrid x:Name="ugrdPanel" Columns="1"/>
         </ScrollViewer>
         <Label Content="Dom:" HorizontalAlignment="Left" Margin="22,23,0,0" VerticalAlignment="Top"/>
         <Label Content="Paviljon:" HorizontalAlignment="Left" Margin="7,54,0,0" VerticalAlignment="Top"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="236" Margin="10,126,0,0" VerticalAlignment="Top" Width="181" VerticalScrollBarVisibility="Disabled">
+            <StackPanel x:Name="stpStudentInfo" Height="234" Width="181"/>
+        </ScrollViewer>
 
     </Grid>
 </Window>

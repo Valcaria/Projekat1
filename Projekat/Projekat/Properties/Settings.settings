@@ -44,5 +44,14 @@
     <Setting Name="connstr" Type="System.String" Scope="User">
       <Value Profile="(Default)">Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none</Value>
     </Setting>
+    <Setting Name="fakultet" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="godina_upotrebe" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="komentar" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
