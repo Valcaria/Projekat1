@@ -86,9 +86,6 @@
     <Compile Include="Sobe\StudentskeSobe.xaml.cs">
       <DependentUpon>StudentskeSobe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sobe\StudentInfo2.xaml.cs">
-      <DependentUpon>StudentInfo2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StudentInfo.xaml.cs">
       <DependentUpon>StudentInfo.xaml</DependentUpon>
     </Compile>
@@ -139,10 +136,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sobe\StudentskeSobe.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Sobe\StudentInfo2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

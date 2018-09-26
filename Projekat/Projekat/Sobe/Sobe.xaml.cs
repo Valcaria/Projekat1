@@ -29,6 +29,9 @@ namespace ProjekatTMP
         public Sobe()
         {
             InitializeComponent();
+
+            //this.SizeToContent = SizeToContent.Height;
+
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
@@ -37,10 +40,10 @@ namespace ProjekatTMP
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            if (cmbDom.Text != "" && cmbPaviljon.Text != "")
-            {
-                combBoxChange();
-            }
+            //if (cmbDom.Text != "" && cmbPaviljon.Text != "")
+            //{
+            //    combBoxChange();
+            //}
             switch (Settings.Default.close)
             {
                 case 0:
@@ -52,6 +55,9 @@ namespace ProjekatTMP
                     stpStudentInfo.Children.Clear();
                     stpStudentInfo.Children.Add(new StudentInfo());
                     combBoxChange();
+                    break;
+                case 3:
+
                     break;
                 case 4:
                     Settings.Default.close = 1;
@@ -70,7 +76,7 @@ namespace ProjekatTMP
                 MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
                 MySqlDataReader rReader = cmd.ExecuteReader();
 
-                ugrdPanel.Children.Clear();
+                stcPanel.Children.Clear();
                 while (rReader.Read())
                 {
                     if (cmbDom.Text == rReader[1].ToString() && cmbPaviljon.Text == rReader[2].ToString())
@@ -78,7 +84,7 @@ namespace ProjekatTMP
                         brSobe = rReader[3].ToString();
                         ukupnoMjesta = rReader[4].ToString();
                         slobondaMjesta = rReader[5].ToString();
-                        ugrdPanel.Children.Add(new StudentskeSobe(cmbDom.Text, cmbPaviljon.Text, brSobe, ukupnoMjesta, slobondaMjesta));
+                        stcPanel.Children.Add(new StudentskeSobe(cmbDom.Text, cmbPaviljon.Text, brSobe, ukupnoMjesta, slobondaMjesta));
                     }
                 }
                 rReader.Close();
@@ -106,9 +112,9 @@ namespace ProjekatTMP
             }
         }
 
-        private void ScrollViewer_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void scrVwer_GotFocus(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ss");
+            combBoxChange();
         }
     }
 }

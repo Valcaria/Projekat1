@@ -146,7 +146,6 @@ namespace ProjekatTMP
                 conn.Close();
             }
             FillDataGrid();
-            searchPom("T");
         }
         private void FillDataGrid()
         {
@@ -156,7 +155,7 @@ namespace ProjekatTMP
                 MySqlConnection conn = new MySqlConnection(connstr);
                 conn.Open();
 
-                MySqlCommand command = new MySqlCommand("select IME, prezime,maticni_broj from search", conn);
+                MySqlCommand command = new MySqlCommand("select IME, PREZIME,MATICNI_BROJ from search", conn);
                 MySqlDataAdapter sAdapter = new MySqlDataAdapter(command);
                 sAdapter.Fill(dG);
                 dtgPretraga.ItemsSource = dG.DefaultView;
@@ -170,6 +169,7 @@ namespace ProjekatTMP
         
         void searchPom(string character)
         {
+            MessageBox.Show(Settings.Default.ime, Settings.Default.prezime);
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             if (character == "U")

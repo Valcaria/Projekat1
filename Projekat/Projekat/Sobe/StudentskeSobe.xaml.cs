@@ -49,6 +49,7 @@ namespace ProjekatTMP
                     student = rReader[1].ToString();
                     student += " " + rReader[2].ToString();
                     stcPanel.Children.Add(new Kreveti("Gr", student, dom, paviljon, brSobe, rReader[3].ToString()));
+                    
                 }
             }
             conn.Close();

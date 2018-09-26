@@ -154,7 +154,6 @@ namespace ProjekatTMP
         {
             
             InitializeComponent();
-            //datePicker();
             brSobe = soba;
             this.dom = dom;
             this.paviljon = paviljon;
@@ -249,16 +248,16 @@ namespace ProjekatTMP
             if (id == "")
             {
                 Settings.Default.datum = dpDatumZaduzivanja.SelectedDate.Value.Year + "-" + dpDatumZaduzivanja.SelectedDate.Value.Month + "-" + dpDatumZaduzivanja.SelectedDate.Value.Day.ToString();
-                MessageBox.Show(Settings.Default.datum);
                 if (cmbUsluga.Text == "Hrana i soba")
                 {
                     if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
                     {
                         try
                         {
+                            int count = Count("SELECT * FROM studenti");
                             MySqlConnection conn = new MySqlConnection(connstr);
                             conn.Open();
-                            MySqlCommand cmd = new MySqlCommand("INSERT into studenti(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, dom, paviljon, soba, usluga,DATUM_ZADUZIVANJA, godina_upotrebe, fakultet, godina, komentar) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbDom.Text + "', '" + cmbPaviljon.Text + "', '" + cmbSoba.Text + "', '" + cmbUsluga.Text + "', '" + (Settings.Default.datum) + "','" + txtGodina.Text + "', '" + cmbFakultet.Text + "', '" + cmbGodina.Text + "', '" + txtKomentar.Text + "')", conn);
+                            MySqlCommand cmd = new MySqlCommand("INSERT into studenti(ID,ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, dom, paviljon, soba, usluga,DATUM_ZADUZIVANJA, godina_upotrebe, fakultet, godina, komentar) VALUES('"+(count+1)+"','" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbDom.Text + "', '" + cmbPaviljon.Text + "', '" + cmbSoba.Text + "', '" + cmbUsluga.Text + "', '" + (Settings.Default.datum) + "','" + txtGodina.Text + "', '" + cmbFakultet.Text + "', '" + cmbGodina.Text + "', '" + txtKomentar.Text + "')", conn);
                             cmd.ExecuteNonQuery();
                             conn.Close();
                             this.Close();
@@ -370,8 +369,13 @@ namespace ProjekatTMP
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            WorkingWindow working = new WorkingWindow("s");
+            WorkingWindow working = new WorkingWindow("arhiva");
             working.ShowDialog();
+            txtMjesto_Stanovanja.Text = working.adresa;
+            txtIme.Text = working.ime;
+            txtPrezime.Text = working.prezime;
+            txtBroj_Telefona.Text = working.brTelefona;
+            txtMaticni_Broj.Text = working.maticniBr;
         }
 
         private void cmbUsluga_DropDownClosed(object sender, EventArgs e)
@@ -394,5 +398,26 @@ namespace ProjekatTMP
         {
             dpDatumZaduzivanja.Text = dpDatumZaduzivanja.SelectedDate.ToString();
         }
+
+        private int Count(string baza)
+        {
+            int count = 0;
+
+            MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+            conn.Open();
+
+            MySqlCommand command = new MySqlCommand(baza, conn);
+            MySqlDataReader dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                count++;
+            }
+
+            conn.Close();
+
+            return count;
+        }
+        
     }
 }

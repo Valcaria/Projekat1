@@ -58,11 +58,6 @@ namespace ProjekatTMP
             }
             else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "off")
             {
-                //StudentInfo studentInfo = new StudentInfo(lblIme.Content.ToString(), maticni, soba, dom, paviljon);
-                //studentInfo.ShowDialog();
-                //if(studentInfo.IsClosed && Settings.Default.close != 0)
-                //{
-                //    Settings.Default.maticni = "";
                 Settings.Default.maticni = maticni;
                 Settings.Default.imePrezime = lblIme.Content.ToString();
                 Settings.Default.dom = dom;
@@ -82,6 +77,7 @@ namespace ProjekatTMP
                 promjenaNoveSobe(dom, paviljon, soba);
                 promjenaStareSobe(Settings.Default.dom, Settings.Default.paviljon, Settings.Default.soba);
                 CleanIT();
+
                 Settings.Default.close = 3;
             }
             else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "on")
@@ -89,6 +85,7 @@ namespace ProjekatTMP
                 Zamjena zamjena = new Zamjena(Settings.Default.imePrezime, lblIme.Content.ToString(), Settings.Default.maticni, maticni, Settings.Default.soba, soba, Settings.Default.dom, dom, Settings.Default.paviljon, paviljon);
                 zamjena.ShowDialog();
                 Settings.Default.pom = "off";
+
                 Settings.Default.close = 3;
             }
         }

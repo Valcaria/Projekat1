@@ -95,7 +95,6 @@ C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\MainWindo
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Meni.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\Sobe.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentskeSobe.g.cs
-C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentInfo2.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\StudentInfo.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\WorkingWindow.g.cs
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\Zamjena.g.cs
@@ -111,7 +110,6 @@ C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\MainWindo
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Meni.baml
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\Sobe.baml
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentskeSobe.baml
-C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentInfo2.baml
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\StudentInfo.baml
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\WorkingWindow.baml
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Sobe\Zamjena.baml
