@@ -40,10 +40,6 @@ namespace ProjekatTMP
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            //if (cmbDom.Text != "" && cmbPaviljon.Text != "")
-            //{
-            //    combBoxChange();
-            //}
             switch (Settings.Default.close)
             {
                 case 0:
@@ -57,12 +53,15 @@ namespace ProjekatTMP
                     combBoxChange();
                     break;
                 case 3:
-
+                    Settings.Default.close = 1;
+                    stpStudentInfo.Children.Clear();
+                    combBoxChange();
                     break;
                 case 4:
                     Settings.Default.close = 1;
                     stpStudentInfo.Children.Clear();
                     stpStudentInfo.Children.Add(new StudentInfo(cmbDom.Text, cmbPaviljon.Text));
+                    combBoxChange();
                     break;
             }
         }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Projekat.Properties;
 
 namespace ProjekatTMP
 {
@@ -38,6 +39,7 @@ namespace ProjekatTMP
             this.Hide();
             sobe.ShowDialog();
             this.Show();
+            Settings.Default.maticni = "";
         }
 
         private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)

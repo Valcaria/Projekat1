@@ -81,7 +81,8 @@ namespace ProjekatTMP
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            
+            Settings.Default.maticni = "";
+            Settings.Default.close = 3;
         }
     }
 }

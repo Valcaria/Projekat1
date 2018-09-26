@@ -38,7 +38,7 @@ namespace ProjekatTMP
             MySqlDataReader rReader = cmd.ExecuteReader();
             while (rReader.Read())
             {
-                if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString()&& Settings.Default.maticni != rReader[3].ToString())
+                if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString() && Settings.Default.maticni != rReader[3].ToString())
                 {
                     student = rReader[1].ToString();
                     student += " " + rReader[2].ToString();
@@ -64,6 +64,7 @@ namespace ProjekatTMP
             catch (Exception error)
             {
                 MessageBox.Show("Greska: " + error.Message.ToString());
+                Settings.Default.maticni = "";
             } 
         }
     }
