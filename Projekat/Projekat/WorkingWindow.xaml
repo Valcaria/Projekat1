@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatTMP"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ProjekatTMP.WorkingWindow"
-        mc:Ignorable="d"
-        Title="Studentska Služba" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
+        mc:Ignorable="d" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
     <Grid x:Name="grdPozadina">
         <DataGrid x:Name="datagrdTabela" Margin="10,10,9,85" IsHitTestVisible="True" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" RowHeaderWidth="0">
             <DataGrid.Columns>
@@ -25,5 +24,6 @@
         <Button x:Name="btnOdjaviSe" Content="Odjavi se" HorizontalAlignment="Right" Margin="0,0,10,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnOdjaviSe_Click" TabIndex="5"/>
         <Button x:Name="btnIzvjestaj" Content="Izvještaj" Margin="0,0,136,23" FontSize="18" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="98" Click="btnIzvjestaj_Click" TabIndex="4"/>
         <Button x:Name="btnIzmijeni" Content="Izmijeni" HorizontalAlignment="Left" Margin="261,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnIzmijeni_Click" IsEnabled="False" TabIndex="3"/>
+        <Button x:Name="btnArhivirajSve" Content="Arhiviraj Sve" HorizontalAlignment="Left" Margin="394,0,0,23" Width="122" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnArhivirajSve_Click" TabIndex="2"/>
     </Grid>
 </Window>

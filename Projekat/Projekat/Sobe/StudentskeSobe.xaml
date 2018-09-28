@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projekat"
-             mc:Ignorable="d" Width="360.167" Height="138.332" Padding="0" Margin="0,0,0,10">
+             mc:Ignorable="d" Width="393.167" Height="138.332" Padding="0" Margin="0,2,0,9">
     <Border BorderBrush="Black" BorderThickness="1">
-        <Grid HorizontalAlignment="Left" Width="360" Margin="0,0,-2,-1">
+        <Grid HorizontalAlignment="Left" Width="392" Margin="0,0,-1,-1">
             <Label Content="SOBA" HorizontalAlignment="Left" Margin="21,19,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblBrSobe" Content="Label" HorizontalAlignment="Left" Margin="66,19,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblBrMjesta" Content="Label" HorizontalAlignment="Left" Height="26" Margin="21,45,0,0" VerticalAlignment="Top" Width="38"/>
@@ -14,7 +14,7 @@
             <Label Content="Mjesta" HorizontalAlignment="Left" Margin="66,45,0,0" VerticalAlignment="Top"/>
             <Label Content="Slobodna Mjesta" HorizontalAlignment="Left" Margin="66,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.307,-0.051"/>
             <ScrollViewer Margin="184,3,0,4" VerticalScrollBarVisibility="Auto">
-                <StackPanel x:Name="stcPanel" Height="127" Width="174"/>
+                <StackPanel x:Name="stcPanel" Height="126" Width="206"/>
             </ScrollViewer>
         </Grid>
     </Border>

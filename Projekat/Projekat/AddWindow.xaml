@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatTMP"
-        mc:Ignorable="d"
-        Title="Studentska Služba" Height="733.333" Width="373.593" MinHeight="733" MinWidth="345.83" MaxWidth="530.83" MaxHeight="698.298" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        mc:Ignorable="d" Height="733.333" Width="373.593" MinHeight="733" MinWidth="345.83" MaxWidth="530.83" MaxHeight="698.298" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF142C9B" Offset="0"/>
+            <GradientStop Color="#FF1BBAD3" Offset="0.993"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid Margin="5,-2,2,2">
         <TextBox x:Name="txtIme" Height="31" Margin="0,33,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0" HorizontalAlignment="Right" Width="199"/>
         <TextBox x:Name="txtPrezime" Height="31" Margin="0,69,21,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="1" HorizontalAlignment="Right" Width="199"/>

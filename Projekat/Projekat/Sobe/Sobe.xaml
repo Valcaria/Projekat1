@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
-        mc:Ignorable="d"
-        Title="Sobe" Height="505.419" Width="725.298" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" Height="505.419" Width="725.298" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF142C9B" Offset="0"/>
+            <GradientStop Color="#FF1BBAD3" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <ComboBox x:Name="cmbDom" HorizontalAlignment="Left" Margin="73,23,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="cmbDom_DropDownClosed" Height="26">
             <ComboBoxItem Content="1" FontSize="14"/>
@@ -20,8 +25,8 @@
         <ScrollViewer HorizontalAlignment="Left" Height="236" Margin="10,126,0,0" VerticalAlignment="Top" Width="181" VerticalScrollBarVisibility="Disabled">
             <StackPanel x:Name="stpStudentInfo" Height="234" Width="181"/>
         </ScrollViewer>
-        <ScrollViewer x:Name="scrVwer" Margin="248,10,10,10" GotFocus="scrVwer_GotFocus" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-            <StackPanel x:Name="stcPanel" Height="452" Width="438"/>
+        <ScrollViewer x:Name="scrVwer" Margin="0,10,10,10" GotFocus="scrVwer_GotFocus" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Background="White" HorizontalAlignment="Right" Width="459">
+            <StackPanel x:Name="stcPanel" Height="453" Width="457"/>
         </ScrollViewer>
 
     </Grid>

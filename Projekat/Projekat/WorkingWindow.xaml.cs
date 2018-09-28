@@ -141,7 +141,6 @@ namespace ProjekatTMP
                     {
                         int count = Count("SELECT * FROM arhiva");
                         string datum = "";
-                       // string cellValue = dataRow.Row.ItemArray[0].ToString();
                         maticniBr = dataRow.Row.ItemArray[3].ToString();
 
                         for (int i = 0, j = 0; i <10; i++)
@@ -425,6 +424,21 @@ namespace ProjekatTMP
             conn.Close();
 
             return count;
+        }
+
+        private void btnArhivirajSve_Click(object sender, RoutedEventArgs e)
+        {
+            //for(int i = 0; i<Count("SELECT * FROM studenti");i++)
+            //{
+            //    MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+            //    conn.Open();
+
+            //    MySqlCommand command = new MySqlCommand(baza, conn);
+                
+
+            //    conn.Close();
+
+            //}
         }
     }
 }

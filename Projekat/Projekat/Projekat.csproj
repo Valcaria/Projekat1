@@ -183,7 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icon\student-card.png" />
@@ -228,6 +227,7 @@
     <Content Include="Icon\exchange-arrows.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Bed.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon\if_x_293657.png">

@@ -89,10 +89,12 @@ namespace ProjekatTMP
         }
         private void btnPretraga_Click(object sender, RoutedEventArgs e)
         {
+            string text = "";
             searchPom("T");
             int pom = 1;
             if(maticni == "")
             {
+                text = OblikovanjeStringa(txtPretraga.Text);
                 MySqlConnection conn = new MySqlConnection(connstr);
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(baza, conn);
@@ -101,7 +103,7 @@ namespace ProjekatTMP
                 {
                     Settings.Default.ime = rReader[1].ToString();
                     Settings.Default.prezime = rReader[2].ToString();
-                    if ((Settings.Default.ime == txtPretraga.Text || Settings.Default.prezime == txtPretraga.Text || (Settings.Default.ime + " " + Settings.Default.prezime) == txtPretraga.Text))
+                    if ((Settings.Default.ime == text || Settings.Default.prezime == text || (Settings.Default.ime + " " + Settings.Default.prezime) == text))
                     {
                         if (baza == "select * from studenti" && dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString())
                         {
@@ -167,9 +169,59 @@ namespace ProjekatTMP
             }
         }
         
+        private string OblikovanjeStringa(string tekst)
+        {
+            int i = tekst.Length;
+            int j = 0, pom = 0;
+            string text = "";
+            char h;
+
+            foreach (char c in tekst)
+            {
+                if (c == ' ')
+                {
+                    pom++;
+                    text += ' ';
+                }
+                if (Convert.ToInt16(c) >= 97 && j == 0)
+                {
+                    h = Char.ToUpper(c);
+                    text += h;
+                    pom = 0;
+                }
+                else if (Convert.ToInt16(c) >= 97 && pom == 1)
+                {
+                    h = Char.ToUpper(c);
+                    text += h;
+                    pom = 0;
+                }
+                else if (Convert.ToInt16(c) >= 97 && pom == 0)
+                {
+                    text += c;
+                    pom = 0;
+                }
+                else if (Convert.ToInt16(c) >= 65 && Convert.ToInt16(c) <= 90 && j == 0)
+                {
+                    text += c;
+                }
+                else if (Convert.ToInt16(c) >= 65 && Convert.ToInt16(c) <= 90 && pom == 0)
+                {
+                    h = Char.ToLower(c);
+                    text += h;
+                }
+                else if (Convert.ToInt16(c) >= 65 && Convert.ToInt16(c) <= 90 && pom == 1)
+                {
+                    text += c;
+                    pom = 0;
+                }
+                j++;
+            }
+
+            return text;
+        }
+
         void searchPom(string character)
         {
-            MessageBox.Show(Settings.Default.ime, Settings.Default.prezime);
             MySqlConnection conn = new MySqlConnection(connstr);
             conn.Open();
             if (character == "U")
