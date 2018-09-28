@@ -25,15 +25,16 @@ namespace ProjekatTMP
             InitializeComponent();
         }
 
-        private void btnEvidencija_Click(object sender, RoutedEventArgs e)
+
+        private void btnUnesi_Click(object sender, RoutedEventArgs e)
         {
-            WorkingWindow workingWindow = new WorkingWindow();
+            AddWindow addWindow = new AddWindow();
             this.Hide();
-            workingWindow.ShowDialog();
+            addWindow.ShowDialog();
             this.Show();
         }
 
-        private void btnSobe_Click(object sender, RoutedEventArgs e)
+        private void imgSobe_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sobe sobe = new Sobe();
             this.Hide();
@@ -42,17 +43,11 @@ namespace ProjekatTMP
             Settings.Default.maticni = "";
         }
 
-        private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)
+        private void imgEvidencija_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            WorkingWindow workingWindow = new WorkingWindow();
             this.Hide();
-            this.Show();
-        }
-
-        private void btnUnesi_Click(object sender, RoutedEventArgs e)
-        {
-            AddWindow addWindow = new AddWindow();
-            this.Hide();
-            addWindow.ShowDialog();
+            workingWindow.ShowDialog();
             this.Show();
         }
     }

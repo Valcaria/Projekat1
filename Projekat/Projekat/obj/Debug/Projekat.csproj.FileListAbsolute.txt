@@ -120,3 +120,5 @@ C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Projekat.
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Projekat.csproj.CopyComplete
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Projekat.exe
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\obj\Debug\Projekat.pdb
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Debug\Resources\evidence.png
+C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Debug\Resources\Bed.png

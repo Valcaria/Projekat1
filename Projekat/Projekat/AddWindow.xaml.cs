@@ -237,6 +237,7 @@ namespace ProjekatTMP
                 cmbUsluga.SelectedIndex = 1;
                 cmbSoba.IsEnabled = false;
             }
+            datePicker();
             dpDatumZaduzivanja.SelectedDate = Convert.ToDateTime(Settings.Default.datum);
             dpDatumZaduzivanja.Text = Convert.ToString(Convert.ToDateTime(Settings.Default.datum));
             //MessageBox.Show(Convert.ToString(dpDatumZaduzivanja.SelectedDate));
