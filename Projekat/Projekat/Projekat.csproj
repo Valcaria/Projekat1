@@ -233,6 +233,11 @@
     <Content Include="Resources\Bed.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\f7e7b6d99036ac35fb4ac14531dad6ff.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Write-Icon1-300x300.png" />
+    <None Include="Resources\Noun_285871_cc_write_story.svg.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon\if_x_293657.png">

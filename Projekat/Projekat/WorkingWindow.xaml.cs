@@ -428,17 +428,58 @@ namespace ProjekatTMP
 
         private void btnArhivirajSve_Click(object sender, RoutedEventArgs e)
         {
-            //for(int i = 0; i<Count("SELECT * FROM studenti");i++)
-            //{
-            //    MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
-            //    conn.Open();
+            int broj = Count("SELECT * FROM studenti");
+            
+            for (int i = 0; i < broj; i++)
+            {
+                string ime = "", prezime = "", maticni = "", brojTelefona = "", mjestoStanovanja = "";
+                string datumZaduzenja = "", dom = "", soba = "", paviljon = "", fakultet = "", godina = "";
+                string godinaUsluge = "", komentar = "", usluga = "";
 
-            //    MySqlCommand command = new MySqlCommand(baza, conn);
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("select * from studenti",conn);
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while(dataReader.Read())
+                {
+                    if(dataReader[0].ToString() == Convert.ToString(i+1))
+                    {
+                        ime = dataReader[1].ToString();
+                        prezime = dataReader[2].ToString();
+                        maticni = dataReader[3].ToString();
+                        brojTelefona = dataReader[5].ToString();
+                        mjestoStanovanja = dataReader[4].ToString();
+                        datumZaduzenja = dataReader[10].ToString();
+                        dom = dataReader[6].ToString();
+                        soba = dataReader[8].ToString();
+                        paviljon = dataReader[7].ToString();
+                        komentar = dataReader[14].ToString();
+                        godina = dataReader[13].ToString();
+                        godinaUsluge = dataReader[11].ToString();
+                        fakultet = dataReader[12].ToString();
+                        usluga = dataReader[9].ToString();
+                    }
+                }
+
+
+                conn.Close();
+
+                int id = Count("select * from arhiva");
+
+                conn = new MySqlConnection(Settings.Default.connstr);
                 
+                conn.Open();
+                MySqlCommand command2 = new MySqlCommand("select * from studenti", conn);
+                MySqlDataReader dataReader = command.ExecuteReader();
 
-            //    conn.Close();
+                conn.Close();
 
-            //}
+
+
+
+            }
         }
     }
 }

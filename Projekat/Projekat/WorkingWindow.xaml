@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:ProjekatTMP"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ProjekatTMP.WorkingWindow"
         mc:Ignorable="d" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF142C9B" Offset="0"/>
+            <GradientStop Color="#FF1BBAD3" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid x:Name="grdPozadina">
         <DataGrid x:Name="datagrdTabela" Margin="10,10,9,85" IsHitTestVisible="True" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" RowHeaderWidth="0">
             <DataGrid.Columns>

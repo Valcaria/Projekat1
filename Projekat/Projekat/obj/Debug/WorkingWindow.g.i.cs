@@ -41,7 +41,7 @@ namespace ProjekatTMP {
     public partial class WorkingWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 9 "..\..\WorkingWindow.xaml"
+        #line 15 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Grid grdPozadina;
         
@@ -49,7 +49,7 @@ namespace ProjekatTMP {
         #line hidden
         
         
-        #line 10 "..\..\WorkingWindow.xaml"
+        #line 16 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.DataGrid datagrdTabela;
         
@@ -57,7 +57,7 @@ namespace ProjekatTMP {
         #line hidden
         
         
-        #line 22 "..\..\WorkingWindow.xaml"
+        #line 28 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnDodaj;
         
@@ -65,7 +65,7 @@ namespace ProjekatTMP {
         #line hidden
         
         
-        #line 23 "..\..\WorkingWindow.xaml"
+        #line 29 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnArhiviraj;
         
@@ -73,7 +73,7 @@ namespace ProjekatTMP {
         #line hidden
         
         
-        #line 24 "..\..\WorkingWindow.xaml"
+        #line 30 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnOdjaviSe;
         
@@ -81,7 +81,7 @@ namespace ProjekatTMP {
         #line hidden
         
         
-        #line 25 "..\..\WorkingWindow.xaml"
+        #line 31 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnIzvjestaj;
         
@@ -89,7 +89,7 @@ namespace ProjekatTMP {
         #line hidden
         
         
-        #line 26 "..\..\WorkingWindow.xaml"
+        #line 32 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnIzmijeni;
         
@@ -97,7 +97,7 @@ namespace ProjekatTMP {
         #line hidden
         
         
-        #line 27 "..\..\WorkingWindow.xaml"
+        #line 33 "..\..\WorkingWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnArhivirajSve;
         
@@ -143,7 +143,7 @@ namespace ProjekatTMP {
             case 3:
             this.btnDodaj = ((System.Windows.Controls.Button)(target));
             
-            #line 22 "..\..\WorkingWindow.xaml"
+            #line 28 "..\..\WorkingWindow.xaml"
             this.btnDodaj.Click += new System.Windows.RoutedEventHandler(this.btnDodaj_Click);
             
             #line default
@@ -152,7 +152,7 @@ namespace ProjekatTMP {
             case 4:
             this.btnArhiviraj = ((System.Windows.Controls.Button)(target));
             
-            #line 23 "..\..\WorkingWindow.xaml"
+            #line 29 "..\..\WorkingWindow.xaml"
             this.btnArhiviraj.Click += new System.Windows.RoutedEventHandler(this.btnArhiviraj_Click);
             
             #line default
@@ -161,7 +161,7 @@ namespace ProjekatTMP {
             case 5:
             this.btnOdjaviSe = ((System.Windows.Controls.Button)(target));
             
-            #line 24 "..\..\WorkingWindow.xaml"
+            #line 30 "..\..\WorkingWindow.xaml"
             this.btnOdjaviSe.Click += new System.Windows.RoutedEventHandler(this.btnOdjaviSe_Click);
             
             #line default
@@ -170,7 +170,7 @@ namespace ProjekatTMP {
             case 6:
             this.btnIzvjestaj = ((System.Windows.Controls.Button)(target));
             
-            #line 25 "..\..\WorkingWindow.xaml"
+            #line 31 "..\..\WorkingWindow.xaml"
             this.btnIzvjestaj.Click += new System.Windows.RoutedEventHandler(this.btnIzvjestaj_Click);
             
             #line default
@@ -179,7 +179,7 @@ namespace ProjekatTMP {
             case 7:
             this.btnIzmijeni = ((System.Windows.Controls.Button)(target));
             
-            #line 26 "..\..\WorkingWindow.xaml"
+            #line 32 "..\..\WorkingWindow.xaml"
             this.btnIzmijeni.Click += new System.Windows.RoutedEventHandler(this.btnIzmijeni_Click);
             
             #line default
@@ -188,7 +188,7 @@ namespace ProjekatTMP {
             case 8:
             this.btnArhivirajSve = ((System.Windows.Controls.Button)(target));
             
-            #line 27 "..\..\WorkingWindow.xaml"
+            #line 33 "..\..\WorkingWindow.xaml"
             this.btnArhivirajSve.Click += new System.Windows.RoutedEventHandler(this.btnArhivirajSve_Click);
             
             #line default

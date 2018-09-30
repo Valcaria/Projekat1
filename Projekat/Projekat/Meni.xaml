@@ -5,11 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="Meni" Height="450" Width="458" WindowStartupLocation="CenterScreen">
+        Title="Meni" Height="584" Width="353" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF142C9B" Offset="0"/>
+            <GradientStop Color="#FF1BBAD3" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
-        <Button x:Name="btnUnesi" Content="Unesi" HorizontalAlignment="Left" Margin="251,58,0,0" VerticalAlignment="Top" Width="116" Height="116" Click="btnUnesi_Click"/>
-        <Image x:Name="imgSobe" HorizontalAlignment="Left" Height="116" Margin="251,227,0,0" VerticalAlignment="Top" Width="116" Source="pack://siteoforigin:,,,/Resources/Bed.png" MouseLeftButtonDown="imgSobe_MouseLeftButtonDown"/>
-        <Image x:Name="imgEvidencija" HorizontalAlignment="Left" Height="116" Margin="58,58,0,0" VerticalAlignment="Top" Width="116" Source="Resources/evidence.png" MouseLeftButtonDown="imgEvidencija_MouseLeftButtonDown"/>
+        <Image x:Name="imgSobe" HorizontalAlignment="Left" Height="116" Margin="58,401,0,0" VerticalAlignment="Top" Width="116" Source="pack://siteoforigin:,,,/Resources/Bed.png" MouseLeftButtonDown="imgSobe_MouseLeftButtonDown"/>
+        <Image x:Name="imgEvidencija" HorizontalAlignment="Left" Height="116" Margin="46,58,0,0" VerticalAlignment="Top" Width="116" Source="Resources/evidence.png" MouseLeftButtonDown="imgEvidencija_MouseLeftButtonDown"/>
+        <Image x:Name="imgUnesi" HorizontalAlignment="Left" Margin="58,227,0,0" Width="116" Source="Resources/f7e7b6d99036ac35fb4ac14531dad6ff.png" MouseLeftButtonDown="imgEvidencija_MouseLeftButtonDown" Height="116" VerticalAlignment="Top"/>
+        <Label x:Name="___No_Name_" Content="Evidencija" HorizontalAlignment="Left" Margin="179,143,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="___No_Name__Copy" Content="Sobe" HorizontalAlignment="Left" Margin="174,486,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="___No_Name__Copy1" Content="Unesi" HorizontalAlignment="Left" Margin="179,312,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
 
     </Grid>
 </Window>
