@@ -446,103 +446,117 @@ namespace ProjekatTMP
 
             FillDataGrid("s");
         }
-
-
-/*
-        public void ExportToPdf(System.Data.DataTable dt)
+        private void menuItem_Click(object sender, RoutedEventArgs e)
         {
-            
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            dlg.FileName = "Izvjestaj"; // Default file name
-            dlg.DefaultExt = ".pdf"; // Default file extension
-            dlg.Filter = "PDF documents (.pdf)|*.pdf"; // Filter files by extension
-
-            // Show save file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
-            try
+            if(menuItem.Header.ToString() == "_Arhiva")
             {
-
-
-                // Process save file dialog box results
-                if (result == true)
-                {
-                    // Save document
-                    string filename = dlg.FileName;
-
-                    Document document = new Document();
-                    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filename, FileMode.Create));
-                    document.AddTitle("Izvjestaj");
-
-                    document.AddCreationDate();
-
-                    document.Open();
-                    iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 7);
-
-                    PdfPTable table = new PdfPTable(dt.Columns.Count);
-                    PdfPRow row = null;
-                    float[] widths = new float[] { 1f, 3f, 3f, 3f, 4f, 3f, 3f, 4f };
-                    table.SetWidths(widths);
-
-                    table.WidthPercentage = 100;
-                    int iCol = 0;
-                    string colname = "";
-                    PdfPCell cell = new PdfPCell(new Phrase("Elementi"));
-
-                    cell.Colspan = dt.Columns.Count;
-
-                    foreach (DataColumn c in dt.Columns)
-                    {
-
-                        table.AddCell(new Phrase(c.ColumnName, font5));
-                    }
-
-                    foreach (DataRow r in dt.Rows)
-                    {
-                        if (dt.Rows.Count > 0)
-                        {
-                            table.AddCell(new Phrase(r[0].ToString(), font5));
-                            table.AddCell(new Phrase(r[1].ToString(), font5));
-                            table.AddCell(new Phrase(r[2].ToString(), font5));
-                            table.AddCell(new Phrase(r[3].ToString(), font5));
-                            table.AddCell(new Phrase(r[4].ToString(), font5));
-                            table.AddCell(new Phrase(r[5].ToString(), font5));
-                            table.AddCell(new Phrase(r[6].ToString(), font5));
-                            table.AddCell(new Phrase(r[7].ToString(), font5));
-                        }
-                    }
-                    //dodavanje naslova
-
-                    Chunk c1 = new Chunk("        Izvještaj");
-                    c1.SetHorizontalScaling(5f);
-                    c1.setLineHeight(5f);
-                    iTextSharp.text.Font fontC1 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
-
-                    c1.Font = fontC1;
-
-                    Chunk c2 = new Chunk("                                                                                                             Datum:______________");
-                    c2.SetHorizontalScaling(2f);
-                    c2.setLineHeight(2f);
-                    iTextSharp.text.Font fontC2 = iTextSharp.text.FontFactory.GetFont(FontFactory.TIMES, 7);
-
-                    c2.Font = fontC2;
-
-
-                    document.Add(c1);
-                    document.Add(new iTextSharp.text.Paragraph(" "));
-
-                    document.Add(c2);
-                    document.Add(new iTextSharp.text.Paragraph(" "));
-                    document.Add(new iTextSharp.text.Paragraph(" "));
-
-                    document.Add(table);
-                    document.Close();
-                }
-            }catch (Exception error)
-            {
-                MessageBox.Show("GRESKA: " + error.Message);
+                FillDataGrid("a");
+                menuItem.Header = "_Studenti";
             }
+            else if(menuItem.Header.ToString() == "_Studenti")
+            {
+                FillDataGrid("s");
+                menuItem.Header = "_Arhiva";
+            }
+
         }
-        */
+
+
+        /*
+                public void ExportToPdf(System.Data.DataTable dt)
+                {
+
+                    Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+                    dlg.FileName = "Izvjestaj"; // Default file name
+                    dlg.DefaultExt = ".pdf"; // Default file extension
+                    dlg.Filter = "PDF documents (.pdf)|*.pdf"; // Filter files by extension
+
+                    // Show save file dialog box
+                    Nullable<bool> result = dlg.ShowDialog();
+                    try
+                    {
+
+
+                        // Process save file dialog box results
+                        if (result == true)
+                        {
+                            // Save document
+                            string filename = dlg.FileName;
+
+                            Document document = new Document();
+                            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filename, FileMode.Create));
+                            document.AddTitle("Izvjestaj");
+
+                            document.AddCreationDate();
+
+                            document.Open();
+                            iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 7);
+
+                            PdfPTable table = new PdfPTable(dt.Columns.Count);
+                            PdfPRow row = null;
+                            float[] widths = new float[] { 1f, 3f, 3f, 3f, 4f, 3f, 3f, 4f };
+                            table.SetWidths(widths);
+
+                            table.WidthPercentage = 100;
+                            int iCol = 0;
+                            string colname = "";
+                            PdfPCell cell = new PdfPCell(new Phrase("Elementi"));
+
+                            cell.Colspan = dt.Columns.Count;
+
+                            foreach (DataColumn c in dt.Columns)
+                            {
+
+                                table.AddCell(new Phrase(c.ColumnName, font5));
+                            }
+
+                            foreach (DataRow r in dt.Rows)
+                            {
+                                if (dt.Rows.Count > 0)
+                                {
+                                    table.AddCell(new Phrase(r[0].ToString(), font5));
+                                    table.AddCell(new Phrase(r[1].ToString(), font5));
+                                    table.AddCell(new Phrase(r[2].ToString(), font5));
+                                    table.AddCell(new Phrase(r[3].ToString(), font5));
+                                    table.AddCell(new Phrase(r[4].ToString(), font5));
+                                    table.AddCell(new Phrase(r[5].ToString(), font5));
+                                    table.AddCell(new Phrase(r[6].ToString(), font5));
+                                    table.AddCell(new Phrase(r[7].ToString(), font5));
+                                }
+                            }
+                            //dodavanje naslova
+
+                            Chunk c1 = new Chunk("        Izvještaj");
+                            c1.SetHorizontalScaling(5f);
+                            c1.setLineHeight(5f);
+                            iTextSharp.text.Font fontC1 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
+
+                            c1.Font = fontC1;
+
+                            Chunk c2 = new Chunk("                                                                                                             Datum:______________");
+                            c2.SetHorizontalScaling(2f);
+                            c2.setLineHeight(2f);
+                            iTextSharp.text.Font fontC2 = iTextSharp.text.FontFactory.GetFont(FontFactory.TIMES, 7);
+
+                            c2.Font = fontC2;
+
+
+                            document.Add(c1);
+                            document.Add(new iTextSharp.text.Paragraph(" "));
+
+                            document.Add(c2);
+                            document.Add(new iTextSharp.text.Paragraph(" "));
+                            document.Add(new iTextSharp.text.Paragraph(" "));
+
+                            document.Add(table);
+                            document.Close();
+                        }
+                    }catch (Exception error)
+                    {
+                        MessageBox.Show("GRESKA: " + error.Message);
+                    }
+                }
+                */
         /*
         private void ExportToExcel()
         {

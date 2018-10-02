@@ -26,15 +26,6 @@ namespace ProjekatTMP
                 
         }
 
-
-        private void btnUnesi_Click(object sender, RoutedEventArgs e)
-        {
-            AddWindow addWindow = new AddWindow();
-            this.Hide();
-            addWindow.ShowDialog();
-            this.Show();
-        }
-
         private void imgSobe_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Sobe sobe = new Sobe();
@@ -57,6 +48,14 @@ namespace ProjekatTMP
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
+        }
+
+        private void imgUnesi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AddWindow addWindow = new AddWindow();
+            this.Hide();
+            addWindow.ShowDialog();
+            this.Show();
         }
     }
 }

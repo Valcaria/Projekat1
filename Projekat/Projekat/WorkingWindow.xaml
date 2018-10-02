@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatTMP"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ProjekatTMP.WorkingWindow"
-        mc:Ignorable="d" Height="550.5" Width="996.5" MinWidth="996.5" MinHeight="550">
+        mc:Ignorable="d" Height="589.5" Width="996.5" MinWidth="996.5" MinHeight="550">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF142C9B" Offset="0"/>
@@ -13,7 +13,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid x:Name="grdPozadina">
-        <DataGrid x:Name="datagrdTabela" Margin="10,10,9,85" IsHitTestVisible="True" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" RowHeaderWidth="0">
+        <DataGrid x:Name="datagrdTabela" Margin="10,50,9,85" IsHitTestVisible="True" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" RowHeaderWidth="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="34" Binding="{Binding ID}" FontSize="14" MinWidth="33"/>
                 <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding IME}" FontSize="14"/>
@@ -30,5 +30,10 @@
         <Button x:Name="btnIzvjestaj" Content="Izvještaj" Margin="0,0,10,23" FontSize="18" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="98" Click="btnIzvjestaj_Click" TabIndex="4"/>
         <Button x:Name="btnIzmijeni" Content="Izmijeni" HorizontalAlignment="Left" Margin="261,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnIzmijeni_Click" IsEnabled="False" TabIndex="3"/>
         <Button x:Name="btnArhivirajSve" Content="Arhiviraj Sve" HorizontalAlignment="Left" Margin="394,0,0,23" Width="122" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnArhivirajSve_Click" TabIndex="2"/>
+        <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="988">
+            <Menu DockPanel.Dock="Top" Height="35" VerticalAlignment="Top" Opacity="0.6">
+                <MenuItem x:Name="menuItem" Header="_Arhiva" Height="35" Click="menuItem_Click"/>
+            </Menu>
+        </DockPanel>
     </Grid>
 </Window>
