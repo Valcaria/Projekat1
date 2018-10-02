@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="Izvjestaj" Height="275.034" Width="544.282" MinWidth="484.282" MinHeight="235.034" MaxWidth="544.282" MaxHeight="275.034" WindowStartupLocation="CenterOwner">
+        Title="Izvjestaj" Height="275.034" Width="544.282" MinWidth="484.282" MinHeight="235.034" MaxWidth="544.282" MaxHeight="275.034" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF142C9B" Offset="0"/>

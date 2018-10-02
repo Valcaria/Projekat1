@@ -59,7 +59,7 @@
         <Label Content="Usluga:" Margin="59,213,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="58" RenderTransformOrigin="1.724,-1.483"/>
         <Label Content="Paviljon:" Margin="54,285,0,0" VerticalAlignment="Top" FontSize="14" HorizontalAlignment="Left" Width="63"/>
         <DockPanel Height="29" LastChildFill="False" VerticalAlignment="Top" Margin="-5,2,-2,0">
-            <Menu DockPanel.Dock="Top" Height="30" Opacity="0.705">
+            <Menu DockPanel.Dock="Top" Height="30">
                 <MenuItem Header="_Arhiva" Click="MenuItem_Click" Height="30">
                 </MenuItem>
             </Menu>

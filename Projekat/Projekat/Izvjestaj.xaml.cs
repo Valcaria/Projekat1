@@ -57,7 +57,7 @@ namespace Projekat
                     // Save document
                     string filename = dlg.FileName;
 
-                    Document document = new Document();
+                    iTextSharp.text.Document document = new iTextSharp.text.Document();
                     PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filename, FileMode.Create));
                     document.AddTitle("Izvjestaj");
 
@@ -106,7 +106,7 @@ namespace Projekat
                             }
                         }
 
-                      
+
                     }
                     else
                     {
@@ -141,9 +141,9 @@ namespace Projekat
                                 table.AddCell(new Phrase(r[8].ToString(), font5));
 
                             }
-                        }                    
+                        }
 
-                   
+
                     }
                     //dodavanje naslova
 
@@ -242,12 +242,17 @@ namespace Projekat
         private void imgPdf_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ExportToPdf(dataTable);
-            
         }
 
         private void imgExcel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ExportToExcel(dataTable);
         }
+
+     
+
+
+
     }
 }
+
