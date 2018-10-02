@@ -38,7 +38,6 @@ namespace ProjekatTMP
         public string prezime = "";
         public string brTelefona = "";
         private System.Data.DataTable dataTable;
-        public int pom = 0;
         public WorkingWindow()
         {
             InitializeComponent();
@@ -58,11 +57,15 @@ namespace ProjekatTMP
             btnArhiviraj.Content = "Pretraga";
             btnIzmijeni.Visibility = Visibility.Hidden;
             btnArhivirajSve.Visibility = Visibility.Hidden;
+            menuItem.Visibility = Visibility.Hidden;
+            dockPanel.Visibility = Visibility.Hidden;
+            datagrdTabela.Margin = new Thickness(10,15,9,85);
             btnIzvjestaj.Margin = new Thickness(0, 0, 10, 23);
 
         }
         private void FillDataGrid(string baza)
         {
+            
             if(baza == "s")
             {
                 try
@@ -81,24 +84,24 @@ namespace ProjekatTMP
                 {
                     MessageBox.Show("Greska: " + e.Message.ToString());
                 }
+
+               if(datagrdTabela.Columns.Count > 8)
+                {
+                    datagrdTabela.Columns.Remove(datagrdTabela.Columns[8]);
+                }
             }
             else if(baza == "a")
             {
                 try
                 {
-                   if(pom <1)
-                    {
-                        DataGridTextColumn data = new DataGridTextColumn();
-                        data.Header = "Datum Razduzenja";
-                        data.FontSize = 14;
-                        Binding binding = new Binding("DATUM_RAZDUZENJA");
-                        data.Binding = binding;
-                        datagrdTabela.Columns.Add(data);
-                    }
+                    DataGridTextColumn data = new DataGridTextColumn();
+                    data.Header = "Datum Razduzenja";
+                    data.FontSize = 14;
+                    Binding binding = new Binding("DATUM_RAZDUZENJA");
+                    data.Binding = binding;
+                    datagrdTabela.Columns.Add(data);
 
 
-
-                    
                     System.Data.DataTable dG = new System.Data.DataTable();
                     MySqlConnection conn = new MySqlConnection(connstr);
                     conn.Open();
@@ -214,12 +217,12 @@ namespace ProjekatTMP
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-           if(datagrdTabela.SelectedItem != null)
+           if(datagrdTabela.SelectedItem != null && btnArhiviraj.Content.ToString() !="Pretraga")
             {
                 btnArhiviraj.IsEnabled = true;
                 btnIzmijeni.IsEnabled = true;
             }
-           else
+           else if(datagrdTabela.SelectedItem == null && btnArhiviraj.Content.ToString() != "Pretraga")
             {
                 btnArhiviraj.IsEnabled = false;
                 btnIzmijeni.IsEnabled = false;
@@ -341,7 +344,7 @@ namespace ProjekatTMP
         }
         private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)
         {
-            Projekat.Izvjestaj izvjestaj = new Projekat.Izvjestaj(dataTable);
+            Projekat.Izvjestaj izvjestaj = new Projekat.Izvjestaj(dataTable, menuItem.Header.ToString());
           //  this.Hide();
             izvjestaj.ShowDialog();
           //  this.Show();
@@ -457,13 +460,26 @@ namespace ProjekatTMP
             {
                 FillDataGrid("a");
                 menuItem.Header = "_Studenti";
+                btnArhiviraj.IsEnabled = true;
+                btnDodaj.Visibility = Visibility.Hidden;
+
+                btnArhiviraj.Content = "Pretraga";
+                btnArhiviraj.Margin = new Thickness(10,0, 0, 23);
+                btnIzmijeni.Visibility = Visibility.Hidden;
+                btnArhivirajSve.Visibility = Visibility.Hidden;
             }
             else if(menuItem.Header.ToString() == "_Studenti")
             {
-                pom++;
 
                 FillDataGrid("s");
+                btnArhiviraj.IsEnabled = false;
+                btnDodaj.Visibility = Visibility.Visible;
+                btnArhiviraj.Margin = new Thickness(135, 0, 0, 23);
+                btnArhiviraj.Content = "Arhiviraj";
+                btnIzmijeni.Visibility = Visibility.Visible;
+                btnArhivirajSve.Visibility = Visibility.Visible;
                 menuItem.Header = "_Arhiva";
+                
             }
 
         }

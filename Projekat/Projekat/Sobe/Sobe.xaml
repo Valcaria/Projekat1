@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
-        mc:Ignorable="d" Height="505.419" Width="725.298" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" Height="511.419" Width="737.298" WindowStartupLocation="CenterScreen" MinWidth="737.298" MinHeight="511.419" ResizeMode="CanMinimize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF142C9B" Offset="0"/>
@@ -29,7 +29,7 @@
             <Border.BorderBrush>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
             </Border.BorderBrush>
-            <ScrollViewer x:Name="scrVwer" Margin="0,0,-2,-2" GotFocus="scrVwer_GotFocus" VerticalScrollBarVisibility="Auto" CanContentScroll="True" HorizontalAlignment="Right">
+            <ScrollViewer x:Name="scrVwer" Margin="0,0,-2,-2" GotFocus="scrVwer_GotFocus" VerticalScrollBarVisibility="Auto" CanContentScroll="True" HorizontalAlignment="Right" Width="457">
                 <StackPanel x:Name="stcPanel" Height="453" Width="457"/>
             </ScrollViewer>
         </Border>

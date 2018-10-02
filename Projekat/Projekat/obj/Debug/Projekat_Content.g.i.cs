@@ -10,8 +10,6 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon/exchange-arrows.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/evidence.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/bed.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/f7e7b6d99036ac35fb4ac14531dad6ff.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon/if_x_293657.png")]
 
 

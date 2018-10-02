@@ -63,9 +63,9 @@ namespace Projekat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Bed {
+        internal static System.Drawing.Bitmap bed2 {
             get {
-                object obj = ResourceManager.GetObject("Bed", resourceCulture);
+                object obj = ResourceManager.GetObject("bed2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -131,31 +131,11 @@ namespace Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon sign_out {
-            get {
-                object obj = ResourceManager.GetObject("sign_out", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap write {
+        internal static System.Drawing.Bitmap write1 {
             get {
-                object obj = ResourceManager.GetObject("write", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Write_Icon1_300x300 {
-            get {
-                object obj = ResourceManager.GetObject("Write_Icon1_300x300", resourceCulture);
+                object obj = ResourceManager.GetObject("write1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

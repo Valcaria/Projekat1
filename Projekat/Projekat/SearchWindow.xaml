@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
-        mc:Ignorable="d" Height="501" Width="369.5">
+        mc:Ignorable="d" Height="501" Width="369.5" ResizeMode="CanMinimize" MinWidth="369.5" MinHeight="501">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF142C9B" Offset="0"/>

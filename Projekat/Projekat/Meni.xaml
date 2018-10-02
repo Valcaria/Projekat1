@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="Meni" Height="584" Width="353" WindowStartupLocation="CenterScreen">
+        Title="Meni" Height="188" Width="440.5" WindowStartupLocation="CenterScreen" MinHeight="285" MinWidth="575.5" ResizeMode="CanMinimize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF142C9B" Offset="0"/>
@@ -13,15 +13,15 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Image x:Name="imgSobe" HorizontalAlignment="Left" Height="116" Margin="58,401,0,0" VerticalAlignment="Top" Width="116" Source="pack://siteoforigin:,,,/Resources/Bed.png" MouseLeftButtonDown="imgSobe_MouseLeftButtonDown"/>
-        <Image x:Name="imgEvidencija" HorizontalAlignment="Left" Height="116" Margin="46,58,0,0" VerticalAlignment="Top" Width="116" Source="Resources/evidence.png" MouseLeftButtonDown="imgEvidencija_MouseLeftButtonDown"/>
-        <Image x:Name="imgUnesi" HorizontalAlignment="Left" Margin="58,227,0,0" Width="116" Source="Resources/f7e7b6d99036ac35fb4ac14531dad6ff.png" MouseLeftButtonDown="imgUnesi_MouseLeftButtonDown" Height="116" VerticalAlignment="Top"/>
-        <Label x:Name="___No_Name_" Content="Evidencija" HorizontalAlignment="Left" Margin="179,143,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Label x:Name="___No_Name__Copy" Content="Sobe" HorizontalAlignment="Left" Margin="174,486,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
-        <Label x:Name="___No_Name__Copy1" Content="Unesi" HorizontalAlignment="Left" Margin="179,312,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Image x:Name="imgSobe" Height="116" Margin="0,58,18,0" VerticalAlignment="Top" Source="pack://siteoforigin:,,,/Resources/bed2.png" MouseLeftButtonDown="imgSobe_MouseLeftButtonDown" HorizontalAlignment="Right" Width="116"/>
+        <Image x:Name="imgEvidencija" HorizontalAlignment="Left" Height="116" Margin="10,58,0,0" VerticalAlignment="Top" Width="116" Source="Resources/evidence.png" MouseLeftButtonDown="imgEvidencija_MouseLeftButtonDown"/>
+        <Image x:Name="imgUnesi" Margin="236,58,216,0" Source="pack://siteoforigin:,,,/Resources/write1.png" MouseLeftButtonDown="imgUnesi_MouseLeftButtonDown" Height="116" VerticalAlignment="Top"/>
+        <Label x:Name="___No_Name_" Content="Evidencija" HorizontalAlignment="Left" Margin="23,188,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="___No_Name__Copy" Content="Sobe" Margin="0,188,50,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right" Width="48"/>
+        <Label x:Name="___No_Name__Copy1" Content="Unesi" Margin="270,188,234,0" FontWeight="Bold" FontSize="16" Height="31" VerticalAlignment="Top"/>
         <DockPanel>
-            <Menu DockPanel.Dock="Top" Height="22" HorizontalAlignment="Left" Width="76">
-                <MenuItem x:Name="meniOdjavise" Header="Odjavi se" FontWeight="Bold" FontSize="14" Width="75" Click="meniOdjavise_Click"/>
+            <Menu DockPanel.Dock="Top" Height="35" Background="White">
+                <MenuItem x:Name="meniOdjavise" Header="Odjavi se" FontWeight="Bold" FontSize="14" Width="75" Click="meniOdjavise_Click" Height="35"/>
             </Menu>
             <StackPanel></StackPanel>
         </DockPanel>

@@ -124,8 +124,6 @@ C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Debug\Resources
 C:\Users\Dragana\Desktop\ProjekatTMP\trunk\Projekat\Projekat\bin\Debug\Resources\Bed.png
 E:\Projekat_1\trunk\Projekat\Projekat\bin\Debug\Icon\exchange-arrows.png
 E:\Projekat_1\trunk\Projekat\Projekat\bin\Debug\Resources\evidence.png
-E:\Projekat_1\trunk\Projekat\Projekat\bin\Debug\Resources\Bed.png
-E:\Projekat_1\trunk\Projekat\Projekat\bin\Debug\Resources\f7e7b6d99036ac35fb4ac14531dad6ff.png
 E:\Projekat_1\trunk\Projekat\Projekat\bin\Debug\Icon\if_x_293657.png
 E:\Projekat_1\trunk\Projekat\Projekat\bin\Debug\Projekat.exe.config
 E:\Projekat_1\trunk\Projekat\Projekat\bin\Debug\Projekat.exe

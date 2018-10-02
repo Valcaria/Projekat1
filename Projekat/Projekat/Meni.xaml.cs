@@ -23,7 +23,9 @@ namespace ProjekatTMP
         public Meni()
         {
             InitializeComponent();
-                
+            imgSobe.Source = new ImageSourceConverter().ConvertFromString(@"..\..\Resources\bed2.png") as ImageSource;
+            imgUnesi.Source = new ImageSourceConverter().ConvertFromString(@"..\..\Resources\write1.png") as ImageSource;
+
         }
 
         private void imgSobe_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

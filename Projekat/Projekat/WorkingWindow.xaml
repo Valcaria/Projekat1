@@ -30,9 +30,9 @@
         <Button x:Name="btnIzvjestaj" Content="Izvještaj" Margin="0,0,10,23" FontSize="18" Height="42" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="98" Click="btnIzvjestaj_Click" TabIndex="4"/>
         <Button x:Name="btnIzmijeni" Content="Izmijeni" HorizontalAlignment="Left" Margin="261,0,0,23" Width="99" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnIzmijeni_Click" IsEnabled="False" TabIndex="3"/>
         <Button x:Name="btnArhivirajSve" Content="Arhiviraj Sve" HorizontalAlignment="Left" Margin="394,0,0,23" Width="122" FontSize="18" Height="42" VerticalAlignment="Bottom" Click="btnArhivirajSve_Click" TabIndex="2"/>
-        <DockPanel HorizontalAlignment="Left" Height="35" LastChildFill="False" VerticalAlignment="Top" Width="988">
-            <Menu DockPanel.Dock="Top" Height="35" VerticalAlignment="Top" Opacity="0.6">
-                <MenuItem x:Name="menuItem" Header="_Arhiva" Height="35" Click="menuItem_Click"/>
+        <DockPanel x:Name="dockPanel" Height="35" LastChildFill="False" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top" Height="35" VerticalAlignment="Top" Background="White">
+                <MenuItem x:Name="menuItem" Header="_Arhiva" Height="35" Click="menuItem_Click" FontWeight="Bold" FontSize="14"/>
             </Menu>
         </DockPanel>
     </Grid>

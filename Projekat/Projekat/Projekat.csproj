@@ -238,21 +238,14 @@
     <Content Include="Icon\exchange-arrows.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bed2.png" />
     <Content Include="Resources\evidence.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Bed.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="Resources\sign_out.ico" />
+    <None Include="Resources\write1.png" />
     <None Include="Resources\log_out.png" />
     <None Include="Resources\excel.png" />
-    <Content Include="Resources\f7e7b6d99036ac35fb4ac14531dad6ff.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\pdf.png" />
-    <None Include="Resources\Write-Icon1-300x300.png" />
-    <None Include="Resources\Noun_285871_cc_write_story.svg.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon\if_x_293657.png">

@@ -26,14 +26,14 @@ namespace Projekat
     public partial class Izvjestaj : System.Windows.Window
     {
         private System.Data.DataTable dataTable;
-
-        public Izvjestaj(System.Data.DataTable dataTable)
+        private string pom;
+        public Izvjestaj(System.Data.DataTable dataTable, string pom)
         {
             InitializeComponent();
             this.dataTable = dataTable;
+            this.pom = pom;
             imgPdf.Source = new ImageSourceConverter().ConvertFromString(@"..\..\Resources\pdf.png") as ImageSource;
             imgExcel.Source = new ImageSourceConverter().ConvertFromString(@"..\..\Resources\excel.png") as ImageSource;
-
         }
 
 
@@ -67,54 +67,100 @@ namespace Projekat
                     iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 7);
 
                     PdfPTable table = new PdfPTable(dt.Columns.Count);
-                    PdfPRow row = null;
-                    float[] widths = new float[] { 1f, 3f, 3f, 3f, 4f, 3f, 3f, 4f };
-                    table.SetWidths(widths);
 
-                    table.WidthPercentage = 100;
-                    int iCol = 0;
-                    string colname = "";
-                    PdfPCell cell = new PdfPCell(new Phrase("Elementi"));
 
-                    cell.Colspan = dt.Columns.Count;
 
-                    foreach (DataColumn c in dt.Columns)
+                    Chunk c1 = null;
+                    Chunk c2 = null;
+                    // PdfPRow row = null;
+                    if (pom == "_Arhiva")
                     {
+                        float[] widths = new float[] { 1f, 3f, 3f, 3f, 4f, 3f, 3f, 4f };
+                        table.SetWidths(widths);
 
-                        table.AddCell(new Phrase(c.ColumnName, font5));
-                    }
+                        table.WidthPercentage = 100;
+                        // int iCol = 0;
+                        // string colname = "";
+                        PdfPCell cell = new PdfPCell(new Phrase("Elementi"));
 
-                    foreach (DataRow r in dt.Rows)
-                    {
-                        if (dt.Rows.Count > 0)
+                        cell.Colspan = dt.Columns.Count;
+
+                        foreach (DataColumn c in dt.Columns)
                         {
-                            table.AddCell(new Phrase(r[0].ToString(), font5));
-                            table.AddCell(new Phrase(r[1].ToString(), font5));
-                            table.AddCell(new Phrase(r[2].ToString(), font5));
-                            table.AddCell(new Phrase(r[3].ToString(), font5));
-                            table.AddCell(new Phrase(r[4].ToString(), font5));
-                            table.AddCell(new Phrase(r[5].ToString(), font5));
-                            table.AddCell(new Phrase(r[6].ToString(), font5));
-                            table.AddCell(new Phrase(r[7].ToString(), font5));
+
+                            table.AddCell(new Phrase(c.ColumnName, font5));
                         }
+
+                        foreach (DataRow r in dt.Rows)
+                        {
+                            if (dt.Rows.Count > 0)
+                            {
+                                table.AddCell(new Phrase(r[0].ToString(), font5));
+                                table.AddCell(new Phrase(r[1].ToString(), font5));
+                                table.AddCell(new Phrase(r[2].ToString(), font5));
+                                table.AddCell(new Phrase(r[3].ToString(), font5));
+                                table.AddCell(new Phrase(r[4].ToString(), font5));
+                                table.AddCell(new Phrase(r[5].ToString(), font5));
+                                table.AddCell(new Phrase(r[6].ToString(), font5));
+                                table.AddCell(new Phrase(r[7].ToString(), font5));
+                            }
+                        }
+
+                      
+                    }
+                    else
+                    {
+                        float[] widths = new float[] { 1f, 3f, 3f, 3f, 4f, 3f, 3f, 4f, 4f };
+                        table.SetWidths(widths);
+
+                        table.WidthPercentage = 100;
+                        // int iCol = 0;
+                        // string colname = "";
+                        PdfPCell cell = new PdfPCell(new Phrase("Elementi"));
+
+                        cell.Colspan = dt.Columns.Count;
+
+                        foreach (DataColumn c in dt.Columns)
+                        {
+
+                            table.AddCell(new Phrase(c.ColumnName, font5));
+                        }
+
+                        foreach (DataRow r in dt.Rows)
+                        {
+                            if (dt.Rows.Count > 0)
+                            {
+                                table.AddCell(new Phrase(r[0].ToString(), font5));
+                                table.AddCell(new Phrase(r[1].ToString(), font5));
+                                table.AddCell(new Phrase(r[2].ToString(), font5));
+                                table.AddCell(new Phrase(r[3].ToString(), font5));
+                                table.AddCell(new Phrase(r[4].ToString(), font5));
+                                table.AddCell(new Phrase(r[5].ToString(), font5));
+                                table.AddCell(new Phrase(r[6].ToString(), font5));
+                                table.AddCell(new Phrase(r[7].ToString(), font5));
+                                table.AddCell(new Phrase(r[8].ToString(), font5));
+
+                            }
+                        }                    
+
+                   
                     }
                     //dodavanje naslova
 
-                    Chunk c1 = new Chunk("         Izvještaj");
+                    c1 = new Chunk("       Izvještaj");
                     c1.SetHorizontalScaling(4f);
-                    
+
                     c1.setLineHeight(6f);
-                    iTextSharp.text.Font fontC1 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 15);
+                    iTextSharp.text.Font fontC1 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 17);
 
                     c1.Font = fontC1;
 
-                    Chunk c2 = new Chunk("                                                                                                             Datum:______________");
+                    c2 = new Chunk("                                                                                                             Datum:______________");
                     c2.SetHorizontalScaling(2f);
                     c2.setLineHeight(2f);
                     iTextSharp.text.Font fontC2 = iTextSharp.text.FontFactory.GetFont(FontFactory.TIMES, 7);
 
                     c2.Font = fontC2;
-
 
                     document.Add(c1);
                     document.Add(new iTextSharp.text.Paragraph(" "));
