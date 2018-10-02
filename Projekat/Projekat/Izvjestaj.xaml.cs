@@ -147,6 +147,7 @@ namespace Projekat
                     }
                     //dodavanje naslova
 
+                    /*
                     c1 = new Chunk("       Izvještaj");
                     c1.SetHorizontalScaling(4f);
 
@@ -161,11 +162,21 @@ namespace Projekat
                     iTextSharp.text.Font fontC2 = iTextSharp.text.FontFactory.GetFont(FontFactory.TIMES, 7);
 
                     c2.Font = fontC2;
-
+                    
                     document.Add(c1);
                     document.Add(new iTextSharp.text.Paragraph(" "));
 
-                    document.Add(c2);
+                    document.Add(c2);*/
+                    iTextSharp.text.Font titleFont = FontFactory.GetFont("Arial", 32);
+                    iTextSharp.text.Font regularFont = FontFactory.GetFont("Arial", 12);
+                    iTextSharp.text.Paragraph title;
+                    iTextSharp.text.Paragraph text;
+                    title = new iTextSharp.text.Paragraph("Izvještaj", titleFont);
+                    title.Alignment = Element.ALIGN_CENTER;
+                    document.Add(title);
+                    text = new iTextSharp.text.Paragraph("Datum:_____________", regularFont);
+                    text.Alignment = Element.ALIGN_RIGHT;
+                    document.Add(text);
                     document.Add(new iTextSharp.text.Paragraph(" "));
                     document.Add(new iTextSharp.text.Paragraph(" "));
 
