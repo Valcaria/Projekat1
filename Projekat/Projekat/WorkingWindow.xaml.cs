@@ -57,6 +57,7 @@ namespace ProjekatTMP
             btnArhiviraj.Content = "Pretraga";
             btnOdjaviSe.Visibility = Visibility.Hidden;
             btnIzmijeni.Visibility = Visibility.Hidden;
+            btnArhivirajSve.Visibility = Visibility.Hidden;
             btnIzvjestaj.Margin = new Thickness(0, 0, 10, 23);
 
         }
@@ -392,22 +393,22 @@ namespace ProjekatTMP
         private void btnArhivirajSve_Click(object sender, RoutedEventArgs e)
         {
             int broj = Count("SELECT * FROM studenti");
-            
+
             for (int i = 0; i < broj; i++)
             {
                 string ime = "", prezime = "", maticni = "", brojTelefona = "", mjestoStanovanja = "";
-                string datumZaduzenja = "", dom = "", soba = "", paviljon = "", fakultet = "", godina = "";
+                string datumZaduzenja = "", fakultet = "", godina = "";
                 string godinaUsluge = "", komentar = "", usluga = "";
 
                 MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
 
                 conn.Open();
-                MySqlCommand command = new MySqlCommand("select * from studenti",conn);
+                MySqlCommand command = new MySqlCommand("select * from studenti", conn);
                 MySqlDataReader dataReader = command.ExecuteReader();
 
-                while(dataReader.Read())
+                while (dataReader.Read())
                 {
-                    if(dataReader[0].ToString() == Convert.ToString(i+1))
+                    if (dataReader[0].ToString() == Convert.ToString(i + 1))
                     {
                         ime = dataReader[1].ToString();
                         prezime = dataReader[2].ToString();
@@ -416,7 +417,7 @@ namespace ProjekatTMP
                         mjestoStanovanja = dataReader[4].ToString();
                         datumZaduzenja = dataReader[10].ToString();
                         dom = dataReader[6].ToString();
-                        soba = dataReader[8].ToString();
+                        brSobe = dataReader[8].ToString();
                         paviljon = dataReader[7].ToString();
                         komentar = dataReader[14].ToString();
                         godina = dataReader[13].ToString();
@@ -429,20 +430,28 @@ namespace ProjekatTMP
 
                 conn.Close();
 
+                oslobodiSobu();
+
                 int id = Count("select * from arhiva");
 
                 conn = new MySqlConnection(Settings.Default.connstr);
-                
+
                 conn.Open();
-                MySqlCommand command2 = new MySqlCommand("select * from studenti", conn);
-              //  MySqlDataReader dataReader = command.ExecuteReader();
+                MySqlCommand cmd = new MySqlCommand("INSERT into arhiva(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, dom, paviljon, soba, usluga,DATUM_ZADUZIVANJA,datum_razduzenja, godina_upotrebe, fakultet, godina, komentar) VALUES('" + ime + "', '" + prezime + "', '" + maticni + "', '" + mjestoStanovanja + "', '" + brojTelefona + "', '" + dom + "', '" + paviljon + "', '" + brSobe + "', '" + usluga + "', '" + datumZaduzenja + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + godinaUsluge + "', '" + fakultet + "', '" + godina + "', '" + komentar + "')", conn);
+                cmd.ExecuteNonQuery();
 
                 conn.Close();
-
-
-
-
             }
+
+            MySqlConnection conn2 = new MySqlConnection(Settings.Default.connstr);
+
+            conn2.Open();
+            MySqlCommand cmd2 = new MySqlCommand("TRUNCATE TABLE studenti", conn2);
+            cmd2.ExecuteNonQuery();
+
+            conn2.Close();
+
+            FillDataGrid("s");
         }
 
 
