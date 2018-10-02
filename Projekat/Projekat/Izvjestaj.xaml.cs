@@ -230,6 +230,11 @@ namespace Projekat
                     {  // <small>hey! I did not invent this line of code, 
                        // I found it somewhere on CodeProject.</small> 
                        // <small>It works to add the whole row at once, pretty cool huh?</small>
+                        string d = "D" + (Idx + 2), f = "F" + (Idx + 2);
+
+                        ws.Range[d].NumberFormat = "@";
+                        ws.Range[f].NumberFormat = "@";
+
                         ws.Range["A2"].Offset[Idx].Resize[1, dataTable.Columns.Count].Value =
                         dataTable.Rows[Idx].ItemArray;
                     }

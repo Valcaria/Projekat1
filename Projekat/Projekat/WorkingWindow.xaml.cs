@@ -120,6 +120,32 @@ namespace ProjekatTMP
             }
         }
 
+        private void KonverzijaDatuma(string datumIzTabele)
+        {
+            for (int i = 0, j = 0; i < 10; i++)
+            {
+                if (datumIzTabele[i] != '/')
+                {
+                    switch (j)
+                    {
+                        case 0:
+                            Settings.Default.dan += datumIzTabele[i];
+                            break;
+                        case 1:
+                            Settings.Default.mjesec += datumIzTabele[i];
+                            break;
+                        case 2:
+                            Settings.Default.godina += datumIzTabele[i];
+                            break;
+                    }
+                }
+                else
+                {
+                    j++;
+
+                }
+            }
+        }
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
            if(btnArhiviraj.Content.ToString() != "Pretraga")
@@ -154,29 +180,8 @@ namespace ProjekatTMP
                         string datum = "";
                         maticniBr = dataRow.Row.ItemArray[3].ToString();
 
-                        for (int i = 0, j = 0; i <10; i++)
-                        {
-                            if (dataRow.Row.ItemArray[7].ToString()[i] != '/')
-                            {
-                                switch (j)
-                                {
-                                    case 0:
-                                        Settings.Default.dan += dataRow.Row.ItemArray[7].ToString()[i]; ;
-                                        break;
-                                    case 1:
-                                        Settings.Default.mjesec += dataRow.Row.ItemArray[7].ToString()[i];
-                                        break;
-                                    case 2:
-                                        Settings.Default.godina += dataRow.Row.ItemArray[7].ToString()[i];
-                                        break;
-                                }
-                            }
-                            else
-                            {
-                                j++;
-                                
-                            }
-                        }
+
+                        KonverzijaDatuma(dataRow.Row.ItemArray[7].ToString());
 
                         datum = Settings.Default.godina + "-" + Settings.Default.mjesec + "-" + Settings.Default.dan;
                         Settings.Default.godina = Settings.Default.mjesec = Settings.Default.dan = "";
@@ -241,29 +246,7 @@ namespace ProjekatTMP
                 if(rReader[3].ToString() == dataRow.Row.ItemArray[3].ToString())
                 {
                     Settings.Default.datum = rReader[10].ToString();
-                    for (int i = 0, j = 0; i < dataRow.Row.ItemArray[7].ToString().Length; i++)
-                    {
-                        if (dataRow.Row.ItemArray[7].ToString()[i] != '/')
-                        {
-
-                            switch (j)
-                            {
-                                case 0:
-                                    Settings.Default.dan += dataRow.Row.ItemArray[7].ToString()[i];
-                                    break;
-                                case 1:
-                                    Settings.Default.mjesec += dataRow.Row.ItemArray[7].ToString()[i];
-                                    break;
-                                case 2:
-                                    Settings.Default.godina += dataRow.Row.ItemArray[7].ToString()[i];
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            j++;
-                        }
-                    }
+                    KonverzijaDatuma(dataRow.Row.ItemArray[7].ToString());
                     Settings.Default.datum = Settings.Default.dan + "/" + Settings.Default.mjesec + "/" + Settings.Default.godina;
                     Settings.Default.godina = Settings.Default.dan = Settings.Default.mjesec = "";
 
@@ -407,7 +390,7 @@ namespace ProjekatTMP
                     MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
 
                     conn.Open();
-                    MySqlCommand command = new MySqlCommand("select * from studenti", conn);
+                    MySqlCommand command = new MySqlCommand("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,GODINA_UPOTREBE,	FAKULTET,	GODINA,	KOMENTAR  From studenti", conn);
                     MySqlDataReader dataReader = command.ExecuteReader();
 
                     while (dataReader.Read())
@@ -435,6 +418,7 @@ namespace ProjekatTMP
                     conn.Close();
 
                     oslobodiSobu();
+                    KonverzijaDatuma(datumZaduzenja);
 
                     int id = Count("select * from arhiva");
 
