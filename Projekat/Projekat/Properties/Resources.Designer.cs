@@ -83,6 +83,16 @@ namespace Projekat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excel {
+            get {
+                object obj = ResourceManager.GetObject("excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exchange_arrows {
             get {
                 object obj = ResourceManager.GetObject("exchange_arrows", resourceCulture);
@@ -96,6 +106,16 @@ namespace Projekat.Properties {
         internal static System.Drawing.Bitmap if_x_293657 {
             get {
                 object obj = ResourceManager.GetObject("if_x_293657", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pdf {
+            get {
+                object obj = ResourceManager.GetObject("pdf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

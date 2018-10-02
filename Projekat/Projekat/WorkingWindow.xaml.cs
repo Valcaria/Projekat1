@@ -18,6 +18,8 @@ using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
 using Projekat.Properties;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace ProjekatTMP
 {
@@ -35,6 +37,7 @@ namespace ProjekatTMP
         public string ime = "";
         public string prezime = "";
         public string brTelefona = "";
+        private System.Data.DataTable dataTable;
         public WorkingWindow()
         {
             InitializeComponent();
@@ -71,7 +74,7 @@ namespace ProjekatTMP
                     sAdapter.Fill(dG);
                     datagrdTabela.ItemsSource = dG.DefaultView;
                     conn.Close();
-
+                    dataTable = dG;
                 }
                 catch (Exception e)
                 {
@@ -100,7 +103,7 @@ namespace ProjekatTMP
                     sAdapter.Fill(dG);
                     datagrdTabela.ItemsSource = dG.DefaultView;
                     conn.Close();
-
+                    dataTable = dG;
                 }
                 catch (Exception e)
                 {
@@ -271,52 +274,7 @@ namespace ProjekatTMP
             conn.Close();
         }
 
-        private void ExportToExcel()
-        {
-            /*  datagrdTabela.SelectAllCells();
-              datagrdTabela.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
-              ApplicationCommands.Copy.Execute(null, datagrdTabela);
-              String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
-              String result = (string)Clipboard.GetData(DataFormats.Text);
-              datagrdTabela.UnselectAllCells();
-              System.IO.StreamWriter file1 = new System.IO.StreamWriter(@"C:\Intel\test.xls");
-              file1.WriteLine(result.Replace(',', ' '));
-              file1.Close();*/
-
-
-            using (new WaitCursor())
-            {
-                try
-                {
-                    Excel.Application excel = new Excel.Application();
-                    excel.Visible = true;
-                    Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-                    Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-
-                    for (int j = 0; j < datagrdTabela.Columns.Count; j++)
-                    {
-                        Range myRange = (Range)sheet1.Cells[1, j + 1];
-                        sheet1.Cells[1, j + 1].Font.Bold = true;
-                        sheet1.Columns[j + 1].ColumnWidth = 15;
-                        myRange.Value2 = datagrdTabela.Columns[j].Header;
-                    }
-                    for (int i = 0; i < datagrdTabela.Columns.Count; i++)
-                    {
-                        for (int j = 0; j < datagrdTabela.Items.Count; j++)
-                        {
-                            TextBlock b = datagrdTabela.Columns[i].GetCellContent(datagrdTabela.Items[j]) as TextBlock;
-                            Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                            myRange.Value2 = b.Text;
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Greska: " + e.Message.ToString());
-                }
-            }
-
-        }
+       
         void oslobodiSobu()
         {
             int brSlobonihSoba = 0;
@@ -384,7 +342,12 @@ namespace ProjekatTMP
         }
         private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)
         {
-            ExportToExcel();
+            Projekat.Izvjestaj izvjestaj = new Projekat.Izvjestaj(dataTable);
+          //  this.Hide();
+            izvjestaj.ShowDialog();
+          //  this.Show();
+         //ExportToExcel();
+          //  ExportToPdf(dataTable);
         }
 
         void PromjenaID(int ID)
@@ -472,7 +435,7 @@ namespace ProjekatTMP
                 
                 conn.Open();
                 MySqlCommand command2 = new MySqlCommand("select * from studenti", conn);
-                MySqlDataReader dataReader = command.ExecuteReader();
+              //  MySqlDataReader dataReader = command.ExecuteReader();
 
                 conn.Close();
 
@@ -481,5 +444,150 @@ namespace ProjekatTMP
 
             }
         }
+
+
+/*
+        public void ExportToPdf(System.Data.DataTable dt)
+        {
+            
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = "Izvjestaj"; // Default file name
+            dlg.DefaultExt = ".pdf"; // Default file extension
+            dlg.Filter = "PDF documents (.pdf)|*.pdf"; // Filter files by extension
+
+            // Show save file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+            try
+            {
+
+
+                // Process save file dialog box results
+                if (result == true)
+                {
+                    // Save document
+                    string filename = dlg.FileName;
+
+                    Document document = new Document();
+                    PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filename, FileMode.Create));
+                    document.AddTitle("Izvjestaj");
+
+                    document.AddCreationDate();
+
+                    document.Open();
+                    iTextSharp.text.Font font5 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA, 7);
+
+                    PdfPTable table = new PdfPTable(dt.Columns.Count);
+                    PdfPRow row = null;
+                    float[] widths = new float[] { 1f, 3f, 3f, 3f, 4f, 3f, 3f, 4f };
+                    table.SetWidths(widths);
+
+                    table.WidthPercentage = 100;
+                    int iCol = 0;
+                    string colname = "";
+                    PdfPCell cell = new PdfPCell(new Phrase("Elementi"));
+
+                    cell.Colspan = dt.Columns.Count;
+
+                    foreach (DataColumn c in dt.Columns)
+                    {
+
+                        table.AddCell(new Phrase(c.ColumnName, font5));
+                    }
+
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            table.AddCell(new Phrase(r[0].ToString(), font5));
+                            table.AddCell(new Phrase(r[1].ToString(), font5));
+                            table.AddCell(new Phrase(r[2].ToString(), font5));
+                            table.AddCell(new Phrase(r[3].ToString(), font5));
+                            table.AddCell(new Phrase(r[4].ToString(), font5));
+                            table.AddCell(new Phrase(r[5].ToString(), font5));
+                            table.AddCell(new Phrase(r[6].ToString(), font5));
+                            table.AddCell(new Phrase(r[7].ToString(), font5));
+                        }
+                    }
+                    //dodavanje naslova
+
+                    Chunk c1 = new Chunk("        Izvještaj");
+                    c1.SetHorizontalScaling(5f);
+                    c1.setLineHeight(5f);
+                    iTextSharp.text.Font fontC1 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
+
+                    c1.Font = fontC1;
+
+                    Chunk c2 = new Chunk("                                                                                                             Datum:______________");
+                    c2.SetHorizontalScaling(2f);
+                    c2.setLineHeight(2f);
+                    iTextSharp.text.Font fontC2 = iTextSharp.text.FontFactory.GetFont(FontFactory.TIMES, 7);
+
+                    c2.Font = fontC2;
+
+
+                    document.Add(c1);
+                    document.Add(new iTextSharp.text.Paragraph(" "));
+
+                    document.Add(c2);
+                    document.Add(new iTextSharp.text.Paragraph(" "));
+                    document.Add(new iTextSharp.text.Paragraph(" "));
+
+                    document.Add(table);
+                    document.Close();
+                }
+            }catch (Exception error)
+            {
+                MessageBox.Show("GRESKA: " + error.Message);
+            }
+        }
+        */
+        /*
+        private void ExportToExcel()
+        {
+            /*  datagrdTabela.SelectAllCells();
+              datagrdTabela.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+              ApplicationCommands.Copy.Execute(null, datagrdTabela);
+              String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
+              String result = (string)Clipboard.GetData(DataFormats.Text);
+              datagrdTabela.UnselectAllCells();
+              System.IO.StreamWriter file1 = new System.IO.StreamWriter(@"C:\Intel\test.xls");
+              file1.WriteLine(result.Replace(',', ' '));
+              file1.Close();
+
+
+            using (new WaitCursor())
+            {
+                try
+                {
+                    Excel.Application excel = new Excel.Application();
+                    excel.Visible = true;
+                    Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                    Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+                    for (int j = 0; j < datagrdTabela.Columns.Count; j++)
+                    {
+                        Range myRange = (Range)sheet1.Cells[1, j + 1];
+                        sheet1.Cells[1, j + 1].Font.Bold = true;
+                        sheet1.Columns[j + 1].ColumnWidth = 15;
+                        myRange.Value2 = datagrdTabela.Columns[j].Header;
+                    }
+                    for (int i = 0; i < datagrdTabela.Columns.Count; i++)
+                    {
+                        for (int j = 0; j < datagrdTabela.Items.Count; j++)
+                        {
+                            TextBlock b = datagrdTabela.Columns[i].GetCellContent(datagrdTabela.Items[j]) as TextBlock;
+                            Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                            myRange.Value2 = b.Text;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("GRESKA: " + e.Message.ToString());
+                }
+            }
+
+        }*/
+
     }
 }
