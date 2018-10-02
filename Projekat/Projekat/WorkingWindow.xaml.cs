@@ -55,7 +55,6 @@ namespace ProjekatTMP
             FillDataGrid("a");
             btnArhiviraj.IsEnabled = true;
             btnArhiviraj.Content = "Pretraga";
-            btnOdjaviSe.Visibility = Visibility.Hidden;
             btnIzmijeni.Visibility = Visibility.Hidden;
             btnArhivirajSve.Visibility = Visibility.Hidden;
             btnIzvjestaj.Margin = new Thickness(0, 0, 10, 23);
@@ -206,13 +205,7 @@ namespace ProjekatTMP
             }
         }
 
-        private void btnOdjaviSe_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
-          
-        }
+      
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {

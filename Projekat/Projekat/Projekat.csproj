@@ -244,6 +244,8 @@
     <Content Include="Resources\Bed.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\sign_out.ico" />
+    <None Include="Resources\log_out.png" />
     <None Include="Resources\excel.png" />
     <Content Include="Resources\f7e7b6d99036ac35fb4ac14531dad6ff.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

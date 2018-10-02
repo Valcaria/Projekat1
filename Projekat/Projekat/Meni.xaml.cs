@@ -23,6 +23,7 @@ namespace ProjekatTMP
         public Meni()
         {
             InitializeComponent();
+                
         }
 
 
@@ -49,6 +50,13 @@ namespace ProjekatTMP
             this.Hide();
             workingWindow.ShowDialog();
             this.Show();
+        }
+
+        private void meniOdjavise_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
     }
 }
