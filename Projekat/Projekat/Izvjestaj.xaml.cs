@@ -70,8 +70,8 @@ namespace Projekat
 
 
 
-                    Chunk c1 = null;
-                    Chunk c2 = null;
+                   // Chunk c1 = null;
+                   // Chunk c2 = null;
                     // PdfPRow row = null;
                     if (pom == "_Arhiva")
                     {
@@ -190,6 +190,10 @@ namespace Projekat
                 MessageBox.Show("Error: " + error.Message);
             }
         }
+
+
+
+
 
         private void ExportToExcel(System.Data.DataTable dataTable)
         {

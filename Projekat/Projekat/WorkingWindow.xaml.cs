@@ -376,7 +376,7 @@ namespace ProjekatTMP
 
         private void btnArhivirajSve_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult message = MessageBox.Show("Da li ste sigurni da želite da arhivirate studenta sve studente?", " ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            MessageBoxResult message = MessageBox.Show("Da li ste sigurni da želite da arhivirate sve studente?", " ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if (message == MessageBoxResult.OK)
             {
                 int broj = Count("SELECT * FROM studenti");
