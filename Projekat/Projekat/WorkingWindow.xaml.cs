@@ -38,6 +38,7 @@ namespace ProjekatTMP
         public string prezime = "";
         public string brTelefona = "";
         private System.Data.DataTable dataTable;
+        public int pom = 0;
         public WorkingWindow()
         {
             InitializeComponent();
@@ -85,15 +86,19 @@ namespace ProjekatTMP
             {
                 try
                 {
-                    DataGridTextColumn data = new DataGridTextColumn();
-                    data.Header = "Datum razduzenja";
-                    data.FontSize = 14;
-                    Binding binding = new Binding("DATUM_RAZDUZENJA");
-                    data.Binding = binding;
+                   if(pom <1)
+                    {
+                        DataGridTextColumn data = new DataGridTextColumn();
+                        data.Header = "Datum Razduzenja";
+                        data.FontSize = 14;
+                        Binding binding = new Binding("DATUM_RAZDUZENJA");
+                        data.Binding = binding;
+                        datagrdTabela.Columns.Add(data);
+                    }
 
 
 
-                    datagrdTabela.Columns.Add(data);
+                    
                     System.Data.DataTable dG = new System.Data.DataTable();
                     MySqlConnection conn = new MySqlConnection(connstr);
                     conn.Open();
@@ -455,6 +460,8 @@ namespace ProjekatTMP
             }
             else if(menuItem.Header.ToString() == "_Studenti")
             {
+                pom++;
+
                 FillDataGrid("s");
                 menuItem.Header = "_Arhiva";
             }
