@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="Izvjestaj" Height="275.034" Width="544.282" MinWidth="484.282" MinHeight="235.034" MaxWidth="544.282" MaxHeight="275.034" WindowStartupLocation="CenterOwner" ResizeMode="CanMinimize">
+        Title="Izvjestaj" Height="275.034" Width="544.282" MinWidth="484.282" MinHeight="235.034" MaxWidth="544.282" MaxHeight="275.034" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF142C9B" Offset="0"/>
@@ -15,6 +15,8 @@
     <Grid>
         <Image x:Name="imgPdf" HorizontalAlignment="Left" Height="162" Margin="10,10,0,0" VerticalAlignment="Top" Width="197" MouseLeftButtonDown="imgPdf_MouseLeftButtonDown"/>
         <Image x:Name="imgExcel" HorizontalAlignment="Right" Height="162" Margin="0,10,10,0" VerticalAlignment="Top" Width="197" MouseLeftButtonDown="imgExcel_MouseLeftButtonDown"/>
+        <Label Content="PDF format" HorizontalAlignment="Left" Margin="45,177,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="EXCEL format" HorizontalAlignment="Left" Margin="388,177,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>
