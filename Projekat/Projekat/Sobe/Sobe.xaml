@@ -33,6 +33,7 @@
                 <StackPanel x:Name="stcPanel" Height="453" Width="457"/>
             </ScrollViewer>
         </Border>
+        <Label x:Name="lblDosloJeDoPromjene" Content="Promjena" HorizontalAlignment="Left" Margin="22,367,0,0" VerticalAlignment="Top" FontSize="22" Width="208" FontWeight="Bold"/>
 
     </Grid>
 </Window>

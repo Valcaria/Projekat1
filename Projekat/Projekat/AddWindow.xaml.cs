@@ -276,9 +276,11 @@ namespace ProjekatTMP
                     {   
                         try
                         {
+                            int count = Count("SELECT * FROM studenti");
+
                             MySqlConnection conn = new MySqlConnection(connstr);
                             conn.Open();
-                            MySqlCommand cmd = new MySqlCommand("INSERT into studenti(ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, usluga,DATUM_ZADUZIVANJA, godina_upotrebe, fakultet, godina, komentar) VALUES('" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbUsluga.Text + "', '" + (Settings.Default.datum) +  "','"+ txtGodina.Text + "', '" + cmbFakultet.Text + "', '" + cmbGodina.Text + "', '" + txtKomentar.Text + "')", conn);
+                            MySqlCommand cmd = new MySqlCommand("INSERT into studenti(ID,ime,prezime,maticni_broj, mjesto_stanovanja, broj_telefona, usluga,DATUM_ZADUZIVANJA, godina_upotrebe, fakultet, godina, komentar) VALUES('" + (count + 1) + "','" + txtIme.Text + "', '" + txtPrezime.Text + "', '" + txtMaticni_Broj.Text + "', '" + txtMjesto_Stanovanja.Text + "', '" + txtBroj_Telefona.Text + "', '" + cmbUsluga.Text + "', '" + (Settings.Default.datum) +  "','"+ txtGodina.Text + "', '" + cmbFakultet.Text + "', '" + cmbGodina.Text + "', '" + txtKomentar.Text + "')", conn);
                             cmd.ExecuteNonQuery();
                             conn.Close();
                             this.Close();
@@ -293,34 +295,69 @@ namespace ProjekatTMP
             }
             else
             {
-                if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                if (cmbUsluga.Text == "Hrana i soba")
                 {
-                    try
-                    { 
-                        MySqlConnection conn = new MySqlConnection(connstr);
-                        conn.Open();
-                        MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET ime = '" + txtIme.Text + "', prezime ='" + txtPrezime.Text + "', maticni_broj ='" + txtMaticni_Broj.Text + "', mjesto_stanovanja ='" + txtMjesto_Stanovanja.Text + "', broj_telefona ='" + txtBroj_Telefona.Text+ "', dom ='" + cmbDom.Text +"',paviljon ='" +cmbPaviljon.Text+"',soba ='" + cmbSoba.Text+ "',usluga ='" + cmbUsluga.Text+ "',godina_upotrebe ='" + txtGodina.Text + "',fakultet = '" + cmbFakultet.Text + "', godina = '" + cmbGodina.Text + "',komentar = '" + txtKomentar.Text + "' where id = " + id + ";", conn);
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                        if (brSobe != cmbSoba.Text)
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                    {
+                        try
                         {
-                            connectionSobe();
-                            oslobodiSobu();
-                        }
-                        if (brSobe == cmbSoba.Text)
-                            if (dom != cmbDom.Text || paviljon != cmbPaviljon.Text)
+                            MySqlConnection conn = new MySqlConnection(connstr);
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET ime = '" + txtIme.Text + "', prezime ='" + txtPrezime.Text + "', maticni_broj ='" + txtMaticni_Broj.Text + "', mjesto_stanovanja ='" + txtMjesto_Stanovanja.Text + "', broj_telefona ='" + txtBroj_Telefona.Text + "', dom ='" + cmbDom.Text + "',paviljon ='" + cmbPaviljon.Text + "',soba ='" + cmbSoba.Text + "',usluga ='" + cmbUsluga.Text + "',godina_upotrebe ='" + txtGodina.Text + "',fakultet = '" + cmbFakultet.Text + "', godina = '" + cmbGodina.Text + "',komentar = '" + txtKomentar.Text + "' where id = " + id + ";", conn);
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            if (brSobe != cmbSoba.Text)
                             {
                                 connectionSobe();
                                 oslobodiSobu();
                             }
-                        conn.Close();
-                        this.Close();
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show("Greska: " + error.Message.ToString());
+                            if (brSobe == cmbSoba.Text)
+                                if (dom != cmbDom.Text || paviljon != cmbPaviljon.Text)
+                                {
+                                    connectionSobe();
+                                    oslobodiSobu();
+                                }
+                            conn.Close();
+                            this.Close();
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greska: " + error.Message.ToString());
+                        }
                     }
                 }
+                else if (cmbUsluga.Text == "Hrana")
+                {
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbUsluga.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                    {
+                        try
+                        {
+                            MySqlConnection conn = new MySqlConnection(connstr);
+                            conn.Open();
+                            MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET ime = '" + txtIme.Text + "', prezime ='" + txtPrezime.Text + "', maticni_broj ='" + txtMaticni_Broj.Text + "', mjesto_stanovanja ='" + txtMjesto_Stanovanja.Text + "', broj_telefona ='" + txtBroj_Telefona.Text + "', dom ='" + cmbDom.Text + "',paviljon ='" + cmbPaviljon.Text + "',soba ='" + cmbSoba.Text + "',usluga ='" + cmbUsluga.Text + "',godina_upotrebe ='" + txtGodina.Text + "',fakultet = '" + cmbFakultet.Text + "', godina = '" + cmbGodina.Text + "',komentar = '" + txtKomentar.Text + "' where id = " + id + ";", conn);
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            if (brSobe != cmbSoba.Text)
+                            {
+                                connectionSobe();
+                                oslobodiSobu();
+                            }
+                            if (brSobe == cmbSoba.Text)
+                                if (dom != cmbDom.Text || paviljon != cmbPaviljon.Text)
+                                {
+                                    connectionSobe();
+                                    oslobodiSobu();
+                                }
+                            conn.Close();
+                            this.Close();
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greska: " + error.Message.ToString());
+                        }
+                    }
+                }
+                
             }
             
         }

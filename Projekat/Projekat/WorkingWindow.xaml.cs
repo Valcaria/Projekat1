@@ -122,6 +122,7 @@ namespace ProjekatTMP
 
         private void KonverzijaDatuma(string datumIzTabele)
         {
+            Settings.Default.dan = Settings.Default.mjesec = Settings.Default.godina = "";
             for (int i = 0, j = 0; i < 10; i++)
             {
                 if (datumIzTabele[i] != '/')
@@ -180,7 +181,7 @@ namespace ProjekatTMP
                         string datum = "";
                         maticniBr = dataRow.Row.ItemArray[3].ToString();
 
-
+                        MessageBox.Show(dataRow.Row.ItemArray[7].ToString());
                         KonverzijaDatuma(dataRow.Row.ItemArray[7].ToString());
 
                         datum = Settings.Default.godina + "-" + Settings.Default.mjesec + "-" + Settings.Default.dan;
@@ -392,7 +393,6 @@ namespace ProjekatTMP
                     conn.Open();
                     MySqlCommand command = new MySqlCommand("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,GODINA_UPOTREBE,	FAKULTET,	GODINA,	KOMENTAR  From studenti", conn);
                     MySqlDataReader dataReader = command.ExecuteReader();
-
                     while (dataReader.Read())
                     {
                         if (dataReader[0].ToString() == Convert.ToString(i + 1))
@@ -420,6 +420,7 @@ namespace ProjekatTMP
                     oslobodiSobu();
                     KonverzijaDatuma(datumZaduzenja);
 
+                    datumZaduzenja  = Settings.Default.godina + "-" + Settings.Default.mjesec + "-" + Settings.Default.dan;
                     int id = Count("select * from arhiva");
 
                     conn = new MySqlConnection(Settings.Default.connstr);
@@ -447,7 +448,7 @@ namespace ProjekatTMP
             if(menuItem.Header.ToString() == "_Arhiva")
             {
                 FillDataGrid("a");
-                menuItem.Header = "_Studenti";
+                menuItem.Header = "_Tekuća godina";
                 btnArhiviraj.IsEnabled = true;
                 btnDodaj.Visibility = Visibility.Hidden;
 
@@ -456,7 +457,7 @@ namespace ProjekatTMP
                 btnIzmijeni.Visibility = Visibility.Hidden;
                 btnArhivirajSve.Visibility = Visibility.Hidden;
             }
-            else if(menuItem.Header.ToString() == "_Studenti")
+            else if(menuItem.Header.ToString() == "_Tekuća godina")
             {
 
                 FillDataGrid("s");
