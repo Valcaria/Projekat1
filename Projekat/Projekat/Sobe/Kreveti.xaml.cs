@@ -78,12 +78,14 @@ namespace ProjekatTMP
                 promjenaNoveSobe(dom, paviljon, soba);
                 promjenaStareSobe(Settings.Default.dom, Settings.Default.paviljon, Settings.Default.soba);
                 CleanIT();
+                Settings.Default.close = 3;
             }
             else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "on")
             {
                 Zamjena zamjena = new Zamjena(Settings.Default.imePrezime, lblIme.Content.ToString(), Settings.Default.maticni, maticni, Settings.Default.soba, soba, Settings.Default.dom, dom, Settings.Default.paviljon, paviljon);
                 zamjena.ShowDialog();
                 Settings.Default.pom = "off";
+                Settings.Default.close = 3;
             }
         }
         void CleanIT()

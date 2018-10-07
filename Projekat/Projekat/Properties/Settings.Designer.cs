@@ -226,5 +226,17 @@ namespace Projekat.Properties {
                 this["komentar"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string promjena {
+            get {
+                return ((string)(this["promjena"]));
+            }
+            set {
+                this["promjena"] = value;
+            }
+        }
     }
 }

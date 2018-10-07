@@ -46,6 +46,7 @@ namespace ProjekatTMP
                 case 0:
                     Settings.Default.close = 1;
                     combBoxChange();
+                    lblDosloJeDoPromjene.Content = Settings.Default.promjena;
                     break;
                 case 2:
                     Settings.Default.close = 1;
@@ -53,17 +54,22 @@ namespace ProjekatTMP
                     stpStudentInfo.Children.Add(new StudentInfo());
                     
                     combBoxChange();
+                    lblDosloJeDoPromjene.Content = "";
                     break;
                 case 3:
                     Settings.Default.close = 1;
                     stpStudentInfo.Children.Clear();
                     combBoxChange();
+                    lblDosloJeDoPromjene.Content = "";
+
+                   // MessageBox.Show("SOBA PROMJENUTA!");
                     break;
                 case 4:
                     Settings.Default.close = 1;
                     stpStudentInfo.Children.Clear();
                     stpStudentInfo.Children.Add(new StudentInfo(cmbDom.Text, cmbPaviljon.Text));
                     combBoxChange();
+                    lblDosloJeDoPromjene.Content = "";
                     break;
             }
         }

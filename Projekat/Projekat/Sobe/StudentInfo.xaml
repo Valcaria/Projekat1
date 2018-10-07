@@ -10,7 +10,7 @@
             <Grid Margin="0,0,0,-1">
                 <Label x:Name="lblImePrezime" Content="Student:" HorizontalAlignment="Left" Margin="13,56,0,0" VerticalAlignment="Top" Width="151" Height="125"/>
                 <Button x:Name="btnZamjena" Content="Promjeni Sobu" HorizontalAlignment="Left" Margin="68,186,0,0" VerticalAlignment="Top" Width="86" Height="32" Click="btnZamjena_Click"/>
-                <Label x:Name="lblInfo" Content="O Studentu" VerticalAlignment="Top" Height="30" Margin="36,10,53,0" FontSize="16"/>
+                <Label x:Name="lblInfo" Content="O Studentu" VerticalAlignment="Top" Height="30" Margin="10,10,49,0" FontSize="16"/>
                 <Button x:Name="btnClose" HorizontalAlignment="Left" Margin="143,10,0,0" VerticalAlignment="Top" Width="28" Height="28" Click="btnClose_Click">
                     <Image Height="24" Width="24" RenderTransformOrigin="1.261,0.455" Source="pack://siteoforigin:,,,/Icon/if_x_293657.png"/>
                 </Button>

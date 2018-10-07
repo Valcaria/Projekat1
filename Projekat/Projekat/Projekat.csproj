@@ -74,6 +74,9 @@
     <Compile Include="AddWindow.xaml.cs">
       <DependentUpon>AddWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Filtar.xaml.cs">
+      <DependentUpon>Filtar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Izvjestaj.xaml.cs">
       <DependentUpon>Izvjestaj.xaml</DependentUpon>
     </Compile>
@@ -92,7 +95,7 @@
     <Compile Include="Sobe\StudentskeSobe.xaml.cs">
       <DependentUpon>StudentskeSobe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentInfo.xaml.cs">
+    <Compile Include="Sobe\StudentInfo.xaml.cs">
       <DependentUpon>StudentInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="WaitCursor.cs" />
@@ -107,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Filtar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,7 +156,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StudentInfo.xaml">
+    <Page Include="Sobe\StudentInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -44,7 +44,7 @@ namespace ProjekatTMP
         public StudentInfo(string dom, string paviljon)
         {
             InitializeComponent();
-            lblInfo.Content = "\nSoba broj: "+ Settings.Default.soba;
+            lblInfo.Content = "Soba broj: "+ Settings.Default.soba;
 
             MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
             conn.Open();
@@ -71,6 +71,8 @@ namespace ProjekatTMP
             {
                 Settings.Default.close = 0;
                 Settings.Default.pom = "on";
+                Settings.Default.promjena = "Izaberite sobu";
+
             }
             else if(btnZamjena.Content.ToString() == "Pretraga")
             {
@@ -82,6 +84,7 @@ namespace ProjekatTMP
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Settings.Default.maticni = "";
+            Settings.Default.pom = "off";
             Settings.Default.close = 3;
         }
     }

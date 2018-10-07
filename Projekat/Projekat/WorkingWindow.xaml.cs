@@ -57,7 +57,7 @@ namespace ProjekatTMP
             btnArhiviraj.Content = "Pretraga";
             btnIzmijeni.Visibility = Visibility.Hidden;
             btnArhivirajSve.Visibility = Visibility.Hidden;
-            menuItem.Visibility = Visibility.Hidden;
+            arhiva.Visibility = Visibility.Hidden;
             dockPanel.Visibility = Visibility.Hidden;
             datagrdTabela.Margin = new Thickness(10,15,9,85);
             btnIzvjestaj.Margin = new Thickness(0, 0, 10, 23);
@@ -328,7 +328,7 @@ namespace ProjekatTMP
         }
         private void btnIzvjestaj_Click(object sender, RoutedEventArgs e)
         {
-            Projekat.Izvjestaj izvjestaj = new Projekat.Izvjestaj(dataTable, menuItem.Header.ToString());
+            Projekat.Izvjestaj izvjestaj = new Projekat.Izvjestaj(dataTable, arhiva.Header.ToString());
           //  this.Hide();
             izvjestaj.ShowDialog();
           //  this.Show();
@@ -443,21 +443,22 @@ namespace ProjekatTMP
                 FillDataGrid("s");
             }
         }
-        private void menuItem_Click(object sender, RoutedEventArgs e)
+
+        private void arhiva_Click(object sender, RoutedEventArgs e)
         {
-            if(menuItem.Header.ToString() == "_Arhiva")
+            if (arhiva.Header.ToString() == "_Arhiva")
             {
                 FillDataGrid("a");
-                menuItem.Header = "_Tekuća godina";
+                arhiva.Header = "_Tekuća godina";
                 btnArhiviraj.IsEnabled = true;
                 btnDodaj.Visibility = Visibility.Hidden;
 
                 btnArhiviraj.Content = "Pretraga";
-                btnArhiviraj.Margin = new Thickness(10,0, 0, 23);
+                btnArhiviraj.Margin = new Thickness(10, 0, 0, 23);
                 btnIzmijeni.Visibility = Visibility.Hidden;
                 btnArhivirajSve.Visibility = Visibility.Hidden;
             }
-            else if(menuItem.Header.ToString() == "_Tekuća godina")
+            else if (arhiva.Header.ToString() == "_Tekuća godina")
             {
 
                 FillDataGrid("s");
@@ -467,10 +468,15 @@ namespace ProjekatTMP
                 btnArhiviraj.Content = "Arhiviraj";
                 btnIzmijeni.Visibility = Visibility.Visible;
                 btnArhivirajSve.Visibility = Visibility.Visible;
-                menuItem.Header = "_Arhiva";
-                
-            }
+                arhiva.Header = "_Arhiva";
 
+            }
+        }
+
+        private void filter_Click(object sender, RoutedEventArgs e)
+        {
+            Filtar filter = new Filtar();
+            filter.ShowDialog();
         }
 
 
