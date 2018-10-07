@@ -31,7 +31,7 @@ namespace ProjekatTMP
         string dom = "";
         string paviljon= "";
         string baza = "";
-        public SearchWindow(string maticni, string dom, string paviljon, string brSobe)
+        public SearchWindow(string maticni, string dom, string paviljon, string brSobe, string pom)
         {
             InitializeComponent();
 
@@ -41,7 +41,7 @@ namespace ProjekatTMP
             this.maticni = maticni;
 
 
-            FillDataGrid("select DISTINCT MATICNI_BROJ, IME, PREZIME from studenti");
+            FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME from studenti"+pom);
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;

@@ -241,7 +241,6 @@ E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\MainWindow.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Meni.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\Sobe.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentskeSobe.g.cs
-E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\StudentInfo.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\WorkingWindow.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\Zamjena.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\App.g.cs
@@ -257,7 +256,6 @@ E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\MainWindow.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Meni.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\Sobe.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentskeSobe.baml
-E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\StudentInfo.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\WorkingWindow.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\Zamjena.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Projekat.g.resources
@@ -267,3 +265,7 @@ E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Projekat.csproj.CoreCompileInputs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Projekat.csproj.CopyComplete
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Projekat.exe
 E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Projekat.pdb
+E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Filtar.g.cs
+E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentInfo.g.cs
+E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Filtar.baml
+E:\Projekat1\trunk\Projekat\Projekat\obj\Debug\Sobe\StudentInfo.baml

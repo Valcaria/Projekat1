@@ -116,7 +116,6 @@ E:\Projekat1\trunk\Projekat\Projekat\obj\Release\MainWindow.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Meni.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\Sobe.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\StudentskeSobe.g.cs
-E:\Projekat1\trunk\Projekat\Projekat\obj\Release\StudentInfo.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\WorkingWindow.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\Zamjena.g.cs
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\App.g.cs
@@ -132,7 +131,6 @@ E:\Projekat1\trunk\Projekat\Projekat\obj\Release\MainWindow.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Meni.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\Sobe.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\StudentskeSobe.baml
-E:\Projekat1\trunk\Projekat\Projekat\obj\Release\StudentInfo.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\WorkingWindow.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\Zamjena.baml
 E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Projekat.g.resources
@@ -190,3 +188,7 @@ C:\Users\Dragana\Desktop\PROJEKAT1\trunk\Projekat\Projekat\obj\Release\Projekat.
 C:\Users\Dragana\Desktop\PROJEKAT1\trunk\Projekat\Projekat\obj\Release\Projekat.csproj.CopyComplete
 C:\Users\Dragana\Desktop\PROJEKAT1\trunk\Projekat\Projekat\obj\Release\Filtar.g.cs
 C:\Users\Dragana\Desktop\PROJEKAT1\trunk\Projekat\Projekat\obj\Release\Filtar.baml
+E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Filtar.g.cs
+E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\StudentInfo.g.cs
+E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Filtar.baml
+E:\Projekat1\trunk\Projekat\Projekat\obj\Release\Sobe\StudentInfo.baml

@@ -37,7 +37,9 @@ namespace ProjekatTMP
         public string ime = "";
         public string prezime = "";
         public string brTelefona = "";
+        string naredba = "";
         private System.Data.DataTable dataTable;
+        public string[] filterString = {"","","","","","","","" };
         public WorkingWindow()
         {
             InitializeComponent();
@@ -46,13 +48,13 @@ namespace ProjekatTMP
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 300);
             dispatcherTimer.Start();
             
-            FillDataGrid("s");
+            FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
         }
 
         public WorkingWindow(string pom)
         {
             InitializeComponent();
-            FillDataGrid("a");
+            FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva");
             btnArhiviraj.IsEnabled = true;
             btnArhiviraj.Content = "Pretraga";
             btnIzmijeni.Visibility = Visibility.Hidden;
@@ -65,58 +67,36 @@ namespace ProjekatTMP
         }
         private void FillDataGrid(string baza)
         {
-            
-            if(baza == "s")
+            if(baza == "Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva")
             {
-                try
-                {
-                    System.Data.DataTable dG = new System.Data.DataTable();
-                    MySqlConnection conn = new MySqlConnection(connstr);
-                    conn.Open();
-
-                    MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti", conn);
-                    sAdapter.Fill(dG);
-                    datagrdTabela.ItemsSource = dG.DefaultView;
-                    conn.Close();
-                    dataTable = dG;
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Greska: " + e.Message.ToString());
-                }
-
-               if(datagrdTabela.Columns.Count > 8)
-                {
-                    datagrdTabela.Columns.Remove(datagrdTabela.Columns[8]);
-                }
+                DataGridTextColumn data = new DataGridTextColumn();
+                data.Header = "Datum Razduzenja";
+                data.FontSize = 14;
+                Binding binding = new Binding("DATUM_RAZDUZENJA");
+                data.Binding = binding;
+                datagrdTabela.Columns.Add(data);
             }
-            else if(baza == "a")
+
+            try
             {
-                try
-                {
-                    DataGridTextColumn data = new DataGridTextColumn();
-                    data.Header = "Datum Razduzenja";
-                    data.FontSize = 14;
-                    Binding binding = new Binding("DATUM_RAZDUZENJA");
-                    data.Binding = binding;
-                    datagrdTabela.Columns.Add(data);
+                System.Data.DataTable dG = new System.Data.DataTable();
+                MySqlConnection conn = new MySqlConnection(connstr);
+                conn.Open();
 
+                MySqlDataAdapter sAdapter = new MySqlDataAdapter(baza, conn);
+                sAdapter.Fill(dG);
+                datagrdTabela.ItemsSource = dG.DefaultView;
+                conn.Close();
+                dataTable = dG;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Greska: " + e.Message.ToString());
+            }
 
-                    System.Data.DataTable dG = new System.Data.DataTable();
-                    MySqlConnection conn = new MySqlConnection(connstr);
-                    conn.Open();
-
-
-                    MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva", conn);
-                    sAdapter.Fill(dG);
-                    datagrdTabela.ItemsSource = dG.DefaultView;
-                    conn.Close();
-                    dataTable = dG;
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Greska: " + e.Message.ToString());
-                }
+            if (datagrdTabela.Columns.Count > 8)
+            {
+                datagrdTabela.Columns.Remove(datagrdTabela.Columns[8]);
             }
         }
 
@@ -153,7 +133,7 @@ namespace ProjekatTMP
             {
                 AddWindow add = new AddWindow();
                 add.ShowDialog();
-                FillDataGrid("s");
+                FillDataGrid("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
             }
             else
             {
@@ -209,7 +189,7 @@ namespace ProjekatTMP
                     {
                         MessageBox.Show("Greska: " + error.Message.ToString());
                     }
-                    FillDataGrid("s");
+                    FillDataGrid("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
                 }   
             }
             else if(btnArhiviraj.Content.ToString() == "Pretraga")
@@ -253,7 +233,7 @@ namespace ProjekatTMP
 
                     AddWindow addWindow = new AddWindow(rReader[0].ToString(), rReader[1].ToString(), rReader[2].ToString(), rReader[3].ToString(), rReader[4].ToString(), rReader[5].ToString(), rReader[6].ToString(), rReader[7].ToString(), rReader[8].ToString(), rReader[9].ToString(), rReader[12].ToString(), rReader[13].ToString(), rReader[14].ToString());
                     addWindow.ShowDialog();
-                    FillDataGrid("s");
+                    FillDataGrid("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
                     this.Show();
                 }
             }
@@ -440,7 +420,7 @@ namespace ProjekatTMP
 
                 conn2.Close();
 
-                FillDataGrid("s");
+                FillDataGrid("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
             }
         }
 
@@ -448,7 +428,7 @@ namespace ProjekatTMP
         {
             if (arhiva.Header.ToString() == "_Arhiva")
             {
-                FillDataGrid("a");
+                FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva");
                 arhiva.Header = "_Tekuća godina";
                 btnArhiviraj.IsEnabled = true;
                 btnDodaj.Visibility = Visibility.Hidden;
@@ -461,7 +441,7 @@ namespace ProjekatTMP
             else if (arhiva.Header.ToString() == "_Tekuća godina")
             {
 
-                FillDataGrid("s");
+                FillDataGrid("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
                 btnArhiviraj.IsEnabled = false;
                 btnDodaj.Visibility = Visibility.Visible;
                 btnArhiviraj.Margin = new Thickness(135, 0, 0, 23);
@@ -475,8 +455,15 @@ namespace ProjekatTMP
 
         private void filter_Click(object sender, RoutedEventArgs e)
         {
-            Filtar filter = new Filtar();
+            Filtar filter = new Filtar(filterString);
             filter.ShowDialog();
+            naredba = filter.naredba;
+            FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti" +filter.naredba);
+            for(int i = 0; i<filterString.Length;i++)
+            {
+                filterString[i] = String.Copy(filter.prvaNaredba[i]);
+            }
+
         }
 
 
