@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Projekat.Properties;
 
 namespace ProjekatTMP
 {
@@ -28,7 +29,12 @@ namespace ProjekatTMP
         public MainWindow()
         {
             InitializeComponent();
-            Connection();
+            if(Settings.Default.check)
+            {
+                cbxSacuvaj.IsChecked = true;
+                txtKorisnik.Text = Settings.Default.korisnik;
+                txtLozinka.Password = Settings.Default.sifra;
+            }
         }
 
         private void imgStudentCard_MouseDown(object sender, MouseButtonEventArgs e)
@@ -40,7 +46,6 @@ namespace ProjekatTMP
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             mySql();
-            cbxSacuvaj_Click(sender, e);
             if (txtKorisnik.Text == user && txtLozinka.Password.ToString() == password && txtKorisnik.Text!= "" && txtLozinka.Password.ToString() != "" )
             {
                 Meni test = new Meni();
@@ -68,43 +73,22 @@ namespace ProjekatTMP
             }
             conn.Close();
         }
-
-        private void Connection()
-        {
-            MySqlConnection conn = new MySqlConnection(connstr);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from history", conn);
-
-            MySqlDataReader rReader = cmd.ExecuteReader();
-            rReader.Read();
-            if(rReader[3].ToString() == "1")
-                {
-                    txtKorisnik.Text = rReader[1].ToString();
-                    txtLozinka.Password = rReader[2].ToString();
-                    cbxSacuvaj.IsChecked = true;
-                }
-            conn.Close();
-        }
         private void cbxSacuvaj_Click(object sender, RoutedEventArgs e)
         {
             if (cbxSacuvaj.IsChecked == true)
             {
-                MySqlConnection con = new MySqlConnection(connstr);
-                con.Open();
-
-                MySqlCommand cmd = new MySqlCommand("UPDATE history SET user = '"+txtKorisnik.Text+"', password = '"+txtLozinka.Password.ToString()+"',user_checked = 1 where id = 0", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                Settings.Default.check = true;
+                Settings.Default.korisnik = txtKorisnik.Text;
+                Settings.Default.sifra = txtLozinka.Password.ToString();
             }
             else
             {
-                MySqlConnection con = new MySqlConnection(connstr);
-                con.Open();
-
-                MySqlCommand cmd = new MySqlCommand("UPDATE history SET user = '', password = '',user_checked = 0 where id = 0", con);
-                cmd.ExecuteNonQuery();
-                con.Close();
+                Settings.Default.check = false;
+                Settings.Default.korisnik = "";
+                Settings.Default.sifra = "";
             }
+
+            Settings.Default.Save();
         }
     }
 }

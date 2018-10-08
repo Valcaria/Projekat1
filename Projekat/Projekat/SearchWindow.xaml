@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
-        mc:Ignorable="d" Height="501" Width="369.5" ResizeMode="CanMinimize" MinWidth="369.5" MinHeight="501">
+        mc:Ignorable="d" Height="526" Width="369.5" ResizeMode="CanMinimize" MinWidth="369.5" MinHeight="501">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF142C9B" Offset="0"/>
@@ -12,15 +12,20 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <TextBox x:Name="txtPretraga" Height="31" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0" HorizontalAlignment="Left" Width="199"/>
-        <Button x:Name="btnPretraga" Content="Pretraga" HorizontalAlignment="Left" Margin="243,10,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnPretraga_Click"/>
-        <DataGrid x:Name="dtgPretraga" HorizontalAlignment="Left" Height="351" Margin="10,58,0,0" VerticalAlignment="Top" Width="342" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" IsHitTestVisible="True" IsReadOnly="True" RowHeaderWidth="0">
+        <TextBox x:Name="txtPretraga" Height="31" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0" HorizontalAlignment="Left" Width="231"/>
+        <Button x:Name="btnPretraga" Content="Pretraga" HorizontalAlignment="Left" Margin="277,42,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnPretraga_Click"/>
+        <DockPanel x:Name="dockPanel" Height="35" LastChildFill="False" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top" Height="35" VerticalAlignment="Top" Background="White">
+                <MenuItem x:Name="filter" Header="Filter" Height="35" FontWeight="Bold" FontSize="14" Click="filter_Click"/>
+            </Menu>
+        </DockPanel>
+        <DataGrid x:Name="dtgPretraga" HorizontalAlignment="Left" Height="351" Margin="10,88,0,0" VerticalAlignment="Top" Width="342" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" IsHitTestVisible="True" IsReadOnly="True" RowHeaderWidth="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Ime" Width="100" Binding="{Binding IME}" FontSize="14"/>
                 <DataGridTextColumn Header="Prezime" Width="100" Binding="{Binding PREZIME}" FontSize="14"/>
                 <DataGridTextColumn Header="Maticni Broj" Width="*" Binding="{Binding MATICNI_BROJ}" FontSize="14"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="277,429,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnDodaj_Click"/>
+        <Button x:Name="btnDodaj" Content="Dodaj" HorizontalAlignment="Left" Margin="277,456,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnDodaj_Click"/>
     </Grid>
 </Window>

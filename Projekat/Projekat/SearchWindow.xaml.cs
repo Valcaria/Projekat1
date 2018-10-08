@@ -31,7 +31,8 @@ namespace ProjekatTMP
         string dom = "";
         string paviljon= "";
         string baza = "";
-        public SearchWindow(string maticni, string dom, string paviljon, string brSobe, string pom)
+        string[] filterString = { "", "", "", "", "", "", "", "" };
+        public SearchWindow(string maticni, string dom, string paviljon, string brSobe)
         {
             InitializeComponent();
 
@@ -41,7 +42,7 @@ namespace ProjekatTMP
             this.maticni = maticni;
 
 
-            FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME from studenti"+pom);
+            FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME from studenti");
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
@@ -52,17 +53,20 @@ namespace ProjekatTMP
 
         }
 
-        public SearchWindow()
+        public SearchWindow(string[] naredba)
         {
             InitializeComponent();
-
+            for (int i = 0; i < filterString.Length; i++)
+            {
+                filterString[i] = String.Copy(naredba[i]);
+            }
             try
             {
                 System.Data.DataTable dG = new System.Data.DataTable();
                 MySqlConnection conn = new MySqlConnection(connstr);
                 conn.Open();
 
-                MySqlCommand command = new MySqlCommand("select DISTINCT MATICNI_BROJ, IME, PREZIME from arhiva", conn);
+                MySqlCommand command = new MySqlCommand("select DISTINCT MATICNI_BROJ, IME, PREZIME from arhiva"+Settings.Default.naredba, conn);
                 MySqlDataAdapter sAdapter = new MySqlDataAdapter(command);
                 sAdapter.Fill(dG);
                 dtgPretraga.ItemsSource = dG.DefaultView;
@@ -237,6 +241,32 @@ namespace ProjekatTMP
             MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba + 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
             cmd2.ExecuteNonQuery();
             conn.Close();
+        }
+
+        private void filter_Click(object sender, RoutedEventArgs e)
+        {
+            if (maticni != "")
+            {
+                Filtar filter = new Filtar(filterString);
+                filter.ShowDialog();
+                Settings.Default.naredba = filter.naredba;
+                FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM studenti WHERE concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%'" + filter.naredba);
+                for (int i = 0; i < filterString.Length; i++)
+                {
+                    filterString[i] = String.Copy(filter.prvaNaredba[i]);
+                }
+            }
+            else
+            {
+                Filtar filter = new Filtar(filterString);
+                filter.ShowDialog();
+                Settings.Default.naredba = filter.naredba;
+                FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM arhiva WHERE concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%'" + filter.naredba);
+                for (int i = 0; i < filterString.Length; i++)
+                {
+                    filterString[i] = String.Copy(filter.prvaNaredba[i]);
+                }
+            }
         }
     }
 }

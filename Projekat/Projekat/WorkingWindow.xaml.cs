@@ -37,7 +37,6 @@ namespace ProjekatTMP
         public string ime = "";
         public string prezime = "";
         public string brTelefona = "";
-        string naredba = "";
         private System.Data.DataTable dataTable;
         public string[] filterString = {"","","","","","","","" };
         public WorkingWindow()
@@ -194,12 +193,10 @@ namespace ProjekatTMP
             }
             else if(btnArhiviraj.Content.ToString() == "Pretraga")
             {
-                SearchWindow search = new SearchWindow();
+                SearchWindow search = new SearchWindow(filterString);
                 search.ShowDialog();
             }
         }
-
-      
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -455,13 +452,28 @@ namespace ProjekatTMP
 
         private void filter_Click(object sender, RoutedEventArgs e)
         {
-            Filtar filter = new Filtar(filterString);
-            filter.ShowDialog();
-            naredba = filter.naredba;
-            FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti" +filter.naredba);
-            for(int i = 0; i<filterString.Length;i++)
+            if (arhiva.Header.ToString() == "_Arhiva")
             {
-                filterString[i] = String.Copy(filter.prvaNaredba[i]);
+                Filtar filter = new Filtar(filterString);
+                filter.ShowDialog();
+                Settings.Default.naredba = filter.naredba;
+                FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti" + filter.naredba);
+                for (int i = 0; i < filterString.Length; i++)
+                {
+                    filterString[i] = String.Copy(filter.prvaNaredba[i]);
+                }
+            }
+
+            else if (arhiva.Header.ToString() == "_Tekuća godina")
+            {
+                Filtar filter = new Filtar(filterString);
+                filter.ShowDialog();
+                Settings.Default.naredba = filter.naredba;
+                FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva" + filter.naredba);
+                for (int i = 0; i < filterString.Length; i++)
+                {
+                    filterString[i] = String.Copy(filter.prvaNaredba[i]);
+                }
             }
 
         }
