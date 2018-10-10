@@ -52,13 +52,14 @@ namespace ProjekatTMP
             pom--;
         }
 
-        private void Check(string[] pom)
+        private void Check(string[] niz)
         {
-            for (int i = 0; i < pom.Length; i++)
+            for (int i = 0; i < niz.Length; i++)
             {
-                switch (pom[i].ToString())
+                switch (niz[i].ToString())
                 {
                     case "Mjesto":
+                        pom++;
                         txtMjestoStanovanja.Text = Settings.Default.mjestoS1;
                         chbMjestoStanovanja.IsChecked = true;
                         txtMjestoStanovanja.IsEnabled = true;
@@ -74,6 +75,7 @@ namespace ProjekatTMP
                             rbtnDom2.IsChecked = true;
                             rbtnDom2.IsEnabled = true;
                         }
+                        pom++;
                         chbDom.IsChecked = true;
                         break;
                     case "Paviljon":
@@ -87,6 +89,7 @@ namespace ProjekatTMP
                             rbtnPaviljonZ.IsChecked = true;
                             rbtnPaviljonZ.IsEnabled = true;
                         }
+                        pom++;
                         chbPaviljon.IsChecked = true;
                         break;
                     case "Usluga":
@@ -100,16 +103,19 @@ namespace ProjekatTMP
                             rbtnHrana.IsChecked = true;
                             rbtnHrana.IsEnabled = true;
                         }
+                        pom++;
                         chbUsluga.IsChecked = true;
                         break;
                     case "DatumZ":
                         break;
                     case "GodinaU":
+                        pom++;
                         txtGodinaUpotrebe.Text = Settings.Default.godinaU1;
                         chbGodinaUpotrebe.IsChecked = true;
                         txtGodinaUpotrebe.IsEnabled = true;
                         break;
                     case "Fakultet":
+                        pom++;
                         chbFakultet.IsChecked = true;
                         cmbFakultet.IsEnabled = true;
                         switch (Settings.Default.fakultet1)
@@ -129,6 +135,7 @@ namespace ProjekatTMP
                         }
                         break;
                     case "GodinaF":
+                        pom++;
                         txtGodinaFakulteta.Text = Settings.Default.godinaF1;
                         chbGodinaFakulteta.IsChecked = true;
                         txtGodinaFakulteta.IsEnabled = true;
