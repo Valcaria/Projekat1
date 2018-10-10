@@ -5,26 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjekatTMP"
         mc:Ignorable="d"
-        Title="Filtar" Height="461" Width="384.334">
+        Title="Filter" Height="461" Width="384.334" MinWidth="384.334" MaxWidth="384.334" MinHeight="461" MaxHeight="461" ResizeMode="CanMinimize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF142C9B" Offset="0"/>
+            <GradientStop Color="#FF1BBAD3" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <CheckBox x:Name="chbMjestoStanovanja" Content="Mjesto Stanovanja" HorizontalAlignment="Left" Margin="12,79,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chbMjestoStanovanja_Click"/>
         <CheckBox x:Name="chbDom" Content="Dom" HorizontalAlignment="Left" Margin="12,115,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chbDom_Click"/>
         <CheckBox x:Name="chbPaviljon" Content="Paviljon" HorizontalAlignment="Left" Margin="12,146,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chbPaviljon_Click"/>
         <CheckBox x:Name="chbUsluga" Content="Usluga" HorizontalAlignment="Left" Margin="12,179,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chbUsluga_Click"/>
         <CheckBox x:Name="chbDatumZaduzivanja" Content="Datum zaduzivanja" HorizontalAlignment="Left" Margin="12,212,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-        <TextBox x:Name="txtMjestoStanovanja" HorizontalAlignment="Left" Height="23" Margin="197,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" IsEnabled="False"/>
+        <TextBox x:Name="txtMjestoStanovanja" HorizontalAlignment="Left" Height="23" Margin="197,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169" IsEnabled="False"/>
         <CheckBox x:Name="chbFakultet" Content="Fakultet" HorizontalAlignment="Left" Margin="12,291,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chbFakultet_Click"/>
         <CheckBox x:Name="chbGodinaUpotrebe" Content="Godina upotrebe" HorizontalAlignment="Left" Margin="12,250,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chbGodinaUpotrebe_Click"/>
         <CheckBox x:Name="chbGodinaFakulteta" Content="Godina fakulteta" HorizontalAlignment="Left" Margin="12,325,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chbGodinaFakulteta_Click"/>
-        <TextBox x:Name="txtGodinaUpotrebe" HorizontalAlignment="Left" Height="23" Margin="197,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" IsEnabled="False"/>
-        <ComboBox x:Name="cmbFakultet" Margin="197,286,0,0" VerticalAlignment="Top" Height="23" TabIndex="3" HorizontalAlignment="Left" Width="127" IsEnabled="False">
+        <TextBox x:Name="txtGodinaUpotrebe" HorizontalAlignment="Left" Height="23" Margin="181,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" IsEnabled="False"/>
+        <ComboBox x:Name="cmbFakultet" Margin="181,286,0,0" VerticalAlignment="Top" Height="23" TabIndex="3" HorizontalAlignment="Left" Width="185" IsEnabled="False">
             <ComboBoxItem Content="ETF"  FontSize="14"/>
             <ComboBoxItem Content="MAF"  FontSize="14"/>
             <ComboBoxItem Content="MAK"  FontSize="14"/>
             <ComboBoxItem Content="POF"  FontSize="14"/>
         </ComboBox>
-        <TextBox x:Name="txtGodinaFakulteta" HorizontalAlignment="Left" Height="23" Margin="197,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.569,4.304" IsEnabled="False"/>
-        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="138,378,0,0" VerticalAlignment="Top" Width="75" Click="btnOK_Click"/>
+        <TextBox x:Name="txtGodinaFakulteta" HorizontalAlignment="Left" Height="23" Margin="181,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" RenderTransformOrigin="0.569,4.304" IsEnabled="False"/>
+        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="153,388,0,0" VerticalAlignment="Top" Width="75" Click="btnOK_Click"/>
         <WrapPanel x:Name="wrp1" HorizontalAlignment="Left" Height="15" Margin="128,115,0,0" VerticalAlignment="Top" Width="212" RenderTransformOrigin="0.542,4.667">
             <RadioButton x:Name="rbtnDom1" Content="Dom 1" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False"/>
             <RadioButton x:Name="rbtnDom2" Content="Dom 2" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Margin="76,0,0,0"/>
@@ -33,7 +39,7 @@
             <RadioButton x:Name="rbtnPaviljonM" Content="Muski paviljon" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False"/>
             <RadioButton x:Name="rbtnPaviljonZ" Content="Zenski paviljon" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Margin="36,0,0,0"/>
         </WrapPanel>
-       <WrapPanel x:Name="wrp3" HorizontalAlignment="Left" Height="15" Margin="128,181,0,0" VerticalAlignment="Top" Width="212" RenderTransformOrigin="0.542,4.667">
+        <WrapPanel x:Name="wrp3" HorizontalAlignment="Left" Height="15" Margin="128,181,0,0" VerticalAlignment="Top" Width="212" RenderTransformOrigin="0.542,4.667">
             <RadioButton x:Name="rbtnHranaiSoba" Content="Hrana i soba" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False"/>
             <RadioButton x:Name="rbtnHrana" Content="Hrana" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Margin="47,0,0,0"/>
         </WrapPanel>
