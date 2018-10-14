@@ -159,7 +159,10 @@ namespace ProjekatTMP
             this.paviljon = paviljon;
             int pom = 0;
 
-            btnDodaj.Content = "Izmijeni";
+            if(id != "")
+            {
+                btnDodaj.Content = "Izmijeni";
+            }
             txtIme.Text = ime;
             txtPrezime.Text = prezime;
             txtKomentar.Text = komentar;
@@ -238,9 +241,9 @@ namespace ProjekatTMP
                 cmbSoba.IsEnabled = false;
             }
             datePicker();
-            dpDatumZaduzivanja.SelectedDate = Convert.ToDateTime(Settings.Default.datum);
-            dpDatumZaduzivanja.Text = Convert.ToString(Convert.ToDateTime(Settings.Default.datum));
-            //MessageBox.Show(Convert.ToString(dpDatumZaduzivanja.SelectedDate));
+            //dpDatumZaduzivanja.SelectedDate = Convert.ToDateTime(Settings.Default.datum);
+            //dpDatumZaduzivanja.Text = Convert.ToString(Convert.ToDateTime(Settings.Default.datum));
+            ////MessageBox.Show(Convert.ToString(dpDatumZaduzivanja.SelectedDate));
         }
 
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
@@ -251,7 +254,7 @@ namespace ProjekatTMP
                 Settings.Default.datum = dpDatumZaduzivanja.SelectedDate.Value.Year + "-" + dpDatumZaduzivanja.SelectedDate.Value.Month + "-" + dpDatumZaduzivanja.SelectedDate.Value.Day.ToString();
                 if (cmbUsluga.Text == "Hrana i soba")
                 {
-                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && dpDatumZaduzivanja.SelectedDate != null && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
                     {
                         try
                         {
@@ -272,7 +275,7 @@ namespace ProjekatTMP
                 }
                 else if(cmbUsluga.Text == "Hrana")
                 {
-                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != ""  && cmbUsluga.Text != ""  && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && dpDatumZaduzivanja.SelectedDate != null && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != ""  && cmbUsluga.Text != ""  && cmbFakultet.Text != "" && cmbGodina.Text != "")
                     {   
                         try
                         {
@@ -297,7 +300,7 @@ namespace ProjekatTMP
             {
                 if (cmbUsluga.Text == "Hrana i soba")
                 {
-                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && dpDatumZaduzivanja.SelectedDate != null && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbSoba.Text != "" && cmbPaviljon.Text != "" && cmbUsluga.Text != "" && cmbDom.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
                     {
                         try
                         {
@@ -328,7 +331,7 @@ namespace ProjekatTMP
                 }
                 else if (cmbUsluga.Text == "Hrana")
                 {
-                    if (txtIme.Text != "" && txtPrezime.Text != "" && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbUsluga.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
+                    if (txtIme.Text != "" && txtPrezime.Text != "" && dpDatumZaduzivanja.SelectedDate != null && txtMaticni_Broj.Text != "" && txtMjesto_Stanovanja.Text != "" && txtBroj_Telefona.Text != "" && cmbUsluga.Text != "" && cmbFakultet.Text != "" && cmbGodina.Text != "")
                     {
                         try
                         {
@@ -456,6 +459,5 @@ namespace ProjekatTMP
 
             return count;
         }
-        
     }
 }

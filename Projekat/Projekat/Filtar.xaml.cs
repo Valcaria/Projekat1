@@ -147,6 +147,10 @@ namespace ProjekatTMP
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             naredba = " ";
+            //for (int i = 0; i < prvaNaredba.Length; i++)
+            //{
+            //    MessageBox.Show(prvaNaredba[i]);
+            //}
 
             for (int i = 0; i < prvaNaredba.Length; i++)
             {
@@ -297,7 +301,7 @@ namespace ProjekatTMP
                         break;
                 }
             }
-            MessageBox.Show(naredba);
+            //MessageBox.Show(naredba);
             this.Close();
         }
 

@@ -39,6 +39,7 @@ namespace ProjekatTMP
         public string brTelefona = "";
         private System.Data.DataTable dataTable;
         public string[] filterString = {"","","","","","","","" };
+        private string pom = "";
         public WorkingWindow()
         {
             InitializeComponent();
@@ -53,6 +54,7 @@ namespace ProjekatTMP
         public WorkingWindow(string pom)
         {
             InitializeComponent();
+            this.pom = pom;
             FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva");
             btnArhiviraj.IsEnabled = true;
             btnArhiviraj.Content = "Pretraga";
@@ -78,6 +80,11 @@ namespace ProjekatTMP
 
             try
             {
+
+                if(Count("select * from studenti")>0)
+                {
+                    btnArhivirajSve.IsEnabled = true;
+                }
                 System.Data.DataTable dG = new System.Data.DataTable();
                 MySqlConnection conn = new MySqlConnection(connstr);
                 conn.Open();
@@ -136,10 +143,21 @@ namespace ProjekatTMP
             }
             else
             {
-                DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
-
-                maticniBr = dataRow.Row.ItemArray[3].ToString();
-                pronadjiStudenta("select * from arhiva");
+                if(pom == "arhiva")
+                {
+                    DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
+                    maticniBr = dataRow.Row.ItemArray[3].ToString();
+                    pronadjiStudenta("select * from arhiva");
+                }
+                else
+                {
+                    if(datagrdTabela.SelectedItem != null)
+                    {
+                        DataRowView dataRow = (DataRowView)datagrdTabela.SelectedItem;
+                        AddWindow add = new AddWindow("", dataRow.Row.ItemArray[1].ToString(), dataRow.Row.ItemArray[2].ToString(), dataRow.Row.ItemArray[3].ToString(), dataRow.Row.ItemArray[4].ToString(), dataRow.Row.ItemArray[5].ToString(), "", "", "", "", "", "", "");
+                        add.ShowDialog();
+                    }
+                }
             }
         }
 
@@ -193,8 +211,17 @@ namespace ProjekatTMP
             }
             else if(btnArhiviraj.Content.ToString() == "Pretraga")
             {
-                SearchWindow search = new SearchWindow(filterString);
+                SearchWindow search = new SearchWindow(pom, filterString);
                 search.ShowDialog();
+                if(search.ime != "" && search.prezime!="" && search.brTelefona != "" && search.adresa != "" && search.maticni != "")
+                {
+                    ime = search.ime;
+                    prezime = search.prezime;
+                    maticniBr = search.maticni;
+                    adresa = search.adresa;
+                    brTelefona = search.brTelefona;
+                    this.Close();
+                }
             }
         }
 
@@ -209,6 +236,14 @@ namespace ProjekatTMP
             {
                 btnArhiviraj.IsEnabled = false;
                 btnIzmijeni.IsEnabled = false;
+            }
+           else if(datagrdTabela.SelectedItem == null && btnArhiviraj.Content.ToString() != "Pretraga")
+            {
+                btnDodaj.IsEnabled = false;
+            }
+           else if (datagrdTabela.SelectedItem != null && btnArhiviraj.Content.ToString() != "Pretraga")
+            {
+                btnDodaj.IsEnabled = true;
             }
         }
 
@@ -286,8 +321,6 @@ namespace ProjekatTMP
                         Settings.Default.fakultet = rReader[12].ToString();
                         Settings.Default.godina = rReader[13].ToString();
                         Settings.Default.komentar = rReader[14].ToString();
-
-
                         
                     }
                     else
@@ -419,6 +452,8 @@ namespace ProjekatTMP
 
                 FillDataGrid("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
             }
+
+            btnArhivirajSve.IsEnabled = false;
         }
 
         private void arhiva_Click(object sender, RoutedEventArgs e)
@@ -428,10 +463,10 @@ namespace ProjekatTMP
                 FillDataGrid("Select ID, IME, PREZIME, MATICNI_BROJ, MJESTO_STANOVANJA, BROJ_TELEFONA, USLUGA, DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA,DATE_FORMAT(DATUM_RAZDUZENJA, '%d/%m/%Y') as DATUM_RAZDUZENJA From arhiva");
                 arhiva.Header = "_Tekuća godina";
                 btnArhiviraj.IsEnabled = true;
-                btnDodaj.Visibility = Visibility.Hidden;
+                //btnDodaj.Visibility = Visibility.Hidden;
 
                 btnArhiviraj.Content = "Pretraga";
-                btnArhiviraj.Margin = new Thickness(10, 0, 0, 23);
+              //  btnArhiviraj.Margin = new Thickness(10, 0, 0, 23);
                 btnIzmijeni.Visibility = Visibility.Hidden;
                 btnArhivirajSve.Visibility = Visibility.Hidden;
             }
@@ -440,7 +475,7 @@ namespace ProjekatTMP
 
                 FillDataGrid("Select ID,IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,USLUGA,DATE_FORMAT(DATUM_ZADUZIVANJA, '%d/%m/%Y') as DATUM_ZADUZIVANJA From studenti");
                 btnArhiviraj.IsEnabled = false;
-                btnDodaj.Visibility = Visibility.Visible;
+                //btnDodaj.Visibility = Visibility.Visible;
                 btnArhiviraj.Margin = new Thickness(135, 0, 0, 23);
                 btnArhiviraj.Content = "Arhiviraj";
                 btnIzmijeni.Visibility = Visibility.Visible;

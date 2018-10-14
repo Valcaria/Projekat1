@@ -80,11 +80,6 @@ namespace ProjekatTMP
                 btnZamjeni.IsEnabled = true;
             }
         }
-        private void btnPretraga_Click(object sender, RoutedEventArgs e)
-        {
-            SearchWindow searchWindow = new SearchWindow(maticni1, dom1, paviljon1, soba1 );
-            searchWindow.ShowDialog();
-        }
         void CleanIT()
         {
             Projekat.Properties.Settings.Default.imePrezime = "";

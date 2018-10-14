@@ -9,9 +9,8 @@
     <Grid>
         <TextBox x:Name="txtImePrezime1" Height="31" Margin="74,10,74,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0" IsEnabled="False"/>
         <TextBox x:Name="txtImePrezime2" Height="31" Margin="74,81,74,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" TabIndex="0" IsEnabled="False"/>
-        <Image Height="30" Margin="161,46,161,0" VerticalAlignment="Top" RenderTransformOrigin="0.972,0.472" Source="pack://siteoforigin:,,,/Icon/exchange-arrows.png"/>
-        <Button x:Name="btnPretraga" Content="Pretraga" HorizontalAlignment="Left" Margin="267,139,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnPretraga_Click"/>
-        <Button x:Name="btnZamjeni" Content="Zamjeni" HorizontalAlignment="Left" Margin="161,139,0,0" VerticalAlignment="Top" Width="75" Height="31" Click="btnZamjeni_Click" IsEnabled="False"/>
+        <Image Margin="0,46,161,104" RenderTransformOrigin="0.972,0.472" Source="pack://siteoforigin:,,,/Icon/exchange-arrows.png" HorizontalAlignment="Right" Width="30"/>
+        <Button x:Name="btnZamjeni" Content="Zamjeni" Margin="0,139,137,0" VerticalAlignment="Top" Height="31" Click="btnZamjeni_Click" IsEnabled="False" HorizontalAlignment="Right" Width="75"/>
 
     </Grid>
 </Window>

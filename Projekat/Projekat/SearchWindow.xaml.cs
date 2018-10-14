@@ -23,7 +23,7 @@ namespace ProjekatTMP
     public partial class SearchWindow : Window
     {
         string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
-        string maticni = "";
+        public string maticni = "";
         string brSobeStaro = "";
         string domStaro = "";
         string paviljonStaro = "";
@@ -31,7 +31,12 @@ namespace ProjekatTMP
         string dom = "";
         string paviljon= "";
         string baza = "";
+        public string adresa = "";
+        public string ime = "";
+        public string prezime = "";
+        public string brTelefona = "";
         string[] filterString = { "", "", "", "", "", "", "", "" };
+        string pom = "";
         public SearchWindow(string maticni, string dom, string paviljon, string brSobe)
         {
             InitializeComponent();
@@ -53,9 +58,10 @@ namespace ProjekatTMP
 
         }
 
-        public SearchWindow(string[] naredba)
+        public SearchWindow(string pom, string[] naredba)
         {
             InitializeComponent();
+            this.pom = pom;
             for (int i = 0; i < filterString.Length; i++)
             {
                 filterString[i] = String.Copy(naredba[i]);
@@ -92,7 +98,7 @@ namespace ProjekatTMP
         }
         private void btnPretraga_Click(object sender, RoutedEventArgs e)
         {
-           if(maticni != "")
+           if(baza == "select * from studenti")
             {
                 FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM studenti WHERE concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%'");
             }
@@ -149,28 +155,39 @@ namespace ProjekatTMP
 
                 MySqlConnection conn = new MySqlConnection(connstr);
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from studenti", conn);
+                MySqlCommand cmd = new MySqlCommand(baza, conn);
                 MySqlDataReader rReader = cmd.ExecuteReader();
                 while (rReader.Read())
                 {
                     if (rReader[3].ToString() == dataRow.Row.ItemArray[0].ToString())
                     {
+                        if(baza == "select * from arhiva" && pom != "arhiva")
+                        {
+                            AddWindow add = new AddWindow("", rReader[1].ToString(), rReader[2].ToString(), rReader[3].ToString(), rReader[4].ToString(), rReader[5].ToString(), "", "", "", "", "", "", "");
+                            this.Close();
+                            add.ShowDialog();
+                        }
+                        else if(baza == "select * from arhiva" && pom =="arhiva")
+                        {
+                            maticni = rReader[3].ToString();
+                            ime = rReader[1].ToString();
+                            prezime = rReader[2].ToString();
+                            adresa = rReader[4].ToString();
+                            brTelefona = rReader[5].ToString();
+                        }
+                        if(baza == "select * from studenti" && rReader[9].ToString() == "Hrana")
+                        {
+                            PromjeniUslugu(dataRow.Row.ItemArray[0].ToString());
+                        }
                         domStaro = rReader[6].ToString();
                         paviljonStaro = rReader[7].ToString();
                         brSobeStaro = rReader[8].ToString();
+                        
                     }
                 }
-                if (maticni != "")
-                {
-                    Projekat.Properties.Settings.Default.imePrezime = dataRow.Row.ItemArray[1].ToString();
-                    Projekat.Properties.Settings.Default.dom = domStaro;
-                    Projekat.Properties.Settings.Default.paviljon = paviljonStaro;
-                    Projekat.Properties.Settings.Default.soba = brSobeStaro;
-                    Projekat.Properties.Settings.Default.maticni = dataRow.Row.ItemArray[0].ToString();
-                }
-                conn.Close();
 
-                if (maticni == "")
+                conn.Close();
+                if (baza == "select * from studenti")
                 {
                     conn = new MySqlConnection(connstr);
                     conn.Open();
@@ -185,7 +202,23 @@ namespace ProjekatTMP
                 this.Close();
             }
         }
+        void PromjeniUslugu(string maticniBroj)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
 
+                MySqlCommand command = new MySqlCommand("UPDATE studenti SET USLUGA = 'Hrana i soba', DOM = '"+dom+"', PAVILJON = '"+paviljon+"', SOBA = '"+brSobe+ "' WHERE  MATICNI_BROJ='"+maticniBroj+"'", conn);
+                command.ExecuteNonQuery();
+
+                conn.Close();
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show("Greska pri UPDATE u bazi: "+error.Message.ToString());
+            }
+        }
         void promjenaNoveSobe(string dom, string paviljon, string brSobe)
         {
             int brSlobodnihSoba = 0;
