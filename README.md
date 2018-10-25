@@ -1,3 +1,3 @@
-# Projekat1
-# Direktor: Pedja
-# Sekretarica: Dragana
+#AUTOR:
+DRAGANA PAVLOVIC MALESIC
+PREDRAG DAMJANOVIC

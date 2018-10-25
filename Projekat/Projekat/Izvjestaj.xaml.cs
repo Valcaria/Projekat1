@@ -45,13 +45,11 @@ namespace Projekat
             dlg.DefaultExt = ".pdf"; // Default file extension
             dlg.Filter = "PDF documents (.pdf)|*.pdf"; // Filter files by extension
 
-            // Show save file dialog box
+            // save file dialog box
             Nullable<bool> result = dlg.ShowDialog();
             try
             {
 
-
-                // Process save file dialog box results
                 if (result == true)
                 {
                     // Save document
@@ -68,19 +66,12 @@ namespace Projekat
 
                     PdfPTable table = new PdfPTable(dt.Columns.Count);
 
-
-
-                   // Chunk c1 = null;
-                   // Chunk c2 = null;
-                    // PdfPRow row = null;
                     if (pom == "_Arhiva")
                     {
                         float[] widths = new float[] { 1f, 3f, 3f, 3f, 4f, 3f, 3f, 4f };
                         table.SetWidths(widths);
 
                         table.WidthPercentage = 100;
-                        // int iCol = 0;
-                        // string colname = "";
                         PdfPCell cell = new PdfPCell(new Phrase("Elementi"));
 
                         cell.Colspan = dt.Columns.Count;
@@ -147,26 +138,6 @@ namespace Projekat
                     }
                     //dodavanje naslova
 
-                    /*
-                    c1 = new Chunk("       Izvještaj");
-                    c1.SetHorizontalScaling(4f);
-
-                    c1.setLineHeight(6f);
-                    iTextSharp.text.Font fontC1 = iTextSharp.text.FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 17);
-
-                    c1.Font = fontC1;
-
-                    c2 = new Chunk("                                                                                                             Datum:______________");
-                    c2.SetHorizontalScaling(2f);
-                    c2.setLineHeight(2f);
-                    iTextSharp.text.Font fontC2 = iTextSharp.text.FontFactory.GetFont(FontFactory.TIMES, 7);
-
-                    c2.Font = fontC2;
-                    
-                    document.Add(c1);
-                    document.Add(new iTextSharp.text.Paragraph(" "));
-
-                    document.Add(c2);*/
                     iTextSharp.text.Font titleFont = FontFactory.GetFont("Arial", 32);
                     iTextSharp.text.Font regularFont = FontFactory.GetFont("Arial", 12);
                     iTextSharp.text.Paragraph title;
@@ -197,18 +168,7 @@ namespace Projekat
 
         private void ExportToExcel(System.Data.DataTable dataTable)
         {
-            /*  datagrdTabela.SelectAllCells();
-              datagrdTabela.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
-              ApplicationCommands.Copy.Execute(null, datagrdTabela);
-              String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
-              String result = (string)Clipboard.GetData(DataFormats.Text);
-              datagrdTabela.UnselectAllCells();
-              System.IO.StreamWriter file1 = new System.IO.StreamWriter(@"C:\Intel\test.xls");
-              file1.WriteLine(result.Replace(',', ' '));
-              file1.Close();*/
-
-
-            using (new ProjekatTMP.WaitCursor())
+            using (new ProjekatTMP.WaitCursor())//Poziv wait cursora
             {
                 Microsoft.Office.Interop.Excel.Application excel = null;
                 Microsoft.Office.Interop.Excel.Workbook wb = null;
@@ -231,9 +191,7 @@ namespace Projekat
                     }
 
                     for (int Idx = 0; Idx < dataTable.Rows.Count; Idx++)
-                    {  // <small>hey! I did not invent this line of code, 
-                       // I found it somewhere on CodeProject.</small> 
-                       // <small>It works to add the whole row at once, pretty cool huh?</small>
+                    {  
                         string d = "D" + (Idx + 2), f = "F" + (Idx + 2);
 
                         ws.Range[d].NumberFormat = "@";
@@ -268,11 +226,6 @@ namespace Projekat
         {
             ExportToExcel(dataTable);
         }
-
-     
-
-
-
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,17 +69,24 @@ namespace ProjekatTMP
             }
             else if(grbColor.Background == Brushes.Green && Settings.Default.pom == "on")
             {
-                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + Settings.Default.dom + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + Settings.Default.paviljon + "','" + paviljon + "'), soba = REPLACE(soba, '" + Settings.Default.soba + "','" + soba + "') where maticni_broj = '" + Settings.Default.maticni + "'", conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                
-                Settings.Default.pom = "off";
-                promjenaNoveSobe(dom, paviljon, soba);
-                promjenaStareSobe(Settings.Default.dom, Settings.Default.paviljon, Settings.Default.soba);
-                CleanIT();
-                Settings.Default.close = 3;
+                try
+                {
+                    MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + Settings.Default.dom + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + Settings.Default.paviljon + "','" + paviljon + "'), soba = REPLACE(soba, '" + Settings.Default.soba + "','" + soba + "') where maticni_broj = '" + Settings.Default.maticni + "'", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    Settings.Default.pom = "off";
+                    PromjenaNoveSobe(dom, paviljon, soba);
+                    PromjenaStareSobe(Settings.Default.dom, Settings.Default.paviljon, Settings.Default.soba);
+                    CleanIT();
+                    Settings.Default.close = 3;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show("Greška: " + error.Message.ToString());
+                }
             }
             else if(grbColor.Background == Brushes.Red && Settings.Default.pom == "on")
             {
@@ -88,7 +96,7 @@ namespace ProjekatTMP
                 Settings.Default.close = 3;
             }
         }
-        void CleanIT()
+        private void CleanIT()
         {
             Projekat.Properties.Settings.Default.imePrezime = "";
             Projekat.Properties.Settings.Default.dom = "";
@@ -96,61 +104,75 @@ namespace ProjekatTMP
             Projekat.Properties.Settings.Default.soba = "";
             Projekat.Properties.Settings.Default.maticni = "";
         }
-        void promjenaNoveSobe(string dom, string paviljon, string brSobe)
+        private void PromjenaNoveSobe(string dom, string paviljon, string brSobe)
         {
             int brSlobodnihSoba = 0;
-            MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
-            MySqlDataReader rReader = cmd.ExecuteReader();
-            while (rReader.Read())
+            try
             {
-                if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
+                MySqlDataReader rReader = cmd.ExecuteReader();
+                while (rReader.Read())
                 {
-                    try
+                    if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
                     {
-                        brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show("Greska: " + error.Message.ToString());
+                        try
+                        {
+                            brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greška: " + error.Message.ToString());
+                        }
                     }
                 }
+                conn.Close();
+                conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba - 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
+                cmd2.ExecuteNonQuery();
+                conn.Close();
             }
-            conn.Close();
-            conn = new MySqlConnection(Settings.Default.connstr);
-            conn.Open();
-            MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba - 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
-            cmd2.ExecuteNonQuery();
-            conn.Close();
+            catch(Exception error)
+            {
+                MessageBox.Show("Greška: "+error.Message.ToString());
+            }
         }
-        void promjenaStareSobe(string dom, string paviljon, string brSobe)
+        private void PromjenaStareSobe(string dom, string paviljon, string brSobe)
         {
             int brSlobodnihSoba = 0;
-            MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
-            MySqlDataReader rReader = cmd.ExecuteReader();
-            while (rReader.Read())
+            try
             {
-                if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
+                MySqlDataReader rReader = cmd.ExecuteReader();
+                while (rReader.Read())
                 {
-                    try
+                    if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
                     {
-                        brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show("Greska: " + error.Message.ToString());
+                        try
+                        {
+                            brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greška: " + error.Message.ToString());
+                        }
                     }
                 }
+                conn.Close();
+                conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba + 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
+                cmd2.ExecuteNonQuery();
+                conn.Close();
             }
-            conn.Close();
-            conn = new MySqlConnection(Settings.Default.connstr);
-            conn.Open();
-            MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba + 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
-            cmd2.ExecuteNonQuery();
-            conn.Close();
+            catch(Exception error)
+            {
+                MessageBox.Show("Greška: " + error.Message.ToString());
+            }
         }
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2018 at 06:40 PM
+-- Generation Time: Oct 25, 2018 at 04:59 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -72,80 +72,15 @@ CREATE TABLE `arhiva` (
 --
 
 INSERT INTO `arhiva` (`ID`, `IME`, `PREZIME`, `MATICNI_BROJ`, `MJESTO_STANOVANJA`, `BROJ_TELEFONA`, `DOM`, `PAVILJON`, `SOBA`, `USLUGA`, `DATUM_ZADUZIVANJA`, `DATUM_RAZDUZENJA`, `GODINA_UPOTREBE`, `FAKULTET`, `GODINA`, `KOMENTAR`) VALUES
-(1, 'Stefan', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana', '0000-00-00', '0000-00-00', '2016/2017', 'ETF', 2, NULL),
-(2, 'Nikola', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana', '0000-00-00', '0000-00-00', '2016/2017', 'ETF', 2, NULL),
-(3, 'Ranko', 'Rajic', '0131821213405', 'Beograd', '0687548115', 1, 'M', 1, 'Hrana', '0000-00-00', '0000-00-00', '2016/2017', 'ETF', 2, NULL),
-(4, 'Andrej', 'Sovjet', '7001122344556', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana', '0000-00-00', '0000-00-00', '2016/2017', 'ETF', 2, NULL),
-(5, 'Ana', 'Anic', '0101999121212', 'Beograd', '0687548115', 2, 'Z', 4, 'Hrana', '0000-00-00', '0000-00-00', '2016/2017', 'ETF', 4, NULL),
-(6, 'Stefan', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana', '0000-00-00', '0000-00-00', '2017/2018', 'ETF', 3, NULL),
-(7, 'Nina', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'Z', 1, 'Hrana', '0000-00-00', '0000-00-00', '2017/2018', 'ETF', 2, NULL),
+(1, 'Stefan', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana i soba', '2016-10-01', '2017-06-08', '2016/2017', 'ETF', 2, NULL),
+(2, 'Nikola', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana i soba', '2016-10-01', '2017-06-08', '2016/2017', 'ETF', 2, NULL),
+(3, 'Ranko', 'Rajic', '0131821213405', 'Beograd', '0687548115', 1, 'M', 1, 'Hrana i soba', '2016-10-01', '2017-06-08', '2016/2017', 'ETF', 2, NULL),
+(4, 'Andrej', 'Sovjet', '7001122344556', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana i soba', '2016-10-01', '2017-06-08', '2016/2017', 'ETF', 2, NULL),
+(5, 'Ana', 'Anic', '0101999121212', 'Beograd', '0687548115', 2, 'Z', 4, 'Hrana i soba', '2016-10-01', '2017-06-08', '2016/2017', 'ETF', 4, NULL),
+(6, 'Stefan', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'M', 1, 'Hrana i soba', '2017-09-12', '2018-05-16', '2017/2018', 'ETF', 3, NULL),
+(7, 'Nina', 'Nikolic', '7694821973405', 'Beograd', '0687548115', 2, 'Z', 1, 'Hrana i soba', '2017-09-12', '2018-05-16', '2017/2018', 'ETF', 2, NULL),
 (8, 'Danijel', 'Matic', '0102991524163', 'Sarajevo', '065241845', 1, 'M', 2, 'Hrana i soba', '2016-09-01', '2017-06-06', '2016/2017', 'ETF', 1, NULL),
-(12, 'Marko', 'Jeftic', '0505996251423', 'Gorazde', '064582152', 1, 'M', 3, 'Hrana i soba', '2017-09-01', '2018-09-15', '2017/2018', 'ETF', 2, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `evidencija`
---
-
-CREATE TABLE `evidencija` (
-  `ID` int(11) NOT NULL,
-  `IME` varchar(30) NOT NULL,
-  `Prezime` varchar(30) NOT NULL,
-  `MATICNI_BROJ` varchar(20) NOT NULL,
-  `MjestoStanovanja` varchar(50) NOT NULL,
-  `BrojTelefona` varchar(20) NOT NULL,
-  `Usluga` varchar(20) NOT NULL,
-  `DatumZaduzivanja` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `evidencija`
---
-
-INSERT INTO `evidencija` (`ID`, `IME`, `Prezime`, `MATICNI_BROJ`, `MjestoStanovanja`, `BrojTelefona`, `Usluga`, `DatumZaduzivanja`) VALUES
-(1, 'Stefan', 'Markovic', '0101996548743', 'Sarajevo', '065789651', 'Hrana i soba', '2017-09-01'),
-(2, 'Nikola', 'Nikolic', '5748014252563', 'Gorazde', '065859745', 'Hrana i soba', '2017-09-01'),
-(3, 'Marijana', 'Markovic', '3102995011215', 'Visegrad', '066485127', 'Hrana i soba', '2017-09-01'),
-(4, 'Nikolina', 'Stefanovin', '3103992584745', 'Mostar', '0641584963', 'Hrana', '2017-09-01'),
-(5, 'Nikola', 'Nikolic', '0204990154585', 'Herceg Novi', '066585749', 'Hrana i soba', '2017-09-01'),
-(6, 'Tatjana', 'Simic', '1208999857495', 'Kalnovik', '065685954', 'Hrana i soba', '2017-09-01'),
-(7, 'Natasa', 'Lakic', '1312998857451', 'Podgorica', '065241849', 'Hrana i soba', '2017-09-01'),
-(8, 'Danijela', 'Lazarevic', '1509989584121', 'Trebinje', '066582136', 'Hrana i soba', '2017-09-01'),
-(9, 'Tamara', 'Ninkovic', '1902997541230', 'Kalnovik', '065524135', 'Hrana', '2018-07-03');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `history`
---
-
-CREATE TABLE `history` (
-  `ID` int(11) NOT NULL,
-  `USER` varchar(30) NOT NULL,
-  `PASSWORD` varchar(30) NOT NULL,
-  `USER_CHECKED` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `history`
---
-
-INSERT INTO `history` (`ID`, `USER`, `PASSWORD`, `USER_CHECKED`) VALUES
-(0, 'admin', 'admin', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `search`
---
-
-CREATE TABLE `search` (
-  `ID` int(11) NOT NULL,
-  `IME` varchar(30) NOT NULL,
-  `PREZIME` varchar(30) NOT NULL,
-  `MATICNI_BROJ` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(9, 'Marko', 'Jeftic', '0505996251423', 'Gorazde', '064582152', 1, 'M', 3, 'Hrana i soba', '2017-09-01', '2018-09-15', '2017/2018', 'ETF', 2, '');
 
 -- --------------------------------------------------------
 
@@ -230,9 +165,9 @@ INSERT INTO `studenti` (`ID`, `IME`, `PREZIME`, `MATICNI_BROJ`, `MJESTO_STANOVAN
 (1, 'Stefan', 'Markovic', '0101996548743', 'Sarajevo', '065789651', 1, 'M', 9, 'Hrana i soba', '2017-09-01', '2017/2018', 'ETF', 1, ''),
 (2, 'Nikola', 'Nikolic', '5748014252563', 'Gorazde', '065859745', 1, 'M', 1, 'Hrana i soba', '2017-09-01', '2017/2018', 'ETF', 1, ''),
 (3, 'Marijana', 'Markovic', '3102995011215', 'Visegrad', '066485127', 1, 'Z', 10, 'Hrana i soba', '2017-09-01', '2017/2018', 'MAK', 2, ''),
-(4, 'Nikolina', 'Stefanovin', '3103992584745', 'Mostar', '0641584963', NULL, '', NULL, 'Hrana', '2017-09-01', '2017/2018', 'ETF', 4, ''),
+(4, 'Nikolina', 'Stefanovic', '3103992584745', 'Mostar', '0641584963', NULL, '', NULL, 'Hrana', '2017-09-01', '2017/2018', 'ETF', 4, ''),
 (5, 'Nikola', 'Nikolic', '0204990154585', 'Herceg Novi', '066585749', 1, 'M', 2, 'Hrana i soba', '2017-09-01', '2017/2018', 'ETF', 1, ''),
-(6, 'Tatjana', 'Simic', '1208999857495', 'Kalnovik', '065685954', 2, 'Z', 3, 'Hrana i soba', '2017-09-01', '2017/2018', 'ETF', 1, ''),
+(6, 'Tatjana', 'Simic', '1208999857495', 'Kalinovik', '065685954', 2, 'Z', 3, 'Hrana i soba', '2017-09-01', '2017/2018', 'ETF', 1, ''),
 (7, 'Natasa', 'Lakic', '1312998857451', 'Podgorica', '065241849', 2, 'Z', 1, 'Hrana i soba', '2017-09-01', '2017/2018', 'MAF', 2, ''),
 (8, 'Danijela', 'Lazarevic', '1509989584121', 'Trebinje', '066582136', 1, 'Z', 11, 'Hrana i soba', '2017-09-01', '2017/2018', 'MAF', 4, ''),
 (9, 'Tamara', 'Ninkovic', '1902997541230', 'Kalnovik', '065524135', NULL, '', NULL, 'Hrana', '2018-07-03', '2017/2018', 'ETF', 1, '');
@@ -251,24 +186,6 @@ ALTER TABLE `admin`
 -- Indexes for table `arhiva`
 --
 ALTER TABLE `arhiva`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `evidencija`
---
-ALTER TABLE `evidencija`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `history`
---
-ALTER TABLE `history`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `search`
---
-ALTER TABLE `search`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -297,19 +214,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `arhiva`
 --
 ALTER TABLE `arhiva`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `evidencija`
---
-ALTER TABLE `evidencija`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `search`
---
-ALTER TABLE `search`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sobe`

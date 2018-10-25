@@ -13,11 +13,11 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid x:Name="grdPozadina">
-        <DataGrid x:Name="datagrdTabela" Margin="10,50,9,85" IsHitTestVisible="True" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" RowHeaderWidth="0">
+        <DataGrid x:Name="datagrdTabela" SelectionMode="Single" Margin="10,50,9,85" IsHitTestVisible="True" IsReadOnly="True" AutoGenerateColumns="False" RowHeaderWidth="0" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="34" Binding="{Binding ID}" FontSize="14" MinWidth="33"/>
-                <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding IME}" FontSize="14"/>
                 <DataGridTextColumn Header="Prezime" Width="*" Binding="{Binding PREZIME}" FontSize="14"/>
+                <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding IME}" FontSize="14"/>
                 <DataGridTextColumn Header="Maticni Broj" Width="*" Binding="{Binding MATICNI_BROJ}" FontSize="14"/>
                 <DataGridTextColumn Header="Mjesto Stanovanja" Width="150" Binding="{Binding MJESTO_STANOVANJA}" FontSize="14"/>
                 <DataGridTextColumn Header="Broj Telefona" Width="*" Binding="{Binding BROJ_TELEFONA}" FontSize="14"/>

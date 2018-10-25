@@ -25,18 +25,25 @@ namespace ProjekatTMP
         public StudentInfo()
         {
             InitializeComponent();
-            MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
-            conn.Open();
-            MySqlCommand command = new MySqlCommand("select * from studenti", conn);
-            MySqlDataReader rReader = command.ExecuteReader();
-            while (rReader.Read())
+            try
             {
-                if (Settings.Default.maticni == rReader[3].ToString())
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("select * from studenti", conn);
+                MySqlDataReader rReader = command.ExecuteReader();
+                while (rReader.Read())
                 {
-                    lblImePrezime.Content = "Student: " + Settings.Default.imePrezime + "\nMaticni broj: "+ Settings.Default.maticni+"\nBroj Telefona:"+rReader[5].ToString()+"\nDatum zaduzenja:\n"+rReader[10].ToString();
+                    if (Settings.Default.maticni == rReader[3].ToString())
+                    {
+                        lblImePrezime.Content = "Student: " + Settings.Default.imePrezime + "\nMaticni broj: " + Settings.Default.maticni + "\nBroj Telefona:" + rReader[5].ToString() + "\nDatum zaduzenja:\n" + DateTime.Parse(rReader[10].ToString()).ToShortDateString();
+                    }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch(Exception error)
+            {
+                MessageBox.Show("Greška: " + error.Message.ToString());
+            }
 
             btnZamjena.Content = "Promjeni sobu";
         }
@@ -46,18 +53,25 @@ namespace ProjekatTMP
             InitializeComponent();
             lblInfo.Content = "Soba broj: "+ Settings.Default.soba;
 
-            MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
-            conn.Open();
-            MySqlCommand command = new MySqlCommand("select * from sobe",conn);
-            MySqlDataReader rReader = command.ExecuteReader();
-            while(rReader.Read())
+            try
             {
-                if(dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && Settings.Default.soba == rReader[3].ToString())
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand command = new MySqlCommand("select * from sobe", conn);
+                MySqlDataReader rReader = command.ExecuteReader();
+                while (rReader.Read())
                 {
-                    lblImePrezime.Content = "\nUkupno kreveta:\t" + rReader[4].ToString() + "\nSlobodni kreveti:\t" + rReader[5].ToString();
+                    if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && Settings.Default.soba == rReader[3].ToString())
+                    {
+                        lblImePrezime.Content = "\nUkupno kreveta:\t" + rReader[4].ToString() + "\nSlobodni kreveti:\t" + rReader[5].ToString();
+                    }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception error)
+            {
+                MessageBox.Show("Greška: " + error.Message.ToString());
+            }
 
             Settings.Default.dom = dom;
             Settings.Default.paviljon = paviljon;

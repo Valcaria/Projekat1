@@ -22,14 +22,20 @@ namespace ProjekatTMP
     {
 
         public string naredba = "";
-        public string[] prvaNaredba = { "","","","","","","",""};
+        public string[] pomString = { "", "", "", "", "", "", "", "" };
+        public string[] prvaNaredba = { "", "", "", "", "", "", "", "" };
+        bool kliknut = false;
         int pom = 0;
+
         public Filtar(string[] pom)
         {
+            
             InitializeComponent();
             Check(pom);
+
             for (int i = 0; i < pom.Length; i++)
             {
+                pomString[i] = pom[i].ToString();
                 prvaNaredba[i] = pom[i].ToString();
             }
         }
@@ -65,48 +71,46 @@ namespace ProjekatTMP
                         txtMjestoStanovanja.IsEnabled = true;
                         break;
                     case "Dom":
+                        rbtnDom1.IsEnabled = true;
+                        rbtnDom2.IsEnabled = true;
                         if (Settings.Default.dom1 == "1")
                         {
                             rbtnDom1.IsChecked = true;
-                            rbtnDom1.IsEnabled = true;
                         }
                         else if (Settings.Default.dom1 == "2")
                         {
                             rbtnDom2.IsChecked = true;
-                            rbtnDom2.IsEnabled = true;
                         }
                         pom++;
                         chbDom.IsChecked = true;
                         break;
                     case "Paviljon":
+                        rbtnPaviljonZ.IsEnabled = true;
+                        rbtnPaviljonM.IsEnabled = true;
                         if (Settings.Default.paviljon1 == "M")
                         {
                             rbtnPaviljonM.IsChecked = true;
-                            rbtnPaviljonM.IsEnabled = true;
                         }
                         else if (Settings.Default.paviljon1 == "Z")
                         {
                             rbtnPaviljonZ.IsChecked = true;
-                            rbtnPaviljonZ.IsEnabled = true;
                         }
                         pom++;
                         chbPaviljon.IsChecked = true;
                         break;
                     case "Usluga":
+                        rbtnHranaiSoba.IsEnabled = true;
+                        rbtnHrana.IsEnabled = true;
                         if (Settings.Default.usluga1 == "Hrana i soba")
                         {
                             rbtnHranaiSoba.IsChecked = true;
-                            rbtnHranaiSoba.IsEnabled = true;
                         }
                         else if (Settings.Default.usluga1 == "Hrana")
                         {
                             rbtnHrana.IsChecked = true;
-                            rbtnHrana.IsEnabled = true;
                         }
                         pom++;
                         chbUsluga.IsChecked = true;
-                        break;
-                    case "DatumZ":
                         break;
                     case "GodinaU":
                         pom++;
@@ -147,10 +151,6 @@ namespace ProjekatTMP
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             naredba = " ";
-            //for (int i = 0; i < prvaNaredba.Length; i++)
-            //{
-            //    MessageBox.Show(prvaNaredba[i]);
-            //}
 
             for (int i = 0; i < prvaNaredba.Length; i++)
             {
@@ -263,8 +263,6 @@ namespace ProjekatTMP
                         {
                             Settings.Default.usluga1 = "Hrana";
                         }
-                break;
-                    case "DatumZ":
                         break;
                     case "GodinaU":
                         if (i == 0)
@@ -301,6 +299,7 @@ namespace ProjekatTMP
                         break;
                 }
             }
+            kliknut = true;
             //MessageBox.Show(naredba);
             this.Close();
         }
@@ -416,6 +415,137 @@ namespace ProjekatTMP
                 txtGodinaFakulteta.IsEnabled = false;
                 PromjenaNizaStringa("GodinaF");
                 txtGodinaFakulteta.Clear();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(!kliknut)
+            {
+                naredba = " ";
+
+                for (int i = 0; i < pomString.Length; i++)
+                {
+                    switch (pomString[i].ToString())
+                    {
+                        case "Mjesto":
+                            if (i == 0)
+                            {
+                                naredba += "WHERE MJESTO_STANOVANJA LIKE '%" + txtMjestoStanovanja.Text + "%' ";
+                            }
+                            else
+                            {
+                                naredba += "AND MJESTO_STANOVANJA LIKE '%" + txtMjestoStanovanja.Text + "%' ";
+                            }
+                            break;
+                        case "Dom":
+                            if (i == 0)
+                            {
+                                if (Settings.Default.dom1 == "1")
+                                {
+                                    naredba += "WHERE DOM = '1' ";
+                                }
+                                else if (Settings.Default.dom1 == "2")
+                                {
+                                    naredba += "WHERE DOM = '2' ";
+                                }
+                            }
+                            else
+                            {
+                                if (Settings.Default.dom1 == "1")
+                                {
+                                    naredba += "AND DOM = '1' ";
+                                }
+                                else if (Settings.Default.dom1 == "2")
+                                {
+                                    naredba += "AND DOM = '2' ";
+                                }
+                            }
+                            break;
+                        case "Paviljon":
+                            if (i == 0)
+                            {
+                                if (Settings.Default.paviljon1 == "M")
+                                {
+                                    naredba += "WHERE PAVILJON = 'M' ";
+                                }
+                                else if (Settings.Default.paviljon1 == "Z")
+                                {
+                                    naredba += "WHERE PAVILJON = 'Z' ";
+                                }
+                            }
+                            else
+                            {
+                                if (Settings.Default.paviljon1 == "M")
+                                {
+                                    naredba += "AND PAVILJON = 'M' ";
+                                }
+                                else if (Settings.Default.paviljon1 == "Z")
+                                {
+                                    naredba += "AND PAVILJON = 'Z' ";
+                                }
+                            }
+                            break;
+                        case "Usluga":
+                            if (i == 0)
+                            {
+                                if (Settings.Default.usluga1 == "Hrana i soba")
+                                {
+                                    naredba += "WHERE USLUGA = 'Hrana i soba' ";
+                                }
+                                else if (Settings.Default.usluga1 == "Hrana")
+                                {
+                                    naredba += "WHERE USLUGA = 'Hrana' ";
+                                }
+                            }
+                            else
+                            {
+                                if (Settings.Default.usluga1 == "Hrana i soba")
+                                {
+                                    naredba += "AND USLUGA = 'Hrana i soba' ";
+                                }
+                                else if (Settings.Default.usluga1 == "Hrana")
+                                {
+                                    naredba += "AND USLUGA = 'Hrana' ";
+                                }
+                            }
+                            break;
+                        case "GodinaU":
+                            if (i == 0)
+                            {
+                                naredba += "WHERE GODINA_UPOTREBE ='" + txtGodinaUpotrebe.Text + "' ";
+                            }
+                            else
+                            {
+                                naredba += "AND GODINA_UPOTREBE ='" + txtGodinaUpotrebe.Text + "' ";
+                            }
+                            break;
+                        case "Fakultet":
+                            if (i == 0)
+                            {
+                                naredba += "WHERE FAKULTET ='" + cmbFakultet.Text + "' ";
+                            }
+                            else
+                            {
+                                naredba += "AND FAKULTET ='" + cmbFakultet.Text + "' ";
+                            }
+                            break;
+                        case "GodinaF":
+                            if (i == 0)
+                            {
+                                naredba += "WHERE GODINA ='" + txtGodinaFakulteta.Text + "' ";
+                            }
+                            else
+                            {
+                                naredba += "AND GODINA ='" + txtGodinaFakulteta.Text + "' ";
+                            }
+                            break;
+                    }
+                }
+                for (int i = 0; i < pomString.Length; i++)
+                {
+                    prvaNaredba[i] = pomString[i].ToString();
+                }
             }
         }
     }

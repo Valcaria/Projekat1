@@ -9,7 +9,9 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon/exchange-arrows.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/bed2.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/evidence.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/write1.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icon/if_x_293657.png")]
 
 

@@ -22,7 +22,6 @@ namespace ProjekatTMP
     /// </summary>
     public partial class SearchWindow : Window
     {
-        string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
         public string maticni = "";
         string brSobeStaro = "";
         string domStaro = "";
@@ -37,6 +36,7 @@ namespace ProjekatTMP
         public string brTelefona = "";
         string[] filterString = { "", "", "", "", "", "", "", "" };
         string pom = "";
+        bool sobe = false;
         public SearchWindow(string maticni, string dom, string paviljon, string brSobe)
         {
             InitializeComponent();
@@ -45,6 +45,8 @@ namespace ProjekatTMP
             this.paviljon= paviljon;
             this.brSobe = brSobe;
             this.maticni = maticni;
+            sobe = true;
+            Settings.Default.naredba = "";
 
 
             FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME from studenti");
@@ -54,7 +56,7 @@ namespace ProjekatTMP
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 300);
             dispatcherTimer.Start();
 
-            baza = "select * from studenti";
+            baza = "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from studenti" + Settings.Default.naredba;
 
         }
 
@@ -69,7 +71,7 @@ namespace ProjekatTMP
             try
             {
                 System.Data.DataTable dG = new System.Data.DataTable();
-                MySqlConnection conn = new MySqlConnection(connstr);
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
                 conn.Open();
 
                 MySqlCommand command = new MySqlCommand("select DISTINCT MATICNI_BROJ, IME, PREZIME from arhiva"+Settings.Default.naredba, conn);
@@ -78,11 +80,12 @@ namespace ProjekatTMP
                 dtgPretraga.ItemsSource = dG.DefaultView;
                 conn.Close();
 
-                baza = "select * from arhiva";
+                baza = "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from arhiva" + Settings.Default.naredba;
+
             }
             catch (Exception e)
             {
-                MessageBox.Show("Greska: " + e.Message.ToString());
+                MessageBox.Show("Greška: " + e.Message.ToString());
             }
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -112,7 +115,7 @@ namespace ProjekatTMP
             try
             {
                 System.Data.DataTable dG = new System.Data.DataTable();
-                MySqlConnection conn = new MySqlConnection(connstr);
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
                 conn.Open();
 
                 MySqlCommand command = new MySqlCommand(komanda, conn);
@@ -124,85 +127,74 @@ namespace ProjekatTMP
             }
             catch (Exception e)
             {
-                MessageBox.Show("Greska: " + e.Message.ToString());
+                MessageBox.Show("Greška: " + e.Message.ToString());
             }
         }       
 
-        private bool IzbaciDuplikat(int ID, string maticni)
-        {
-            MySqlConnection conn = new MySqlConnection(connstr);
-            conn.Open();
-
-            MySqlCommand command = new MySqlCommand("select * from arhiva", conn);
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                if(Convert.ToInt32(reader[0].ToString()) <ID && maticni == reader[3].ToString())
-                {
-                    return true;
-                }
-            }
-
-                conn.Close();
-            return false;
-        }
-        
         private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
             if (dtgPretraga.SelectedItem != null)
             {
                 DataRowView dataRow = (DataRowView)dtgPretraga.SelectedItem;
-
-                MySqlConnection conn = new MySqlConnection(connstr);
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(baza, conn);
-                MySqlDataReader rReader = cmd.ExecuteReader();
-                while (rReader.Read())
+                try
                 {
-                    if (rReader[3].ToString() == dataRow.Row.ItemArray[0].ToString())
-                    {
-                        if(baza == "select * from arhiva" && pom != "arhiva")
-                        {
-                            AddWindow add = new AddWindow("", rReader[1].ToString(), rReader[2].ToString(), rReader[3].ToString(), rReader[4].ToString(), rReader[5].ToString(), "", "", "", "", "", "", "");
-                            this.Close();
-                            add.ShowDialog();
-                        }
-                        else if(baza == "select * from arhiva" && pom =="arhiva")
-                        {
-                            maticni = rReader[3].ToString();
-                            ime = rReader[1].ToString();
-                            prezime = rReader[2].ToString();
-                            adresa = rReader[4].ToString();
-                            brTelefona = rReader[5].ToString();
-                        }
-                        if(baza == "select * from studenti" && rReader[9].ToString() == "Hrana")
-                        {
-                            PromjeniUslugu(dataRow.Row.ItemArray[0].ToString());
-                        }
-                        domStaro = rReader[6].ToString();
-                        paviljonStaro = rReader[7].ToString();
-                        brSobeStaro = rReader[8].ToString();
-                        
-                    }
-                }
-
-                conn.Close();
-                if (baza == "select * from studenti")
-                {
-                    conn = new MySqlConnection(connstr);
+                    MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
                     conn.Open();
-                    MySqlCommand cmd2 = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + domStaro + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + paviljonStaro + "','" + paviljon + "'), soba = REPLACE(soba, '" + brSobeStaro + "','" + brSobe + "') where maticni_broj = '" + dataRow.Row.ItemArray[0].ToString() + "'", conn);
-                    cmd2.ExecuteNonQuery();
-                    conn.Close();
+                    MySqlCommand cmd = new MySqlCommand(baza, conn);
+                    MySqlDataReader rReader = cmd.ExecuteReader();
+                    while (rReader.Read())
+                    {
 
-                    promjenaNoveSobe(dom, paviljon, brSobe);
-                    promjenaStareSobe(domStaro, paviljonStaro, brSobeStaro);
+                        if (rReader[0].ToString() == dataRow.Row.ItemArray[0].ToString())
+                        {
+                            if (baza == "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from arhiva" + Settings.Default.naredba && pom != "arhiva")
+                            {
+                                AddWindow add = new AddWindow("", rReader[1].ToString(), rReader[2].ToString(), rReader[3].ToString(), rReader[4].ToString(), rReader[5].ToString(), "", "", "", "", "", "", "");
+                                this.Close();
+                                add.ShowDialog();
+                            }
+                            else if (baza == "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from arhiva" + Settings.Default.naredba && pom == "arhiva")
+                            {
+                                maticni = rReader[3].ToString();
+                                ime = rReader[1].ToString();
+                                prezime = rReader[2].ToString();
+                                adresa = rReader[4].ToString();
+                                brTelefona = rReader[5].ToString();
+                            }
+                            if (baza == "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from studenti" && rReader[9].ToString() == "Hrana")
+                            {
+                                PromjeniUslugu(dataRow.Row.ItemArray[0].ToString());
+                            }
+                            domStaro = rReader[6].ToString();
+                            paviljonStaro = rReader[7].ToString();
+                            brSobeStaro = rReader[8].ToString();
+
+                        }
+
+                    }
+
+                    conn.Close();
+                    if (baza == "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from studenti" + Settings.Default.naredba)
+                    {
+                        conn = new MySqlConnection(Settings.Default.connstr);
+                        conn.Open();
+                        MySqlCommand cmd2 = new MySqlCommand("UPDATE studenti SET dom = REPLACE(dom, '" + domStaro + "', '" + (dom) + "'), paviljon = REPLACE(paviljon, '" + paviljonStaro + "','" + paviljon + "'), soba = REPLACE(soba, '" + brSobeStaro + "','" + brSobe + "') where maticni_broj = '" + dataRow.Row.ItemArray[0].ToString() + "'", conn);
+                        cmd2.ExecuteNonQuery();
+                        conn.Close();
+
+                        PromjenaNoveSobe(dom, paviljon, brSobe);
+                        PromjenaStareSobe(domStaro, paviljonStaro, brSobeStaro);
+                    }
+                    Settings.Default.close = 3;
+                    this.Close();
                 }
-                Settings.Default.close = 3;
-                this.Close();
+                catch (Exception error)
+                {
+                    MessageBox.Show("Greška: " + error.Message.ToString());
+                }
             }
         }
-        void PromjeniUslugu(string maticniBroj)
+        private void PromjeniUslugu(string maticniBroj)
         {
             try
             {
@@ -216,89 +208,113 @@ namespace ProjekatTMP
             }
             catch(Exception error)
             {
-                MessageBox.Show("Greska pri UPDATE u bazi: "+error.Message.ToString());
+                MessageBox.Show("Greška: "+error.Message.ToString());
             }
         }
-        void promjenaNoveSobe(string dom, string paviljon, string brSobe)
+        private void PromjenaNoveSobe(string dom, string paviljon, string brSobe)
         {
             int brSlobodnihSoba = 0;
-            MySqlConnection conn = new MySqlConnection(connstr);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
-            MySqlDataReader rReader = cmd.ExecuteReader();
-            while (rReader.Read())
+            try
             {
-                if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
+                MySqlDataReader rReader = cmd.ExecuteReader();
+                while (rReader.Read())
                 {
-                    try
+                    if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
                     {
-                        brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show("Greska: " + error.Message.ToString());
+                        try
+                        {
+                            brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greška: " + error.Message.ToString());
+                        }
                     }
                 }
+                conn.Close();
+                conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba - 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
+                cmd2.ExecuteNonQuery();
+                conn.Close();
+            }catch(Exception error)
+            {
+                MessageBox.Show("Greška: "+error.Message.ToString());
             }
-            conn.Close();
-            conn = new MySqlConnection(connstr);
-            conn.Open();
-            MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba - 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
-            cmd2.ExecuteNonQuery();
-            conn.Close();
         }
-        void promjenaStareSobe(string dom, string paviljon, string brSobe)
+        private void PromjenaStareSobe(string dom, string paviljon, string brSobe)
         {
             int brSlobodnihSoba = 0;
-            MySqlConnection conn = new MySqlConnection(connstr);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
-            MySqlDataReader rReader = cmd.ExecuteReader();
-            while (rReader.Read())
+            try
             {
-                if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
+                MySqlDataReader rReader = cmd.ExecuteReader();
+                while (rReader.Read())
                 {
-                    try
+                    if (dom == rReader[1].ToString() && paviljon == rReader[2].ToString() && brSobe == rReader[3].ToString())
                     {
-                        brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show("Greska: " + error.Message.ToString());
+                        try
+                        {
+                            brSlobodnihSoba = Convert.ToInt32(rReader[5].ToString());
+                        }
+                        catch (Exception error)
+                        {
+                            MessageBox.Show("Greška: " + error.Message.ToString());
+                        }
                     }
                 }
+                conn.Close();
+                conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba + 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
+                cmd2.ExecuteNonQuery();
+                conn.Close();
             }
-            conn.Close();
-            conn = new MySqlConnection(connstr);
-            conn.Open();
-            MySqlCommand cmd2 = new MySqlCommand("UPDATE sobe SET slobodnih = REPLACE(slobodnih, '" + brSlobodnihSoba + "', '" + (brSlobodnihSoba + 1) + "') WHERE SOBA ='" + brSobe + "' AND DOM = '" + dom + "' AND PAVILJON = '" + paviljon + "'", conn);
-            cmd2.ExecuteNonQuery();
-            conn.Close();
+            catch (Exception error)
+            {
+                MessageBox.Show("Greška: " + error.Message.ToString());
+            }
+
         }
 
         private void filter_Click(object sender, RoutedEventArgs e)
         {
-            if (maticni != "")
+            if (sobe)
             {
                 Filtar filter = new Filtar(filterString);
                 filter.ShowDialog();
                 Settings.Default.naredba = filter.naredba;
-                FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM studenti WHERE concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%'" + filter.naredba);
+                if (filter.naredba != "" && filter.naredba != " ")
+                    FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM studenti " + filter.naredba + " AND (concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%')");
+                else
+                    FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM studenti WHERE (concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%')");
                 for (int i = 0; i < filterString.Length; i++)
                 {
                     filterString[i] = String.Copy(filter.prvaNaredba[i]);
                 }
+                baza = "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from studenti" + Settings.Default.naredba;
+
             }
             else
             {
                 Filtar filter = new Filtar(filterString);
                 filter.ShowDialog();
                 Settings.Default.naredba = filter.naredba;
-                FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM arhiva WHERE concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%'" + filter.naredba);
+                if (filter.naredba != "" && filter.naredba != " ")
+                    FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM arhiva " + filter.naredba + " AND (concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%')");
+                else
+                    FillDataGrid("SELECT DISTINCT MATICNI_BROJ, IME, PREZIME FROM arhiva  WHERE (concat(concat(IME,' '),PREZIME) like '%" + txtPretraga.Text + "%' OR concat(concat(PREZIME,' '),IME) like '%" + txtPretraga.Text + "%')");
                 for (int i = 0; i < filterString.Length; i++)
                 {
                     filterString[i] = String.Copy(filter.prvaNaredba[i]);
                 }
+                baza = "SELECT DISTINCT MATICNI_BROJ, IME,PREZIME,MATICNI_BROJ,MJESTO_STANOVANJA,BROJ_TELEFONA,DOM,PAVILJON,SOBA,USLUGA,DATUM_ZADUZIVANJA,GODINA_UPOTREBE,FAKULTET,GODINA,KOMENTAR from arhiva" + Settings.Default.naredba;
+
             }
         }
     }

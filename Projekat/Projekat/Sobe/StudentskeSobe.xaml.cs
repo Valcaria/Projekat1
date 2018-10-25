@@ -22,37 +22,42 @@ namespace ProjekatTMP
     /// </summary>
     public partial class StudentskeSobe : UserControl
     {
-        string student = "";
-        string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
+        
         public StudentskeSobe(string dom, string paviljon, string brSobe, string ukupnoMjesta, string slobondaMjesta)
         {
             InitializeComponent();
-
+            string student = "";
             lblBrSobe.Content = brSobe;
             lblSlobodnaMjesta.Content = slobondaMjesta;
             lblBrMjesta.Content = ukupnoMjesta;
-
-            MySqlConnection conn = new MySqlConnection(connstr);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from studenti", conn);
-            MySqlDataReader rReader = cmd.ExecuteReader();
-            while (rReader.Read())
+            try
             {
-                if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString() && Settings.Default.maticni != rReader[3].ToString())
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from studenti", conn);
+                MySqlDataReader rReader = cmd.ExecuteReader();
+                while (rReader.Read())
                 {
-                    student = rReader[1].ToString();
-                    student += " " + rReader[2].ToString();
-                    stcPanel.Children.Add(new Kreveti("R", student, dom, paviljon, brSobe, rReader[3].ToString()));
+                    if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString() && Settings.Default.maticni != rReader[3].ToString())
+                    {
+                        student = rReader[1].ToString();
+                        student += " " + rReader[2].ToString();
+                        stcPanel.Children.Add(new Kreveti("R", student, dom, paviljon, brSobe, rReader[3].ToString()));
+                    }
+                    else if (dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString() && Settings.Default.maticni == rReader[3].ToString())
+                    {
+                        student = rReader[1].ToString();
+                        student += " " + rReader[2].ToString();
+                        stcPanel.Children.Add(new Kreveti("Gr", student, dom, paviljon, brSobe, rReader[3].ToString()));
+
+                    }
                 }
-                else if(dom == rReader[6].ToString() && paviljon == rReader[7].ToString() && brSobe == rReader[8].ToString() && Settings.Default.maticni == rReader[3].ToString())
-                {
-                    student = rReader[1].ToString();
-                    student += " " + rReader[2].ToString();
-                    stcPanel.Children.Add(new Kreveti("Gr", student, dom, paviljon, brSobe, rReader[3].ToString()));
-                    
-                }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception error)
+            {
+                MessageBox.Show("Greška: " + error.Message.ToString());
+            }
 
             try
             {
@@ -63,7 +68,7 @@ namespace ProjekatTMP
             }
             catch (Exception error)
             {
-                MessageBox.Show("Greska: " + error.Message.ToString());
+                MessageBox.Show("Greška: " + error.Message.ToString());
                 Settings.Default.maticni = "";
             } 
         }

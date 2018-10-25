@@ -21,22 +21,17 @@ namespace ProjekatTMP
     /// </summary>
     public partial class Sobe : Window
     {
-        string brSobe = "";
-        string ukupnoMjesta = "";
-        string slobondaMjesta = "";
-
-        string connstr = "Server=localhost;Uid=root;pwd= ;database=projekat1;SslMode=none";
         public Sobe()
         {
             InitializeComponent();
-
-            //this.SizeToContent = SizeToContent.Height;
-
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
             lblDosloJeDoPromjene.Content = "";
+            Settings.Default.soba = "";
+            Settings.Default.dom = "";
+            Settings.Default.paviljon = "";
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -45,40 +40,42 @@ namespace ProjekatTMP
             {
                 case 0:
                     Settings.Default.close = 1;
-                    combBoxChange();
+                    CombBoxChange();
                     lblDosloJeDoPromjene.Content = Settings.Default.promjena;
                     break;
                 case 2:
                     Settings.Default.close = 1;
                     stpStudentInfo.Children.Clear();
                     stpStudentInfo.Children.Add(new StudentInfo());
-                    
-                    combBoxChange();
+                    CombBoxChange();
                     lblDosloJeDoPromjene.Content = "";
                     break;
                 case 3:
                     Settings.Default.close = 1;
                     stpStudentInfo.Children.Clear();
-                    combBoxChange();
+                    CombBoxChange();
                     lblDosloJeDoPromjene.Content = "";
 
-                   // MessageBox.Show("SOBA PROMJENUTA!");
                     break;
                 case 4:
                     Settings.Default.close = 1;
                     stpStudentInfo.Children.Clear();
                     stpStudentInfo.Children.Add(new StudentInfo(cmbDom.Text, cmbPaviljon.Text));
-                    combBoxChange();
+                    CombBoxChange();
                     lblDosloJeDoPromjene.Content = "";
                     break;
             }
         }
 
-        void combBoxChange()
+        private void CombBoxChange()
         {
+            string brSobe = "";
+            string ukupnoMjesta = "";
+            string slobondaMjesta = "";
+
             try
             {
-                MySqlConnection conn = new MySqlConnection(connstr);
+                MySqlConnection conn = new MySqlConnection(Settings.Default.connstr);
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("select * from sobe", conn);
                 MySqlDataReader rReader = cmd.ExecuteReader();
@@ -99,29 +96,29 @@ namespace ProjekatTMP
             }
             catch (Exception error)
             {
-                MessageBox.Show("Greska: " + error.Message.ToString());
+                MessageBox.Show("Greška: " + error.Message.ToString());
             }
         }
 
         private void cmbDom_DropDownClosed(object sender, EventArgs e)
         {
-            if(cmbPaviljon.Text != "")
+            if(cmbPaviljon.Text != "" && cmbDom.Text !="")
             {
-                combBoxChange();
+                CombBoxChange();
             }
         }
 
         private void cmbPaviljon_DropDownClosed(object sender, EventArgs e)
         {
-            if (cmbDom.Text != "")
+            if (cmbPaviljon.Text != "" && cmbDom.Text != "")
             {
-                combBoxChange();
+                CombBoxChange();
             }
         }
 
         private void scrVwer_GotFocus(object sender, RoutedEventArgs e)
         {
-            combBoxChange();
+            CombBoxChange();
         }
     }
 }

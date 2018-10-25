@@ -254,11 +254,15 @@
     <Content Include="Icon\exchange-arrows.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\bed2.png" />
+    <Content Include="Resources\bed2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\evidence.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\write1.png" />
+    <Content Include="Resources\write1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\excel.png" />
     <None Include="Resources\pdf.png" />
   </ItemGroup>
