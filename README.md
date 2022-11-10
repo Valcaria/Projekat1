@@ -1,6 +1,6 @@
 #Student dorm:
 
-Program for viewing and working with reports about current and past students in dorm.
+A program for tracking and editing  reports about current and past students in a student dorm
 Made with C#
 
 Language: Serbian
